@@ -18,18 +18,29 @@ at a later time.
 
 This is a short guide on how to get git set up for this project, as well as how
 to save your changes and send them back to the repository.
+If you'd rather read through the official documentation, you can find that
+[here](https://git-scm.com/doc).
 To begin with you'll want to download a GUI git client from
 [this](https://git-scm.com/downloads/guis) list.
 I'd personally recommend gitkraken, which is free for our use-case.
 
 Once you've got a git client installed, you'll need to create a GitHub account.
-This is so I can grant you access to the repository where all the files are stored.
+This is so I can grant you push access to this repository.
 You can do that [here](https://github.com/join?source=header-home).
 Again, for our purposes you only need a free account.
 Once you've made an account, let me know your username and I'll grant you access.
 You might need to log into [GitLab](https://gitlab.com/users/sign_in) once for
 me to add you.
 
-If you're using gitkraken, you should be able to log into GitHub/GitLab and from
-the program and it should display a list of *remote* repositories.
-Among these, there will be this repository and you should be able to download it.
+If you're using gitkraken, you should be able to log into GitHub/GitLab from the
+program and it should display a list of *remote* repositories.
+This repository will be among these and you should be able to download(pull) it directly
+from the app.
+
+If you're not then, depending on the client, there might be an option to pull a
+remote repository.
+If there is an option to use HTTPS or SSH, select HTTPS and use
+`https://gitlab.com/QuantumAnon/m2r.git` as the repository URL.
+It will then ask you to authenticate using your username and password.
+Some clients will pull the files from the remote repository automatically, but
+others will need you to manually pull them.
