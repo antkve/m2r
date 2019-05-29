@@ -28,10 +28,6 @@ This is so I can grant you push access to this repository.
 You can do that [here](https://github.com/join?source=header-home).
 Again, for our purposes you only need a free account.
 
-Once you've made an account, let me know your username and I'll grant you access.
-You might need to log into [GitLab](https://gitlab.com/users/sign_in) once for
-me to add you.
-
 If you're using gitkraken, you should be able to log into GitHub/GitLab from the
 program and it should display a list of *remote* repositories.
 This repository will be among these and you should be able to download(pull) it directly
