@@ -5,6 +5,7 @@ Project folder for the second year group research project on Ramsey Theory.
 ## Contents
 
 1. [Using Git](#using-git)
+1. [Compiling LaTeX](#compiling-latex)
 
 
 ## Using Git
@@ -36,7 +37,18 @@ from the app.
 If you're not then, depending on the client, there might be an option to pull a
 remote repository.
 If there is an option to use HTTPS or SSH, select HTTPS and use
-`https://gitlab.com/QuantumAnon/m2r.git` as the repository URL.
+`https://github.com/QuantumAnon/m2r.git` as the repository URL.
 It will then ask you to authenticate using your username and password.
 Some clients will pull the files from the remote repository automatically, but
 others will need you to manually pull them.
+
+## Compiling LaTeX
+
+Each of the projects should contain a `.latexmkrc` file and a GNU makefile.
+The makefile specifies what the sources and targets are for compilation and the
+latexmkrc contains the compilation command that should be used.
+Any special instructions are noted below.
+
+### [Notes](./notes/typeset)
+
+This uses `lualatex` to compile.
