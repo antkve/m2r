@@ -49,6 +49,6 @@ The makefile specifies what the sources and targets are for compilation and the
 latexmkrc contains the compilation command that should be used.
 Any special instructions are noted below.
 
-### [Notes](./notes/typeset)
+### [Introductions](./intros)
 
 This uses `lualatex` to compile.
