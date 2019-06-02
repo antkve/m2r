@@ -47,8 +47,7 @@ others will need you to manually pull them.
 Each of the projects should contain a `.latexmkrc` file and a GNU makefile.
 The makefile specifies what the sources and targets are for compilation and the
 latexmkrc contains the compilation command that should be used.
+Most of the projects use lualatex.
+I don't think I've done anything lualatex specific though, so they should just compile.
 Any special instructions are noted below.
 
-### [Introductions](./intros)
-
-This uses `lualatex` to compile.
