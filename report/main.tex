@@ -1,0 +1,42 @@
+\documentclass{article}
+
+\usepackage{parskip}
+\usepackage{subfiles}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage[style=numeric]{biblatex}
+\usepackage{hyperref}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\bibliography{ref.bib}
+
+\title{M2R: Report}
+
+\begin{document}
+\maketitle
+
+% Section numbers are a rough guide, they can be switched around later
+\section*{Introduction}
+\label{sec:0}
+
+\section{Ramsey Theory in Graph Theory}
+\label{sec:1}
+
+\section{The Hales-Jewett Theorem}
+\label{sec:2}
+
+\section{Euclidean Ramsey Theorem}
+\label{sec:3}
+
+\section{The Random Graph}
+\label{sec:4}
+\subfile{randomGraph}
+
+
+
+\end{document}
