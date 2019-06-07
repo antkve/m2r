@@ -3,49 +3,72 @@
 \subsection{Rado's Theorem}
 \label{sec:4.1}
 
-The following results are commonly seen as precursors of Ramsey theory: Hilbert's cube Lemma (1892),
-Schur's Theorem (1916) and van der Waerden's Theorem (1927). (Schacht2014)
+The following results are commonly seen as precursors of Ramsey theory:
+Hilbert's cube Lemma (1892), Schur's Theorem (1916) and van der Waerden's
+Theorem(1927)\cite{Schacht2011}.
 
-A student of Schur's, Rado, generalised these results in 1933 (Schacht2014). 
-In fact they can all be seen as statements abot monochromatic solutions to systems of linear homogeneous equations, in the sense that will be specified now.
+A student of Schur's, Rado, generalised these results in 1933\cite{Schacht2011}.
+In fact they can all be seen as statements abot monochromatic solutions to
+systems of linear homogeneous equations, in the sense that will be specified now.
 
-Let $\Lambda(x_{1},\cdots,x_{n})$ be a system of linear homogeneous equations in variables $ x_{1},\cdots,x_{n}$, where $\{x_{1},\cdots,x_{n}\}$ are assumed to be elements of a set $X$.
+Let $\Lambda(x_{1},\cdots,x_{n})$ be a system of linear homogeneous equations in
+variables $ x_{1},\cdots,x_{n}$, where $\{x_{1},\cdots,x_{n}\}$ are assumed to
+be elements of a set $X$.
 
-For some $k\in \mathbb{N}$ consider a $k$-colouring of $X$ (that is, any partition of $X$ into k equivalence classes). 
-Then a solution $(x_{1}^*,\cdots,x_{n}^*)$ of  $\Lambda$ is monochromatic if $\{x_{1}^*,\cdots,x_{n}^*\}$ is entirely contained in one of the $k$ equivalence classes.
+For some $k\in \mathbb{N}$ consider a $k$-colouring of $X$ (that is, any
+partition of $X$ into k equivalence classes). 
+Then a solution $(x_{1}^*,\cdots,x_{n}^*)$ of  $\Lambda$ is monochromatic if
+$\{x_{1}^*,\cdots,x_{n}^*\}$ is entirely contained in one of the $k$ equivalence
+classes.
 
 Equivalently, let $\chi$ be a map:
 
+\[
+  \chi: X \to \{1, \cdots, k\}
+\]
 
-$$\chi: X \to \{1, \cdots, k\}$$
-
-
-Then our $k$-colouring is the partition induced by the equivalence relation $R = \{(x,y) \in X| \chi(x) = \chi(y)\}$, and a solution $(x_{1}^*,\cdots,x_{n}^*)$ of  $\mathcal{L}$ is monochromatic if there exists $p\in \{1, \cdots, k\}$ such that $\chi(\{x_{1}^*,\cdots,x_{n}^*\}) = \{p\}$.
+Then our $k$-colouring is the partition induced by the equivalence relation
+$R = \{(x,y) \in X| \chi(x) = \chi(y)\}$, and a solution $(x_{1}^*,\cdots,x_{n}^*)$
+of  $\mathcal{L}$ is monochromatic if there exists $p\in \{1, \cdots, k\}$ such
+that $\chi(\{x_{1}^*,\cdots,x_{n}^*\}) = \{p\}$.
 
 To formulate our theorem, we write the system $\mathcal{L}(x_{1},\cdots,x_{n})$ as:
-$$\Lambda x = 0$$
+
+\[
+  \Lambda x = 0
+\]
+
 where $\Lambda$ is an appropriate matrix and $x = (x_{1},\cdots,x_{n}) \in \mathbb{R}^n$.
 
 We first introduce some definitions:
 
-\begin{mydef}
-A matrix $A \in \mathbb{R}^{m\cdot n}$ is \underline{regular} if:
-\begin{center}
-$\forall k \in \mathbb{N}$, for all $r$-colouring of $\mathbb{R}^n$, there exists a monochromatic solution to $Ax = 0$ 
-\end{center}
-\end{mydef}
+\begin{definition}
+  A matrix $A \in \mathbb{R}^{m\cdot n}$ is \underline{regular} if:
+  \begin{center}
+    $\forall k \in \mathbb{N}$, for all $r$-colouring of $\mathbb{R}^n$, there
+    exists a monochromatic solution to $Ax = 0$ 
+  \end{center}
+\end{definition}
 
-\begin{mydef}
-A matrix $A \in \mathbb{R}^{m\cdot n}$ satisfies the \underline{column condition} if its columns $\{g_{1},\cdots,g_{n}\}$ can be partitioned into a family of sets $$\bigcup\limits_{i \in \mathcal{I}}\Gamma_{i}$$ where $\mathcal{I}$ is a finite index set, which satisfies:
+\begin{definition}
+  A matrix $A \in \mathbb{R}^{m\cdot n}$ satisfies the \underline{column condition}
+  if its columns $\{g_{1},\cdots,g_{n}\}$ can be partitioned into a family of sets
 
-\begin{enumerate}
-\item $\sum\limits_{g_{j} \in \Gamma_{1}}g_{j} = 0$
-\item $\forall i \in \mathcal{I}\setminus\{1\}$, $\sum\limits_{g_{j} \in {\Gamma_{i}}}g_{j} \in span\bigg\{\bigcup\limits_{k \in \mathcal{I} : k < i }\Gamma_{k}\bigg\}$
-\end{enumerate}
+  \[
+    \bigcup\limits_{i \in \mathcal{I}}\Gamma_{i}
+  \]
 
-\end{mydef}
+  where $\mathcal{I}$ is a finite index set, which satisfies:
 
-\section{Euclidean Ramsey theory}
+  \begin{enumerate}
+  \item $\sum\limits_{g_{j} \in \Gamma_{1}}g_{j} = 0$
+  \item $\forall i \in \mathcal{I}\setminus\{1\}$,
+    $\sum\limits_{g_{j} \in {\Gamma_{i}}}g_{j} \in span\bigg\{\bigcup\limits_{k \in \mathcal{I} : k < i }\Gamma_{k}\bigg\}$
+  \end{enumerate}
+
+\end{definition}
+
+\subsection{Euclidean Ramsey theory}
 \label{sec:4.2}
 
 % Local Variables:
