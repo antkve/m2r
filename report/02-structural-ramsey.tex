@@ -1,4 +1,4 @@
-\documentclass[../main.tex]{subfile}
+\documentclass[../m2r-report.tex]{subfile}
 
 The original Ramsey theorem states the existence of a complete monochromatic
 subgraph in any two-colouring of a sufficiently large graph.
@@ -9,10 +9,31 @@ different structures.
 In this section we look at how the random graph is constructed, some of its
 properties, and how its existence can be used to infer some Ramsey type results.
 
-We begin with a look at relational languages and how they apply to finite graphs.
+We begin with the definition of some model theoretic concepts that are needed to
+state the generalized form of Ramsey Theorem.
 
-\subsection{Relational Languages}
+\subsection{Structures}
 \label{sec:2.1}
+
+Let $I$ be an index set, we call $\Delta = (\delta_i \in \Z^+)_{i\in I}$ a
+type and the pair $L=(I,\Delta)$ a language.
+Given a set $A$, an $n$-ary relation $R$ is a subset of $A^n$.
+An $L$-structure $\str{A}$ is a pair $(A,(\rel{i}{\str{A}})_{i\in I})$ where each
+$\rel{i}{\str{A}}$ is a $\delta_i$-ary relation, i.e. a subset of $A^{\delta_i}$.
+\cite[739]{Hubicka2015}.
+If $A$ is finite, the structure $\str{A}$ is said to be finite, with similar
+statements holding for countable sets.
+
+Homomorphisms between structures over the same language are maps that preserve
+relations, i.e. $f : \str{A} \to \str{B}, \rel{i}{\str{A}} \mapsto
+\rel{i}{\str{B}}, \forall i \in I$.
+An injective homomorphism where $f^{-1} : \rel{i}{\str{B}} \mapsto
+\rel{i}{\str{A}}, \forall i \in I$ is called an embedding, an isomorphism of
+structures is a surjective embedding\cite[739]{Hubicka2015}.
+
+The age of a countable structure, $\str{A}$ where $A$ is a countable set, is the
+class of finite $L$-structures, $\str{B}$, such that $\str{B}$ is isomorphic to
+a substructure of $\str{A}$
 
 \subsection{The Random Graph}
 \label{sec:2.2}
@@ -20,4 +41,8 @@ We begin with a look at relational languages and how they apply to finite graphs
 \subsection{The Ramsey Property for Structures}
 \label{sec:2.3}
 
-% LocalWords:  Ramsey subgraphs subgraph Fraïssé
+% LocalWords:  Ramsey subgraphs subgraph Fraïssé surjective
+
+% Local Variables:
+% TeX-master: "m2r-report.tex"
+% End:
