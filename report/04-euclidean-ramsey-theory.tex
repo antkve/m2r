@@ -3,50 +3,95 @@
 \subsection{Rado's Theorem}
 \label{sec:4.1}
 
+Here we denote, for $n\in\mathbb{N}$, $$[n]:=\{1,\cdots,n\}$$
+
 The following results are commonly seen as precursors of Ramsey theory: Hilbert's cube Lemma (1892),
-Schur's Theorem (1916) and van der Waerden's Theorem (1927). (Schacht2014)
+Schur's Theorem (1916) and van der Waerden's Theorem (1927). (Schacht2014)\\
 
 A student of Schur's, Rado, generalised these results in 1933 (Schacht2014). 
-In fact they can all be seen as statements abot monochromatic solutions to systems of linear homogeneous equations, in the sense that will be specified now.
+In fact they can all be seen as statements abot monochromatic solutions to systems of linear homogeneous equations, in the sense that will be specified now.\\
 
-Let $\Lambda(x_{1},\cdots,x_{n})$ be a system of linear homogeneous equations in variables $ x_{1},\cdots,x_{n}$, where $\{x_{1},\cdots,x_{n}\}$ are assumed to be elements of a set $X$.
+Let $\mathcal{L}(x_{1},\cdots,x_{n})$ be a system of linear homogeneous equations in variables $ x_{1},\cdots,x_{n}$, where $\{x_{1},\cdots,x_{n}\}$ are assumed to be elements of a set $X$.\\
 
-For some $k\in \mathbb{N}$ consider a $k$-colouring of $X$ (that is, any partition of $X$ into k equivalence classes). 
-Then a solution $(x_{1}^*,\cdots,x_{n}^*)$ of  $\Lambda$ is monochromatic if $\{x_{1}^*,\cdots,x_{n}^*\}$ is entirely contained in one of the $k$ equivalence classes.
+For some $k\in\mathbb{N}$ consider a $k$-colouring of $X$ (that is, any partition of $X$ into k equivalence classes). 
+Then a solution $(x_{1}^*,\cdots,x_{n}^*)$ of  $\mathcal{L}$ is monochromatic if $\{x_{1}^*,\cdots,x_{n}^*\}$ is entirely contained in one of the $k$ equivalence classes.\\
 
 Equivalently, let $\chi$ be a map:
 
 
-$$\chi: X \to \{1, \cdots, k\}$$
+$$\chi: X \to [k] $$
 
 
-Then our $k$-colouring is the partition induced by the equivalence relation $R = \{(x,y) \in X| \chi(x) = \chi(y)\}$, and a solution $(x_{1}^*,\cdots,x_{n}^*)$ of  $\mathcal{L}$ is monochromatic if there exists $p\in \{1, \cdots, k\}$ such that $\chi(\{x_{1}^*,\cdots,x_{n}^*\}) = \{p\}$.
+Then our $k$-colouring is the partition induced by the equivalence relation $R = \{(x,y) \in X| \chi(x) = \chi(y)\}$, and a solution $(x_{1}^*,\cdots,x_{n}^*)$ of  $\mathcal{L}$ is monochromatic if there exists $p\in [k] $ such that $\chi(\{x_{1}^*,\cdots,x_{n}^*\}) = \{p\}$.\\
+More in general, $x =(x_{1},\cdots,x_{n}) \in X^n$ is monochromatic if there exists $p\in[k]$ with $ \chi(\{x_{1},\cdots,x_{n}\}) = \{p\}$\\
 
 To formulate our theorem, we write the system $\mathcal{L}(x_{1},\cdots,x_{n})$ as:
 $$\Lambda x = 0$$
-where $\Lambda$ is an appropriate matrix and $x = (x_{1},\cdots,x_{n}) \in \mathbb{R}^n$.
+where $\Lambda$ is an appropriate matrix and $x = (x_{1},\cdots,x_{n}) \in \mathbb{N}^n$.\\
 
-We first introduce some definitions:
+We first introduce some definitions:\\
 
 \begin{mydef}
-A matrix $A \in \mathbb{R}^{m\cdot n}$ is \underline{regular} if:
+A matrix $A \in \mathbb{Q}^{m\times n}$ is \underline{partition regular} (PR) if:
 \begin{center}
-$\forall k \in \mathbb{N}$, for all $r$-colouring of $\mathbb{R}^n$, there exists a monochromatic solution to $Ax = 0$ 
+$\forall r \in \mathbb{N}$, for all $r$-colouring of $\mathbb{N}$, there exists a monochromatic solution to $Ax = 0$ in $\mathbb{N}^n$ 
 \end{center}
 \end{mydef}
 
+Let $A\in\mathbb{Q}^{m\times n}$.
+It is easy to see that $A$ is PR if and only if $\lambda A$ is PR for all $\lambda\in\mathbb{Q}\setminus{\{0\}}$. Hence all our statements about PR matrices can be formulated, without loss of generality, for matrices with integer entries.\\
+
 \begin{mydef}
-A matrix $A \in \mathbb{R}^{m\cdot n}$ satisfies the \underline{column condition} if its columns $\{g_{1},\cdots,g_{n}\}$ can be partitioned into a family of sets $$\bigcup\limits_{i \in \mathcal{I}}\Gamma_{i}$$ where $\mathcal{I}$ is a finite index set, which satisfies:
+A matrix $A = \begin{pmatrix}
+{g_{1} & \cdots & g_{n}} 
+\end{pmatrix}\in \mathbb{Q}^{m\times n}$ satisfies the \underline{columns condition} (CC) if $[n]$ can be partitioned into a family of sets $$\bigg\{\Gamma_{i}\bigg\}_{i \in [l]}$$ such that:
 
 \begin{enumerate}
-\item $\sum\limits_{g_{j} \in \Gamma_{1}}g_{j} = 0$
-\item $\forall i \in \mathcal{I}\setminus\{1\}$, $\sum\limits_{g_{j} \in {\Gamma_{i}}}g_{j} \in span\bigg\{\bigcup\limits_{k \in \mathcal{I} : k < i }\Gamma_{k}\bigg\}$
+\item $\sum\limits_{j\in\Gamma_{1}}g_{j} = 0$
+\item $\forall i \in [l]\setminus\{1\}$, $\sum\limits_{ j \in {\Gamma_{i}}}g_{j} \in span\bigg\{g_{j}|j\in\bigcup\limits_{k \in [l]: k < i }\Gamma_{k}\bigg\}$
 \end{enumerate}
 
 \end{mydef}
 
+Rado's theorem states:\\
+
+\begin{theorem}[Rado, 1933]
+Let $A\in\mathbb{Q}^{m\times n}$. Then $A$ is partition regular if and only if it satisfies the columns condition.
+\end{theorem}
+
+We first prove the result for matrices of the form $ A = \begin{pmatrix}
+{a_{1} & \cdots & a_{n}} 
+\end{pmatrix} \in\mathbb{Q}^{1\times n}$.\\
+Our strategy will be to find a property $\mathcal{E}$ which is equivalent to both the PR property and the CC property.(Liu2016)\\
+The property is the following: $A = \begin{pmatrix}
+{a_{1} & \cdots & a_{n}} 
+\end{pmatrix}\in\mathbb{Q}^{1\times n}$ is $\mathcal{E}$ if there exists $\mathcal{I}\subset [n]$ such that: $$\sum\limits_{i\in\mathcal{I}} a_{i} = 0$$
+
+It is easy to show that:\\
+
+\begin{lemma}
+$A$ is $\mathcal{E}$ if and only if $A$ satisfies CC.
+\end{lemma}
+
+For the equivalence of $\mathcal{E}$ and the PR property, we use the following lemma, which follows from van der Waerden's theorem:\\
+
+\begin{lemma}
+For all $k\in\mathbb{N}$ there exists $n\in\mathbb{N}$ such that, for any $k$-colouring of $[n]$, there exists a monochromatic $(x,y,z)$ satisfying: $$x+\lambda y = z$$
+\end{lemma}
+
+Using this we can prove that the $\mathcal{E}$ property is sufficient for A to be PR. Finally, it follows from elementary number theoretic results that the $\mathcal{E}$ property is necessary for A to be PR.\\
+
+In this way we have proved Rado's theorem for matrices of the form $ A = \begin{pmatrix}
+{a_{1} & \cdots & a_{n}} 
+\end{pmatrix} \in\mathbb{Q}^{1\times n}$.
+\end{mydef}
+
 \section{Euclidean Ramsey theory}
 \label{sec:4.2}
+
+What makes Rado's theorem beautiful is its ability to translate a combinatorial property of the positive integers into an algebraic property of matrices. That is, it enables us to solve extremely general problems of the Hilbert-Schur-van der Waerden kind, through a unified algebraic approach.\\
+
+In this section we will see that a generalization of Rado's theorem (Erdo\H s 1973) will enable us to translate a combinatorial property of finite subsets of the Euclidean space into a geometric property of the points of such set.
 
 
 
