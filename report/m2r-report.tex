@@ -3,9 +3,11 @@
 \usepackage{parskip}
 \usepackage{subfiles}
 
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{amsthm}
+\usepackage{amssymb, amsmath, amsthm}
+
+\usepackage{tikz}
+\usepackage{adjustbox}
+\usetikzlibrary{cd}
 
 \usepackage[style=numeric]{biblatex}
 \usepackage{hyperref}
@@ -13,17 +15,36 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
 
-\newcommand{\str}[1]{\bold{#1}}
+\newcommand{\str}[1]{\mathbf{#1}}
 \newcommand{\rel}[2]{R^{#1}_{\str{#2}}}
 \newcommand{\class}[1]{\mathcal{#1}}
-\newcommand{\Z}{\mathBB{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\sstr}[2]{\binom{\str{#1}}{\str{#2}}}
+
+\usepackage{geometry}
+\geometry{
+  margin=3cm
+}
+
+\DeclareMathOperator{\age}{Age}
 
 \bibliography{ref.bib}
 
 \title{M2R: Report}
+\author{
+  Chaudhuri, Gautam\\
+  \ttfamily{CID:01344735}\and
+  Kveder, Anthony\\
+  \ttfamily{CID:01234567}\and
+  Malbon, Joe\\
+  \ttfamily{CID:01234567}\and
+  Tarallo, Guglielmo\\
+  \ttfamily{CID:01234567}
+}
 
 \begin{document}
 \maketitle
+\tableofcontents
 
 % Section numbers are a rough guide, they can be switched around later
 \section*{Introduction}
@@ -31,16 +52,20 @@
 
 \paragraph{Original Ramsey Theory}
 
+\newpage
 \section{Graph Theoretic Ramsey Theory}
 \label{sec:1}
 
+\newpage
 \section{Structural Ramsey Theory}
 \label{sec:2}
 \subfile{02-structural-ramsey}
 
+\newpage
 \section{The Hales-Jewett Theorem}
 \label{sec:3}
 
+\newpage
 \section{Euclidean Ramsey Theory}
 \label{sec:4}
 \subfile{04-euclidean-ramsey-theory}
