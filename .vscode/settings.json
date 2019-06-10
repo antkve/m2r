@@ -1,5 +1,0 @@
-{
-    "latex-workshop.latex.outDir": "./out",
-    //"latex-workshop.view.pdf.viewer":"external",
-    "editor.rulers": [80,120]
-}
