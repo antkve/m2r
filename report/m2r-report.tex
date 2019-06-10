@@ -7,6 +7,9 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 
+\usepackage{tikz-cd}
+\usepackage{adjustbox}
+
 \usepackage[style=numeric]{biblatex}
 \usepackage{hyperref}
 
@@ -16,6 +19,19 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{prop}[theorem]{Proposition}
 \newtheorem*{cor}{Corollary}
+
+\newcommand{\str}[1]{\mathbf{#1}}
+\newcommand{\rel}[2]{R^{#1}_{\str{#2}}}
+\newcommand{\class}[1]{\mathcal{#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\sstr}[2]{\binom{\str{#1}}{\str{#2}}}
+
+\usepackage{geometry}
+\geometry{
+  margin=3cm
+}
+
+\DeclareMathOperator{\age}{Age}
 
 \bibliography{ref.bib}
 

@@ -139,19 +139,108 @@ system of equations. This is done constructively, using the Columns Property
 that we assume. Then, by our second Lemma, one such solution must be monochromatic. ù
 $\qed$
 
-
-
-
-  \begin{enumerate}
-  \item $\sum\limits_{g_{j} \in \Gamma_{1}}g_{j} = 0$
-  \item $\forall i \in \mathcal{I}\setminus\{1\}$,
-    $\sum\limits_{g_{j} \in {\Gamma_{i}}}g_{j} \in span\bigg\{\bigcup\limits_{k \in \mathcal{I} : k < i }\Gamma_{k}\bigg\}$
-  \end{enumerate}
-
-\end{definition}
-
 \subsection{Euclidean Ramsey theory}
 \label{sec:4.2}
+
+What makes Rado's theorem beautiful is its ability to translate a combinatorial 
+property of the positive integers into an algebraic property of matrices. 
+That is, it enables us to solve general problems of the Hilbert-Schur-van 
+der Waerden kind, through a unified algebraic approach.
+
+In this section we will see how a generalization of Rado's theorem 
+(Erd\H os 1973) enables us to translate a combinatorial property of 
+finite subsets of the Euclidean space into a geometric property of the points 
+of such set.
+
+We first define a notion of Ramseyness for finite sets $F\in\mathbb{R}^n$. 
+
+\begin{definition}[Configurations]
+A figure is a finite set $F\in \mathbb{R}^m$.
+% for some $m\in \mathbb{N}$ such that the elements of K are subject to purely 
+%metrical costraints.
+Consider the set of all figures 
+$$\mathfrak{F}:= \{F \ | \ \exists n \in \mathbb{N} : F \  
+\textit{is finite in} \ \mathbb{R}^n\} $$ 
+This is clearly non-empty as $\{0\}\subset\mathbb{R}$ is in $\mathfrak{F}$.
+Define an equivalence relation as follows: $$F \sim F' 
+\iff \ \textit{there exists an isometry} \ \Psi \textit{such that} 
+\ \Psi(F)=F'$$
+Then we define the set of Euclidean configurations 
+$$\mathfrak{K}:=\frac{\mathfrak{F}}{\sim}$$
+An element $K=[F]$ of $\mathfrak{K}$ is called a configuration.
+If $F$ and $F'$ are figures with $[F]=[F']$, we say that they have the same 
+configuration.
+\end{definition}
+
+\begin{definition}[Ramsey property]
+A configuration $K$ is Ramsey if: 
+\begin{center}
+$\forall r\in\mathbb{N}$, $\exists n\in\mathbb{N}$ such that, 
+under any $r$-colouring of $\mathbb{R}^n$,  there exists a monochromatic 
+$F\in K$ in $\mathbb{R}^n$
+\end{center}
+\end{definition}
+
+A natural question to consider is whether there exists any class of 
+configurations that are not Ramsey. Consider the following geometrical 
+property of a figure:
+
+\begin{definition}[Spherical figures]
+A figure $F\in\mathbb{R}^m$ is spherical if there exists a sphere 
+$S\in\mathbb{R}^m$ such that $F\subset S$.
+\end{definition}
+
+It is easy to see that if a figure $F$ is spherical, then any figure with 
+the same configuration will be spherical. In fact isometries preserve spheres. 
+Hence it makes sense to talk about spherical configurations.
+
+Our aim in this section is to prove the following
+
+\begin{theorem}[Erd\H os,1973]
+If $K$ is Ramsey, $K$ is spherical.
+\end{theorem}
+
+Our main tool is the following Lemma, which is a generalization of Rado's theorem:
+
+\begin{lemma}[Erd\H os,1973]
+Let $c_{1},\cdots,c_{k}$ and $b\neq 0$ be elements of $\mathbb{R}$. Then there 
+exists a colouring $\chi$ of $\mathbb{R}$ such that the equation: 
+$$\sum_{i = 1}^{k} c_{i}(x_{i} - x_{0}) = b $$ has no monochromatic solution.
+\end{lemma}
+
+\textit{Proof}. It suffices to prove the statement for $\mathbb{Q}$ and then for 
+transcendental extensions. (...)
+
+We will also use the following characterisation of a spherical figure:
+
+\begin{lemma}
+A figure $F = \{v_{0},\cdots,v_{k}\}$ is not spherical if and only if there 
+exist scalars $\{0\}\neq\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$ such that:
+
+\begin{enumerate}
+\item $\sum_{i=1}^{i=k} \mu_{i} (v_{i} - v_{0})= 0$;
+\item $\sum_{i=1}^{i=k} \mu_{i} (|v_{i}|^2 - |v_{0}|^2) = b \neq 0 $
+\end{enumerate}
+\end{lemma}
+
+\textit{Proof}. (...)
+
+Notice that if $F$ is not spherical, then any other figure with the same 
+configuration is not spherical. In particular, if $E$ has the same configuration 
+as $F$, the elements of $E$ satisfy our last Lemma for the same choice of scalar 
+coefficients $\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$, as the equations (1) 
+and (2) are invariant under isometry.
+
+\textit{Proof of Erd\H os}. Let $F$ be a non-spherical figure. Then there exist 
+coefficients $\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$ such that equations 
+(1) and (2) from our first Lemma are satisfied. By our second Lemma there exists 
+an $r$-colouring $\chi$ of $\mathbb{R}$ such that (2) has no monochromatic 
+solution. We define the following colouring of 
+$\mathbb{R}^n$: $$\chi^*: \mathbb{R}^n\to [r] : v \mapsto \chi(|v|^2) $$
+Then it is easy to see that if there exists a monochromatic 
+$E\in [F]$ in $\mathbb{R}^n$, then there exists a monochromatic solution to (2), 
+since the elements of $E$ satisfy (2) with the same choice of coefficients by a 
+previous observation. But this contradicts our first Lemma. \qed
 
 % Local Variables:
 % TeX-master: "m2r-report.tex"
