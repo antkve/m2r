@@ -2,7 +2,7 @@
 
 The original Ramsey theorem states the existence of a complete monochromatic
 subgraph in any two-colouring of a sufficiently large graph.
-Can this statement be extended to other classes of graphs?
+Can this statement be extended to other classes of graphs or objects?
 A useful structure for exploring this question is the random graph.
 This is an example of a Fraïssé limit, a construction that can be applied to many
 different structures.
@@ -23,6 +23,8 @@ $\rel{i}{\str{A}}$ is a $\delta_i$-ary relation, i.e. a subset of $A^{\delta_i}$
 \cite{Hubicka2015}.
 If $A$ is finite, the structure $\str{A}$ is said to be finite, with a similar
 statement holding for countable sets.
+An example is the language of finite graphs $L = (\{1\}, \delta_1 = 2)$ where
+each structure $\str{A}$ is a graph over the set $A$.
 
 Homomorphisms between structures over the same language are maps that preserve
 relations, so $f : \str{A} \to \str{B}, \rel{i}{\str{A}} \mapsto
@@ -78,12 +80,12 @@ of the concept of homogeneity.
 
 A structure $\str{A}$ is homogeneous if for every pair of isomorphic
 substructures $\str{U}, \str{V} \subseteq \str{A}, f : \str{U} \to \str{V}$ the
-isomorphism, there exists an automorphism $\tilde{f} \in\aut\str{A}}$ which
+isomorphism, there exists an automorphism $\tilde{f} \in\aut\str{A}$ which
 extends $f$, i.e. $\tilde{f} : \str{U} \mapsto \str{V}$\cite{Macpherson2011}.
 
 We now state the main theorem of this subsection
 
-\begin{theorem}[Fraïssé]
+\begin{theorem}[Fraïssé\cite{Fraisse1953}]
   Let $L$ be a language
   \begin{itemize}
   \item Given a homogeneous $L$-structure $\str{M}$, $\age\str{M}$ is an
@@ -93,7 +95,6 @@ We now state the main theorem of this subsection
     = \class{C}$.
     This structure is unique up to isomorphism
   \end{itemize}
-\cite{Macpherson2011}
 \end{theorem}
 
 We omit a proof of this theorem, but a sketch is given in \textcite[1602]{Macpherson2011}.
@@ -102,7 +103,25 @@ of the class $\class{C}$.
 
 \subsection{Ramsey Classes}
 \label{sec:2.4}
+The original statement of Ramsey's theorem is, broadly speaking, a statement
+about the existence of a sub-object in any partition of a 'large-enough' object.
+We now introduce the idea of a Ramsey class which applies this to classes.
+\begin{definition}[Ramsey Class\cite{Nesetril1995}]
+  A structure $\str{C}$ is said to be $(t,\str{A})$ Ramsey for a structure
+  $\str{B}$ if every $t$-colouring of the set $\sstr{C}{A}$ contains
+  $\str{C}\supseteq\str{B'} \simeq \str{B}$.
+  To make this more concise, we write $\str{C}\ramsArrow{B}{A}{t}$.
 
+  A class $\class{K}$ is said to have the $\str{A}$-Ramsey property if for every
+  $\str{B}\in\class{K}$ and $t\in\Z^+$, there exists $\str{C}$ such that
+  $\str{C}\ramsArrow{B}{A}{t}$.
+
+  If $\class{K}$ has the $\str{A}$-Ramsey property for every $\str{A}\in
+  \class{K}$, then $\class{K}$ is a Ramsey class.
+\end{definition}
+
+In blander terms, $\str{C}\ramsArrow{B}{A}{t}$ implies that for any
+$t$-colouring of $\sstr{C}{A}$, there always exists a restriction which
 \subsection{The Random Graph}
 \label{sec:2.3}
 % LocalWords:  Ramsey subgraphs subgraph Fraïssé surjective
