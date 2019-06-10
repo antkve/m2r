@@ -38,39 +38,43 @@ We say that $\str{B}$ is a substructure of $\str{A}$ if the inclusion $B
 We denote the set of substructures of $\str{A}$ isomorphic to $\str{B}$ by
 $\sstr{A}{B}$\cite{Hubicka2016}.
 
-A particular type of class that is of interest is the amalgamation class.
-This is a class of finite structures, $\class{A}$, that fulfils the following
-properties\cite{Hubicka2016}:
-\begin{itemize}
-\item \textbf{Hereditary Property}: For every $\str{A} \in \class{A}$ and every
-  substructure $\str{B} \subseteq \str{A}, \str{B}\in\class{A}$ 
-\item \textbf{Joint Embedding Property}: For every $\str{A}, \str{B} \in
-  \class{A}$, there exists $\str{C} \in \class{A}$ such that both $\str{A}$ and
-  $\str{B}$ embed in $\str{C}$
-\item \textbf{Amalgamation Property}: For every $\str{A}, \str{B}_1, \str{B}_2
-  \in \class{A}$ with $\str{A}$ embedding in both $\str{B}_1$ and $\str{B}_2$,
-  there exists $\str{C} \in
-  \class{A}$ such that $\str{B}_1$ and $\str{B}_2$
-  both embed into $\str{C}$ and the diagram below commutes\cite{Cameron1990}.
-\end{itemize}
-\begin{center}
-  \adjustbox{scale=1.5}{%
-    \begin{tikzcd}
-      A
-      \arrow[r, hookrightarrow, "\alpha_1"]
-      \arrow[d, hookrightarrow, "\alpha_2"]&
-      B_1\arrow[d, dashed, hookrightarrow, "\exists\beta_1"]\\
-      B_2\arrow[r, dashed, hookrightarrow, "\exists\beta_2"]& C
-    \end{tikzcd}
-  }
-\end{center}
+\begin{definition}[Amalgamation Class\supercite{Hubicka2016}]
+  A class $\class{K}$ is an amalgamation class if it satisfies the following
+  properties:
+  
+  \begin{itemize}
+  \item \textbf{Hereditary Property}: For every $\str{A} \in \class{K}$ and every
+    substructure $\str{B} \subseteq \str{A}, \str{B}\in\class{K}$ 
+  \item \textbf{Joint Embedding Property}: For every $\str{A}, \str{B} \in
+    \class{K}$, there exists $\str{C} \in \class{K}$ such that both $\str{A}$ and
+    $\str{B}$ embed in $\str{C}$
+  \item \textbf{Amalgamation Property}: For every $\str{A}, \str{B}_1, \str{B}_2
+    \in \class{K}$ with $\str{A}$ embedding in both $\str{B}_1$ and $\str{B}_2$,
+    there exists $\str{C} \in
+    \class{K}$ such that $\str{B}_1$ and $\str{B}_2$
+    both embed into $\str{C}$ and the diagram below commutes\cite{Cameron1990}.
+  \end{itemize}
+  \begin{center}
+    \adjustbox{scale=1.5}{%
+      \begin{tikzcd}
+        A
+        \arrow[r, hookrightarrow, "\alpha_1"]
+        \arrow[d, hookrightarrow, "\alpha_2"]&
+        B_1\arrow[d, dashed, hookrightarrow, "\exists\beta_1"]\\
+        B_2\arrow[r, dashed, hookrightarrow, "\exists\beta_2"]& C
+      \end{tikzcd}
+    }
+  \end{center}
+\end{definition}
 
-The age of a countable structure, say $\str{A}$, is the class of finite
-$L$-structures, $\str{B}$, such that $\str{B}$ is isomorphic to
-a substructure of $\str{A}$\cite{Cameron1990,Macpherson2011}.
-It is reasonably clear that $\age\str{A}$ has the hereditary property, 
-$\age\str{A}$ also has the joint embedding property as $\str{B}_1, \str{B}_2
-\in \age\str{A} \implies \str{B}_1, \str{B}_2$ embed in $\str{A} \in \age\str{A}$.
+\begin{definition}[Age\supercite{Cameron1990,Macpherson2011}]
+  The age of a countable structure, say $\str{A}$, is the class of finite
+  $L$-structures, $\str{B}$, such that $\str{B}$ is isomorphic to
+  a substructure of $\str{A}$.
+  It is reasonably clear that $\age\str{A}$ has the hereditary property, 
+  $\age\str{A}$ also has the joint embedding property as $\str{B}_1, \str{B}_2
+  \in \age\str{A} \implies \str{B}_1, \str{B}_2$ embed in $\str{A} \in \age\str{A}$.
+\end{definition}
 
 Two natural questions to ask now are whether the age of a particular structure
 is an amalgamation class, and whether a given amalgamation
@@ -85,7 +89,7 @@ extends $f$, i.e. $\tilde{f} : \str{U} \mapsto \str{V}$\cite{Macpherson2011}.
 
 We now state the main theorem of this subsection
 
-\begin{theorem}[Fraïssé\cite{Fraisse1953}]
+\begin{theorem}[Fraïssé\supercite{Fraisse1953}]
   Let $L$ be a language
   \begin{itemize}
   \item Given a homogeneous $L$-structure $\str{M}$, $\age\str{M}$ is an
@@ -106,19 +110,26 @@ of the class $\class{C}$.
 The original statement of Ramsey's theorem is, broadly speaking, a statement
 about the existence of a sub-object in any partition of a 'large-enough' object.
 We now introduce the idea of a Ramsey class which applies this to classes.
-\begin{definition}[Ramsey Class\cite{Nesetril1995}]
+
+\begin{definition}[Ramsey Class\supercite{Nesetril1995}]
   A structure $\str{C}$ is said to be $(t,\str{A})$ Ramsey for a structure
   $\str{B}$ if every $t$-colouring of the set $\sstr{C}{A}$ contains
-  $\str{C}\supseteq\str{B'} \simeq \str{B}$.
-  To make this more concise, we write $\str{C}\ramsArrow{B}{A}{t}$.
+  $\str{B'}: \str{C}\supseteq\str{B'} \simeq \str{B}$ such that $\sstr{B'}{A}$ is
+  monochromatic.
+  To make this more concise, we write $\str{C}\ramsArrow{\str{B}}{\str{A}}{t}$.
 
   A class $\class{K}$ is said to have the $\str{A}$-Ramsey property if for every
-  $\str{B}\in\class{K}$ and $t\in\Z^+$, there exists $\str{C}$ such that
-  $\str{C}\ramsArrow{B}{A}{t}$.
+  $\str{B}\in\class{K}$ and $t\in\Z^+$, there exists $\str{C}\in\class{K}$ such that
+  $\str{C}\ramsArrow{\str{B}}{\str{A}}{t}$.
 
   If $\class{K}$ has the $\str{A}$-Ramsey property for every $\str{A}\in
   \class{K}$, then $\class{K}$ is a Ramsey class.
 \end{definition}
+
+A concrete example can be given in terms of finite complete graphs.
+The well-known fact that any 2-colouring of $K_6$ contains a monochromatic
+$K_3$ translates to the statement $K_6\ramsArrow{K_3}{K_2}{2}$.
+In fact, due to the Ramsey theorem\cite{Ramsey1930} 
 
 \subsection{The Random Graph}
 \label{sec:2.3}
