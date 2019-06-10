@@ -3,73 +3,244 @@
 \subsection{Rado's Theorem}
 \label{sec:4.1}
 
-The following results are commonly seen as precursors of Ramsey theory:
-Hilbert's cube Lemma (1892), Schur's Theorem (1916) and van der Waerden's
-Theorem(1927)\cite{Schacht2011}.
+n this section we are going to show how a theorem from Rado generalising results
+ from arithmetical Ramsey theory is the key to proving an interesting connection
+  between combinatorial and algebraic properties of finite subsets of the 
+  Euclidean space.
 
-A student of Schur's, Rado, generalised these results in 1933\cite{Schacht2011}.
-In fact they can all be seen as statements abot monochromatic solutions to
+Here we denote, for $n\in\mathbb{N}$, $$[n]:=\{1,\cdots,n\}$$
+
+The following results are commonly seen as precursors of Ramsey theory: Hilbert's 
+cube Lemma (1892), Schur's Theorem (1916) and van der Waerden's Theorem (1927). 
+\cite{Schacht2011}. 
+They are all usually classified as arithmetical results, as they deal with 
+combinatorial properties of $\mathbb{N}$.\\
+
+A student of Schur's, Rado, generalised these results in 1933 (Schacht2014). 
+In fact they can all be seen as statements abot monochromatic solutions to 
 systems of linear homogeneous equations, in the sense that will be specified now.
 
-Let $\Lambda(x_{1},\cdots,x_{n})$ be a system of linear homogeneous equations in
-variables $ x_{1},\cdots,x_{n}$, where $\{x_{1},\cdots,x_{n}\}$ are assumed to
-be elements of a set $X$.
-
-For some $k\in \mathbb{N}$ consider a $k$-colouring of $X$ (that is, any
-partition of $X$ into k equivalence classes). 
-Then a solution $(x_{1}^*,\cdots,x_{n}^*)$ of  $\Lambda$ is monochromatic if
-$\{x_{1}^*,\cdots,x_{n}^*\}$ is entirely contained in one of the $k$ equivalence
-classes.
-
-Equivalently, let $\chi$ be a map:
-
-\[
-  \chi: X \to \{1, \cdots, k\}
-\]
-
-Then our $k$-colouring is the partition induced by the equivalence relation
-$R = \{(x,y) \in X| \chi(x) = \chi(y)\}$, and a solution $(x_{1}^*,\cdots,x_{n}^*)$
-of  $\mathcal{L}$ is monochromatic if there exists $p\in \{1, \cdots, k\}$ such
-that $\chi(\{x_{1}^*,\cdots,x_{n}^*\}) = \{p\}$.
-
-To formulate our theorem, we write the system $\mathcal{L}(x_{1},\cdots,x_{n})$ as:
-
-\[
-  \Lambda x = 0
-\]
-
-where $\Lambda$ is an appropriate matrix and $x = (x_{1},\cdots,x_{n}) \in \mathbb{R}^n$.
-
-We first introduce some definitions:
-
-\begin{definition}
-  A matrix $A \in \mathbb{R}^{m\cdot n}$ is \underline{regular} if:
-  \begin{center}
-    $\forall k \in \mathbb{N}$, for all $r$-colouring of $\mathbb{R}^n$, there
-    exists a monochromatic solution to $Ax = 0$ 
-  \end{center}
+\begin{definition}[Colouring of a set]
+Let $X$ be a non-empty set. For $k\in\mathbb{N}$, a $k$-colouring of $X$ is a 
+partition of $X$ into $k$ equivalence classes. 
 \end{definition}
 
-\begin{definition}
-  A matrix $A \in \mathbb{R}^{m\cdot n}$ satisfies the \underline{column condition}
-  if its columns $\{g_{1},\cdots,g_{n}\}$ can be partitioned into a family of sets
+Equivalently, a $k$-colouring of $X$ is the partition of $X$ induced by an 
+arbitrary map: $$\chi: X \to [k]$$ through the equivalence relation: 
+$$\mathcal{R}_{\chi}:= \{(x_{1},x_{2})\in X | \chi(x)=\chi(y) \}$$
+and $\chi$ is called the colouring function. Somewhat improperly, 
+we will identify a $k$-colouring of $X$ with its colouring function.
 
-  \[
-    \bigcup\limits_{i \in \mathcal{I}}\Gamma_{i}
-  \]
+\begin{definition}[Monochromatic vectors]
+Let $X$ be non-empty and let $\chi$ be a $k$-colouring of $X$ for some 
+$k\in\mathbb{N}$. Then an element $x = (x_{1},\cdots,x_{n})\in X^n$ is 
+monochromatic if: 
+$$\exists p \in [k] : \chi\bigg(\{x_{1},\cdots,x_{n}\}\bigg) = \{p\}$$
+\end{definition}
 
-  where $\mathcal{I}$ is a finite index set, which satisfies:
+In the following, we will be studying systems of linear equations with rational 
+coefficients. These will be denoted $\mathcal{L }=\mathcal{L}(x_{1},\cdots,x_{n})$. 
+We are interested in monochromatic solutions $x\in \mathbb{N}^n$ to $\mathcal{L}$. 
+We can formulate our problem in the following way:
 
-  \begin{enumerate}
-  \item $\sum\limits_{g_{j} \in \Gamma_{1}}g_{j} = 0$
-  \item $\forall i \in \mathcal{I}\setminus\{1\}$,
-    $\sum\limits_{g_{j} \in {\Gamma_{i}}}g_{j} \in span\bigg\{\bigcup\limits_{k \in \mathcal{I} : k < i }\Gamma_{k}\bigg\}$
-  \end{enumerate}
+\begin{definition}[Partition Regular matrices]
+Let $\Lambda\in\mathbb{Q}^{n\times m}$. $\Lambda$ is $k$-regular over 
+$\mathbb{N}$ if, under any $k$-colouring of $\mathbb{N}$, there exists a 
+monochromatic $x\in\mathbb{N}^n$ such that $\Lambda x  = 0$.
+$\Lambda$ is Partition Regular (PR) over $\mathbb{N}$ if $\Lambda$ is 
+$k$-regular over $\mathbb{N}$ for all $k$.
+\end{definition}
+
+It is easy to see that $\Lambda$ is PR if and only if $\mu\Lambda$ is PR for all 
+$\mu\in\mathbb{Q}\setminus{\{0\}}$. Hence our statements about PR matrices can 
+be formulated, without loss of generality, for matrices with integer entries.
+% Notice also that partition regularity over $\mathbb{N}$ implies partition regularity over $\mathbb{Z}$, as any finite colouring of $\mathbb{Z}$ induces a finite colouring of $\mathbb{N}$.
+
+We are interested in PR matrices as they allow us to frame and formulate problems 
+of elementary arithmetical Ramsey theory in an enlightening and compact way. 
+For example, Schur's theorem states that the matrix 
+$\begin{pmatrix}
+1  & 1 & -1
+\end{pmatrix}$ is PR.
+This turns out to be particularly useful since Rado's theorem establishes an 
+equivalence between partition regularity and another, more algebraic property 
+sof matrices:
+
+\begin{definition}[Columns Property]
+A matrix $\Lambda = \begin{pmatrix}
+g_{1} & \cdots & g_{n} 
+\end{pmatrix}\in \mathbb{Q}^{m\times n}$ satisfies the Columns Property (CP) 
+if $[n]$ can be partitioned into a family of sets 
+$$\bigg\{\Gamma_{1},\cdots,\Gamma_{r}\bigg\}$$ such that:
+
+\begin{enumerate}
+\item $\sum\limits_{j\in\Gamma_{1}}g_{j} = 0$
+\item $\forall i \in [r]\setminus\{1\}$, $\sum\limits_{ j \in {\Gamma_{i}}}g_{j} 
+\in span\bigg\{g_{j} \ \bigg| \ j\in\bigcup\limits_{k \in [r]: k < i }\Gamma_{k}\bigg\}$
+\end{enumerate}
 
 \end{definition}
+
+Rado's theorem states:
+
+\begin{theorem}[Rado, 1933]
+Let $\Lambda\in\mathbb{Q}^{m\times n}$. Then $\Lambda$ is partition regular if 
+and only if it satisfies the columns property.
+\end{theorem}
+
+To prove Rado's theorem we use the following lemmas, the first of which "descends" 
+almost immediately by an application of Gram-Schmidt orthogonalization:
+
+\begin{lemma}
+Let $\{v_{1},\cdots,v_{n},v\}\in \mathbb{Z}^m$. If $v \not\in span\{v_{1},\cdots,v_{n}\}$, 
+then there exists $u\in\mathbb{Z}^m$ such that: $u.v\not = 0$ and $\forall i\in [n], u.v_{i}=0$.
+\end{lemma}
+
+
+\begin{definition}[(m,p,c)-sets]
+Let $m,p,c \in \mathbb{N}$. Then we define:
+$$N_{m,p,c}:=\bigg\{\mu = (\mu_{1},\cdots,\mu_{m+1}) \  \bigg|  \ \exists j 
+\in [m]: \forall i<j, \ \mu_{i}= 0 \ \emph{and} \ \mu_{j}=c \ \emph{and}  
+\ \forall i>j, \ |\mu_{i}|\leq p\bigg\} $$
+and for a given generator $y\in \mathbb{N}^{m+1}$ the (m,p,c)-set is defined as:
+$$S_{m,p,c}(y):=\bigg\{y.\mu \ | \mu\in N_{m,p,c}\bigg\}$$
+\end{definition}
+
+
+
+\begin{lemma}
+Let $m,p,c \in \mathbb{N}$. For any finite colouring of $\mathbb{N}$, 
+there exists $y\in \mathbb{N}^{m+1}$ such that $S_{m,p,c}(y)$ is monochromatic.
+\end{lemma}
+
+
+This is proved through application of van der Waerden.
+
+
+We now sketch a proof of Rado's theorem:
+
+
+\textit{Sketch of proof}.(Rado)(Liu2016)
+We work with $\Lambda\in\mathbb{Z}^{m\times n}$ without loss of generality.\\
+For the necessary implication, we choose the following colouring: for an arbitrary 
+prime $p$, let $\chi_{p}:\mathbb{N}\to[p-1]$ such that, if $y\in\mathbb{N}$ is 
+written in basis $p$, its colour is the least non-zero coefficient $d(y)$. 
+Call $\pi(y)$ its position in the expansion. Since $\Lambda$ is PR, there exists 
+a monochromatic solution $x = (x_{1},\cdots,x_{n})\in \mathbb{N}^n$ such that 
+$\Lambda x = 0$. Now order the natural numbers $x_{1},\cdots,x_{n}$ in an 
+increasing fashion by position $\pi(x_{j})$ of the first non-zero coefficient 
+$d(x_{j})$ in their $p$-expansion. Partition their indices into sets 
+$\Gamma_{i}:=\{j\in [n] \ | \ \pi(x_{j})=i\}$. Then by means of properties of 
+primes integers and our first Lemma one shows that such a partition satisfies 
+the Columns Property conditions.
+For the sufficient implication, we show that there exist $m,p,c\in\mathbb{N}$ 
+such that for all $x\in\mathbb{N}$, $S_{m,p,c}(x)$ contains a solution to our 
+system of equations. This is done constructively, using the Columns Property 
+that we assume. Then, by our second Lemma, one such solution must be monochromatic. ù
+$\qed$
 
 \subsection{Euclidean Ramsey theory}
 \label{sec:4.2}
+
+What makes Rado's theorem beautiful is its ability to translate a combinatorial 
+property of the positive integers into an algebraic property of matrices. 
+That is, it enables us to solve general problems of the Hilbert-Schur-van 
+der Waerden kind, through a unified algebraic approach.
+
+In this section we will see how a generalization of Rado's theorem 
+(Erd\H os 1973) enables us to translate a combinatorial property of 
+finite subsets of the Euclidean space into a geometric property of the points 
+of such set.
+
+We first define a notion of Ramseyness for finite sets $F\in\mathbb{R}^n$. 
+
+\begin{definition}[Configurations]
+A figure is a finite set $F\in \mathbb{R}^m$.
+% for some $m\in \mathbb{N}$ such that the elements of K are subject to purely 
+%metrical costraints.
+Consider the set of all figures 
+$$\mathfrak{F}:= \{F \ | \ \exists n \in \mathbb{N} : F \  
+\textit{is finite in} \ \mathbb{R}^n\} $$ 
+This is clearly non-empty as $\{0\}\subset\mathbb{R}$ is in $\mathfrak{F}$.
+Define an equivalence relation as follows: $$F \sim F' 
+\iff \ \textit{there exists an isometry} \ \Psi \textit{such that} 
+\ \Psi(F)=F'$$
+Then we define the set of Euclidean configurations 
+$$\mathfrak{K}:=\frac{\mathfrak{F}}{\sim}$$
+An element $K=[F]$ of $\mathfrak{K}$ is called a configuration.
+If $F$ and $F'$ are figures with $[F]=[F']$, we say that they have the same 
+configuration.
+\end{definition}
+
+\begin{definition}[Ramsey property]
+A configuration $K$ is Ramsey if: 
+\begin{center}
+$\forall r\in\mathbb{N}$, $\exists n\in\mathbb{N}$ such that, 
+under any $r$-colouring of $\mathbb{R}^n$,  there exists a monochromatic 
+$F\in K$ in $\mathbb{R}^n$
+\end{center}
+\end{definition}
+
+A natural question to consider is whether there exists any class of 
+configurations that are not Ramsey. Consider the following geometrical 
+property of a figure:
+
+\begin{definition}[Spherical figures]
+A figure $F\in\mathbb{R}^m$ is spherical if there exists a sphere 
+$S\in\mathbb{R}^m$ such that $F\subset S$.
+\end{definition}
+
+It is easy to see that if a figure $F$ is spherical, then any figure with 
+the same configuration will be spherical. In fact isometries preserve spheres. 
+Hence it makes sense to talk about spherical configurations.
+
+Our aim in this section is to prove the following
+
+\begin{theorem}[Erd\H os,1973]
+If $K$ is Ramsey, $K$ is spherical.
+\end{theorem}
+
+Our main tool is the following Lemma, which is a generalization of Rado's theorem:
+
+\begin{lemma}[Erd\H os,1973]
+Let $c_{1},\cdots,c_{k}$ and $b\neq 0$ be elements of $\mathbb{R}$. Then there 
+exists a colouring $\chi$ of $\mathbb{R}$ such that the equation: 
+$$\sum_{i = 1}^{k} c_{i}(x_{i} - x_{0}) = b $$ has no monochromatic solution.
+\end{lemma}
+
+\textit{Proof}. It suffices to prove the statement for $\mathbb{Q}$ and then for 
+transcendental extensions. (...)
+
+We will also use the following characterisation of a spherical figure:
+
+\begin{lemma}
+A figure $F = \{v_{0},\cdots,v_{k}\}$ is not spherical if and only if there 
+exist scalars $\{0\}\neq\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$ such that:
+
+\begin{enumerate}
+\item $\sum_{i=1}^{i=k} \mu_{i} (v_{i} - v_{0})= 0$;
+\item $\sum_{i=1}^{i=k} \mu_{i} (|v_{i}|^2 - |v_{0}|^2) = b \neq 0 $
+\end{enumerate}
+\end{lemma}
+
+\textit{Proof}. (...)
+
+Notice that if $F$ is not spherical, then any other figure with the same 
+configuration is not spherical. In particular, if $E$ has the same configuration 
+as $F$, the elements of $E$ satisfy our last Lemma for the same choice of scalar 
+coefficients $\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$, as the equations (1) 
+and (2) are invariant under isometry.
+
+\textit{Proof of Erd\H os}. Let $F$ be a non-spherical figure. Then there exist 
+coefficients $\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$ such that equations 
+(1) and (2) from our first Lemma are satisfied. By our second Lemma there exists 
+an $r$-colouring $\chi$ of $\mathbb{R}$ such that (2) has no monochromatic 
+solution. We define the following colouring of 
+$\mathbb{R}^n$: $$\chi^*: \mathbb{R}^n\to [r] : v \mapsto \chi(|v|^2) $$
+Then it is easy to see that if there exists a monochromatic 
+$E\in [F]$ in $\mathbb{R}^n$, then there exists a monochromatic solution to (2), 
+since the elements of $E$ satisfy (2) with the same choice of coefficients by a 
+previous observation. But this contradicts our first Lemma. \qed
 
 % Local Variables:
 % TeX-master: "m2r-report.tex"

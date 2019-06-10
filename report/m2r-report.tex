@@ -3,18 +3,22 @@
 \usepackage{parskip}
 \usepackage{subfiles}
 
-\usepackage{amssymb, amsmath, amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
 
-\usepackage{tikz}
+\usepackage{tikz-cd}
 \usepackage{adjustbox}
-\usetikzlibrary{cd}
 
 \usepackage[style=numeric]{biblatex}
 \usepackage{hyperref}
 
-\newtheorem{lemma}{Lemma}
-\newtheorem{definition}{Definition}
-\newtheorem{theorem}{Theorem}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem*{cor}{Corollary}
 
 \newcommand{\str}[1]{\mathbf{#1}}
 \newcommand{\rel}[2]{R^{#1}_{\str{#2}}}
@@ -35,20 +39,9 @@
 \bibliography{ref.bib}
 
 \title{M2R: Report}
-\author{
-  Chaudhuri, Gautam\\
-  \ttfamily{CID:01344735}\and
-  Kveder, Anthony\\
-  \ttfamily{CID:01234567}\and
-  Malbon, Joe\\
-  \ttfamily{CID:01234567}\and
-  Tarallo, Guglielmo\\
-  \ttfamily{CID:01234567}
-}
 
 \begin{document}
 \maketitle
-\tableofcontents
 
 % Section numbers are a rough guide, they can be switched around later
 \section*{Introduction}
@@ -56,24 +49,20 @@
 
 \paragraph{Original Ramsey Theory}
 
-\newpage
-\section{Graph Theoretic Ramsey Theory}
+\section{Graph Theoretical Ramsey Theory}
 \label{sec:1}
 
-\newpage
 \section{Structural Ramsey Theory}
 \label{sec:2}
 \subfile{02-structural-ramsey}
 
-\newpage
 \section{The Hales-Jewett Theorem}
 \label{sec:3}
 
-\newpage
 \section{Euclidean Ramsey Theory}
 \label{sec:4}
 \subfile{04-euclidean-ramsey-theory}
 
-\printbibliography
+
 \end{document}
 % LocalWords:  Ramsey Jewett ramsey
