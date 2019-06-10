@@ -3,99 +3,147 @@
 \subsection{Rado's Theorem}
 \label{sec:4.1}
 
-In this section we are going to show how a theorem from Rado generalising results from arithmetical Ramsey theory is the key to proving an interesting connection between combinatorial and algebraic properties of finite subsets of the Euclidean space.\\
+n this section we are going to show how a theorem from Rado generalising results
+ from arithmetical Ramsey theory is the key to proving an interesting connection
+  between combinatorial and algebraic properties of finite subsets of the 
+  Euclidean space.
 
 Here we denote, for $n\in\mathbb{N}$, $$[n]:=\{1,\cdots,n\}$$
 
-The following results are commonly seen as precursors of Ramsey theory: Hilbert's cube Lemma (1892),
-Schur's Theorem (1916) and van der Waerden's Theorem (1927). (Schacht2014). 
-They are all usually classified as arithmetical results, as they deal with combinatorial properties of $\mathbb{N}$.\\
+The following results are commonly seen as precursors of Ramsey theory: Hilbert's 
+cube Lemma (1892), Schur's Theorem (1916) and van der Waerden's Theorem (1927). 
+\cite{Schacht2011}. 
+They are all usually classified as arithmetical results, as they deal with 
+combinatorial properties of $\mathbb{N}$.\\
 
 A student of Schur's, Rado, generalised these results in 1933 (Schacht2014). 
-In fact they can all be seen as statements abot monochromatic solutions to systems of linear homogeneous equations, in the sense that will be specified now.\\
+In fact they can all be seen as statements abot monochromatic solutions to 
+systems of linear homogeneous equations, in the sense that will be specified now.
 
-\begin{mydef}[Colouring of a set]
-Let $X$ be a non-empty set. For $k\in\mathbb{N}$, a $k$-colouring of $X$ is a partition of $X$ into $k$ equivalence classes. 
-\end{mydef}
+\begin{definition}[Colouring of a set]
+Let $X$ be a non-empty set. For $k\in\mathbb{N}$, a $k$-colouring of $X$ is a 
+partition of $X$ into $k$ equivalence classes. 
+\end{definition}
 
-Equivalently, a $k$-colouring of $X$ is the partition of $X$ induced by an arbitrary map: $$\chi: X \to [k]$$ through the equivalence relation: 
+Equivalently, a $k$-colouring of $X$ is the partition of $X$ induced by an 
+arbitrary map: $$\chi: X \to [k]$$ through the equivalence relation: 
 $$\mathcal{R}_{\chi}:= \{(x_{1},x_{2})\in X | \chi(x)=\chi(y) \}$$
-and $\chi$ is called the colouring function. Somewhat improperly, we will identify a $k$-colouring of $X$ with its colouring function.\\
+and $\chi$ is called the colouring function. Somewhat improperly, 
+we will identify a $k$-colouring of $X$ with its colouring function.
 
-\begin{mydef}[Monochromatic vectors]
-Let $X$ be non-empty and let $\chi$ be a $k$-colouring of $X$ for some $k\in\mathbb{N}$. Then an element $x = (x_{1},\cdots,x_{n})\in X^n$ is monochromatic if: 
+\begin{definition}[Monochromatic vectors]
+Let $X$ be non-empty and let $\chi$ be a $k$-colouring of $X$ for some 
+$k\in\mathbb{N}$. Then an element $x = (x_{1},\cdots,x_{n})\in X^n$ is 
+monochromatic if: 
 $$\exists p \in [k] : \chi\bigg(\{x_{1},\cdots,x_{n}\}\bigg) = \{p\}$$
-\end{mydef}
+\end{definition}
 
-In the following, we will be studying systems of linear equations with rational coefficients. These will be denoted $\mathcal{L }=\mathcal{L}(x_{1},\cdots,x_{n})$. We are interested in monochromatic solutions $x\in \mathbb{N}^n$ to $\mathcal{L}$. We can formulate our problem in the following way:\\
+In the following, we will be studying systems of linear equations with rational 
+coefficients. These will be denoted $\mathcal{L }=\mathcal{L}(x_{1},\cdots,x_{n})$. 
+We are interested in monochromatic solutions $x\in \mathbb{N}^n$ to $\mathcal{L}$. 
+We can formulate our problem in the following way:
 
-\begin{mydef}[Partition Regular matrices]
-Let $\Lambda\in\mathbb{Q}^{n\times m}$. $\Lambda$ is $k$-regular over $\mathbb{N}$ if, under any $k$-colouring of $\mathbb{N}$, there exists a monochromatic $x\in\mathbb{N}^n$ such that $\Lambda x  = 0$.
-$\Lambda$ is Partition Regular (PR) over $\mathbb{N}$ if $\Lambda$ is $k$-regular over $\mathbb{N}$ for all $k$.
-\end{mydef}
+\begin{definition}[Partition Regular matrices]
+Let $\Lambda\in\mathbb{Q}^{n\times m}$. $\Lambda$ is $k$-regular over 
+$\mathbb{N}$ if, under any $k$-colouring of $\mathbb{N}$, there exists a 
+monochromatic $x\in\mathbb{N}^n$ such that $\Lambda x  = 0$.
+$\Lambda$ is Partition Regular (PR) over $\mathbb{N}$ if $\Lambda$ is 
+$k$-regular over $\mathbb{N}$ for all $k$.
+\end{definition}
 
-It is easy to see that $\Lambda$ is PR if and only if $\mu\Lambda$ is PR for all $\mu\in\mathbb{Q}\setminus{\{0\}}$. Hence our statements about PR matrices can be formulated, without loss of generality, for matrices with integer entries.% Notice also that partition regularity over $\mathbb{N}$ implies partition regularity over $\mathbb{Z}$, as any finite colouring of $\mathbb{Z}$ induces a finite colouring of $\mathbb{N}$.
+It is easy to see that $\Lambda$ is PR if and only if $\mu\Lambda$ is PR for all 
+$\mu\in\mathbb{Q}\setminus{\{0\}}$. Hence our statements about PR matrices can 
+be formulated, without loss of generality, for matrices with integer entries.
+% Notice also that partition regularity over $\mathbb{N}$ implies partition regularity over $\mathbb{Z}$, as any finite colouring of $\mathbb{Z}$ induces a finite colouring of $\mathbb{N}$.
 
-We are interested in PR matrices as they allow us to frame and formulate problems of elementary arithmetical Ramsey theory in an enlightening and compact way. For example, Schur's theorem states that the matrix $\begin{pmatrix}
-{1  & 1 & -1} 
-\end{pmatrix}$ is PR.This turns out to be particularly useful since Rado's theorem establishes an equivalence between partition regularity and another, more algebraic property of matrices:\\
+We are interested in PR matrices as they allow us to frame and formulate problems 
+of elementary arithmetical Ramsey theory in an enlightening and compact way. 
+For example, Schur's theorem states that the matrix 
+$\begin{pmatrix}
+1  & 1 & -1
+\end{pmatrix}$ is PR.
+This turns out to be particularly useful since Rado's theorem establishes an 
+equivalence between partition regularity and another, more algebraic property 
+sof matrices:
 
-\begin{mydef}[Columns Property]
+\begin{definition}[Columns Property]
 A matrix $\Lambda = \begin{pmatrix}
-{g_{1} & \cdots & g_{n}} 
-\end{pmatrix}\in \mathbb{Q}^{m\times n}$ satisfies the Columns Property (CP) if $[n]$ can be partitioned into a family of sets $$\bigg\{\Gamma_{1},\cdots,\Gamma_{r}\bigg\}$$ such that:
+g_{1} & \cdots & g_{n} 
+\end{pmatrix}\in \mathbb{Q}^{m\times n}$ satisfies the Columns Property (CP) 
+if $[n]$ can be partitioned into a family of sets 
+$$\bigg\{\Gamma_{1},\cdots,\Gamma_{r}\bigg\}$$ such that:
 
 \begin{enumerate}
 \item $\sum\limits_{j\in\Gamma_{1}}g_{j} = 0$
-\item $\forall i \in [r]\setminus\{1\}$, $\sum\limits_{ j \in {\Gamma_{i}}}g_{j} \in span\bigg\{g_{j} \ \bigg| \ j\in\bigcup\limits_{k \in [r]: k < i }\Gamma_{k}\bigg\}$
+\item $\forall i \in [r]\setminus\{1\}$, $\sum\limits_{ j \in {\Gamma_{i}}}g_{j} 
+\in span\bigg\{g_{j} \ \bigg| \ j\in\bigcup\limits_{k \in [r]: k < i }\Gamma_{k}\bigg\}$
 \end{enumerate}
 
-\end{mydef}
+\end{definition}
 
-Rado's theorem states:\\
+Rado's theorem states:
 
 \begin{theorem}[Rado, 1933]
-Let $\Lambda\in\mathbb{Q}^{m\times n}$. Then $\Lambda$ is partition regular if and only if it satisfies the columns property.
+Let $\Lambda\in\mathbb{Q}^{m\times n}$. Then $\Lambda$ is partition regular if 
+and only if it satisfies the columns property.
 \end{theorem}
 
-To prove Rado's theorem we use the following lemmas, the first of which descends almost immediately by an application of Gram-Schmidt orthogonalization:\\
+To prove Rado's theorem we use the following lemmas, the first of which "descends" 
+almost immediately by an application of Gram-Schmidt orthogonalization:
 
 \begin{lemma}
-Let $\{v_{1},\cdots,v_{n},v\}\in \mathbb{Z}^m$. If $v \not\in span\{v_{1},\cdots,v_{n}\}$, then there exists $u\in\mathbb{Z}^m$ such that: $u.v\not = 0$ and $\forall i\in [n], u.v_{i}=0$.
+Let $\{v_{1},\cdots,v_{n},v\}\in \mathbb{Z}^m$. If $v \not\in span\{v_{1},\cdots,v_{n}\}$, 
+then there exists $u\in\mathbb{Z}^m$ such that: $u.v\not = 0$ and $\forall i\in [n], u.v_{i}=0$.
 \end{lemma}
-\
 
-\begin{mydef}[(m,p,c)-sets]
+
+\begin{definition}[(m,p,c)-sets]
 Let $m,p,c \in \mathbb{N}$. Then we define:
-$$N_{m,p,c}:=\bigg\{\mu = (\mu_{1},\cdots,\mu_{m+1}) \  \bigg|  \ \exists j \in [m]: \forall i<j, \ \mu_{i}= 0 \ \emph{and} \ \mu_{j}=c \ \emph{and}  \ \forall i>j, \ |\mu_{i}|\leq p\bigg\} $$
+$$N_{m,p,c}:=\bigg\{\mu = (\mu_{1},\cdots,\mu_{m+1}) \  \bigg|  \ \exists j 
+\in [m]: \forall i<j, \ \mu_{i}= 0 \ \emph{and} \ \mu_{j}=c \ \emph{and}  
+\ \forall i>j, \ |\mu_{i}|\leq p\bigg\} $$
 and for a given generator $y\in \mathbb{N}^{m+1}$ the (m,p,c)-set is defined as:
 $$S_{m,p,c}(y):=\bigg\{y.\mu \ | \mu\in N_{m,p,c}\bigg\}$$
-\end{mydef}
+\end{definition}
 
-\
+
 
 \begin{lemma}
-Let $m,p,c \in \mathbb{N}$. For any finite colouring of $\mathbb{N}$, there exists $y\in \mathbb{N}^{m+1}$ such that $S_{m,p,c}(y)$ is monochromatic.
+Let $m,p,c \in \mathbb{N}$. For any finite colouring of $\mathbb{N}$, 
+there exists $y\in \mathbb{N}^{m+1}$ such that $S_{m,p,c}(y)$ is monochromatic.
 \end{lemma}
 
 
 This is proved through application of van der Waerden.
-\\
+
 
 We now sketch a proof of Rado's theorem:
-\\
+
 
 \textit{Sketch of proof}.(Rado)(Liu2016)
 We work with $\Lambda\in\mathbb{Z}^{m\times n}$ without loss of generality.\\
-For the necessary implication, we choose the following colouring: for an arbitrary prime $p$, let $\chi_{p}:\mathbb{N}\to[p-1]$ such that, if $y\in\mathbb{N}$ is written in basis $p$, its colour is the least non-zero coefficient $d(y)$. Call $\pi(y)$ its position in the expansion. Since $\Lambda$ is PR, there exists a monochromatic solution $x = (x_{1},\cdots,x_{n})\in \mathbb{N}^n$ such that $\Lambda x = 0$. Now order the natural numbers $x_{1},\cdots,x_{n}$ in an increasing fashion by position $\pi(x_{j})$ of the first non-zero coefficient $d(x_{j})$ in their $p$-expansion. Partition their indices into sets $\Gamma_{i}:=\{j\in [n] \ | \ \pi(x_{j})=i\}$. Then by means of properties of primes integers and our first Lemma one shows that such a partition satisfies the Columns Property conditions.\\
-For the sufficient implication, we show that there exist $m,p,c\in\mathbb{N}$ such that for all $x\in\mathbb{N}$, $S_{m,p,c}(x)$ contains a solution to our system of equations. This is done constructively, using the Columns Property that we assume. Then, by our second Lemma, one such solution must be monochromatic. $\qed$
+For the necessary implication, we choose the following colouring: for an arbitrary 
+prime $p$, let $\chi_{p}:\mathbb{N}\to[p-1]$ such that, if $y\in\mathbb{N}$ is 
+written in basis $p$, its colour is the least non-zero coefficient $d(y)$. 
+Call $\pi(y)$ its position in the expansion. Since $\Lambda$ is PR, there exists 
+a monochromatic solution $x = (x_{1},\cdots,x_{n})\in \mathbb{N}^n$ such that 
+$\Lambda x = 0$. Now order the natural numbers $x_{1},\cdots,x_{n}$ in an 
+increasing fashion by position $\pi(x_{j})$ of the first non-zero coefficient 
+$d(x_{j})$ in their $p$-expansion. Partition their indices into sets 
+$\Gamma_{i}:=\{j\in [n] \ | \ \pi(x_{j})=i\}$. Then by means of properties of 
+primes integers and our first Lemma one shows that such a partition satisfies 
+the Columns Property conditions.
+For the sufficient implication, we show that there exist $m,p,c\in\mathbb{N}$ 
+such that for all $x\in\mathbb{N}$, $S_{m,p,c}(x)$ contains a solution to our 
+system of equations. This is done constructively, using the Columns Property 
+that we assume. Then, by our second Lemma, one such solution must be monochromatic. ù
+$\qed$
+
+
+
 
 \section{Euclidean Ramsey theory}
 \label{sec:4.2}
-
-What makes Rado's theorem beautiful is its ability to translate a combinatorial property of the positive integers into an algebraic property of matrices. That is, it enables us to solve extremely general problems of the Hilbert-Schur-van der Waerden kind, through a unified algebraic approach.\\
-
-In this section we will see that a generalization of Rado's theorem (Erdo\H s 1973) will enable us to translate a combinatorial property of finite subsets of the Euclidean space into a geometric property of the points of such set.
 
 
 

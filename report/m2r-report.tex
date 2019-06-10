@@ -10,8 +10,12 @@
 \usepackage[style=numeric]{biblatex}
 \usepackage{hyperref}
 
-\newtheorem{lemma}{Lemma}
-\newtheorem{definition}{Definition}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem*{cor}{Corollary}
 
 \bibliography{ref.bib}
 
@@ -31,7 +35,7 @@
 
 \section{Structural Ramsey Theory}
 \label{sec:2}
-\subfile{02-random-graph}
+\subfile{02-Structural-ramsey}
 
 \section{The Hales-Jewett Theorem}
 \label{sec:3}
