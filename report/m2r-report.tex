@@ -3,17 +3,28 @@
 \usepackage{parskip}
 \usepackage{subfiles}
 
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{amsthm}
+\usepackage{amssymb, amsmath, amsthm}
 
-\usepackage{tikz-cd}
+\usepackage{tikz}
 \usepackage{adjustbox}
+\usetikzlibrary{cd}
 
 \usepackage[style=numeric]{biblatex}
 \usepackage{hyperref}
 
-\theoremstyle{plain}
+\newtheoremstyle{NoBreak}
+{5pt}% measure of space to leave above the theorem.
+{}% measure of space to leave below the theorem.
+{\itshape}% name of font to use in the body of the theorem
+{}% measure of space to indent
+{\bfseries}% name of head font
+{}% punctuation between head and body
+{.5em}% space after theorem head
+%; " " = normal inter-word space
+% Manually specify theorem head
+{\thmname{#1}\thmnumber{ #2}: [\thmnote{#3}]}
+
+\theoremstyle{NoBreak}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -25,7 +36,7 @@
 \newcommand{\class}[1]{\mathcal{#1}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\sstr}[2]{\binom{\str{#1}}{\str{#2}}}
-\newcommand{\ramsSplit}[3]{(\str{#1})^{\str{#2}}_{#3}}
+\newcommand{\ramsSplit}[3]{(#1)^{#2}_{#3}}
 \newcommand{\ramsArrow}[3]{\rightarrow\ramsSplit{#1}{#2}{#3}}
 
 \usepackage{geometry}
@@ -52,6 +63,7 @@
 \section{Graph Theoretical Ramsey Theory}
 \label{sec:1}
 
+\newpage
 \section{Structural Ramsey Theory}
 \label{sec:2}
 \subfile{02-structural-ramsey}
@@ -59,10 +71,11 @@
 \section{The Hales-Jewett Theorem}
 \label{sec:3}
 
+\newpage
 \section{Euclidean Ramsey Theory}
 \label{sec:4}
 \subfile{04-euclidean-ramsey-theory}
 
-
+\printbibliography
 \end{document}
 % LocalWords:  Ramsey Jewett ramsey
