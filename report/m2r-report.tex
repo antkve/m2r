@@ -4,6 +4,7 @@
 \usepackage{subfiles}
 
 \usepackage{amssymb, amsmath, amsthm}
+\usepackage{titling}
 
 \usepackage{tikz}
 \usepackage{adjustbox}
@@ -22,7 +23,7 @@
 {.5em}% space after theorem head
 %; " " = normal inter-word space
 % Manually specify theorem head
-{\thmname{#1}\thmnumber{ #2}: [\thmnote{#3}]}
+{\thmname{#1}\thmnumber{ #2}:\thmnote{ [#3]}}
 
 \theoremstyle{NoBreak}
 \newtheorem{theorem}{Theorem}[section]
@@ -49,16 +50,45 @@
 
 \bibliography{ref.bib}
 
-\title{M2R: Report}
+\title{An Overview of Ramsey Theory}
+\author{
+  Chaudhuri, Gautam\\
+  \and
+  Kveder, Anthony\\
+  \and
+  Malbon, Joe\\
+  \and
+  Tarallo, Guglielmo\\
+}
 
 \begin{document}
+\begin{titlingpage}
 \maketitle
+\begin{abstract}
+  A problem that is often considered when studying a discrete structure is
+  determining the existence of a substructure contained in one class of a partition.
+  Ramsey theory is the study of a class of sufficient conditions for the
+  existence of such a substructure.
+  In this report we present several results from Ramsey theory with the goal of
+  demonstrating the breadth of the subject area.
+  We begin by providing an overview of the classical results from Ramsey in
+  their graph theoretic formulation.
+  We then proceed to analyse (outstanding) results from Hales and Jewett, Szemerédi,
+  and van der Waereden.
+  Following this, we show how an early generalization of results by van der Waerden and
+  Rado leads to a geometric constraint on Ramsey configurations in Euclidean
+  space.
+  Finally, we generalise some results through the language of model theory and
+  use them to construct and study the random graph.
+\end{abstract}
+\tableofcontents
+  
+\end{titlingpage}
 
 % Section numbers are a rough guide, they can be switched around later
 \section*{Introduction}
 \label{sec:0}
-
-\paragraph{Original Ramsey Theory}
+\subfile{00-intro}
 
 \section{Graph Theoretical Ramsey Theory}
 \label{sec:1}
