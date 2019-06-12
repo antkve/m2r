@@ -1,12 +1,15 @@
 \documentclass[../m2r-report.tex]{subfile}
 
-The idea of finding regular behaviour from apparent chaos is immediately
+\subsection{Ramsey's Theorem}
+\label{sec:1.1}
+
+The idea of finding regular substructure from chaotic structure is immediately
 applicable to graphs.
 The statement in the introduction - ``Given 6 people, either 3 mutually know each
 other, or 3 do not" - can be rephrased in a graph theoretic sense.
 We identify a person with a vertex of the graph, and a relation between them as
 an edge.
-A relation between two people can have two states: either the two know each other,
+A relation between two people can have  two states: either the two know each other,
 or they have never met.
 We can illustrate this relation status by `colouring' the edge, with a red edge
 showing that the two know each other, and a blue edge showing that they haven't.
@@ -45,18 +48,89 @@ Hence, the situation described by the statement is shown by the following graph:
 
 This graph describes a situation in which we have two disjoint sets of 3 people
 which mutually do not know each other, illustrated by the two blue triangle which
-lie within the graph. Since every point of the graph is connected to every other
-point if the graph, we say it is $complete$, and we denote the graph
-$K_n$, where n is the number of the vertices of the graph. We now give
-the definition of a subgraph.\\
+lie within the graph.
 
 We can now ask a question which lies at the heart of Ramsey theory: Given positive
 integers $s$ and $t$, can we always find a large enough group of people
 such that $s$ mutually know each other, and $t$ do not? the answer
-is yes, and I shall now phrase this using the graph theoretic language we have just established:
+is yes, and I shall now define some notation:
+$$[n] = \{1, 2, 3, ..., n\}$$
+$$[n]^2 = \{\{1, 1\}, \{1, 2\}, ..., \{n, n\}\}$$
+
+We say a graph is $complete$, and we denote a graph of order $n$ is \textit{complete}
+if the set of edges is equal to $[n]^2$. We denote the complete graph $K_n$. Intuitively,]
+a graph is complete if for every pair of vertices, there is an edge connecting them.
+
+So in terms of complete graphs, $[n]$ represents the vertices and $[n]^2$ represents the
+edges. We define an r-colouring of the edges of a graph (of order n) as a map \cite{Graham1990}:
+
+$$\chi : [n]^2 \rightarrow [r]$$
+
+We say a subgraph $K$ of $[n]^2$ is monochromatic if the restriction $\chi|_K$ is the constant map.
+
+\begin{definition}[Clique]
+
+    Given a complete graph $G$, $C$ is a clique of $G$ if 
+
+\end{definition}
 
 \begin{theorem}[Ramsey's theorem for graphs]
 
+    Given positive integers $l_1$, there exist a least positive integer $R(s,t)$ such that any r-colouring
+    of $K_n, \hspace{1em} n\geq R(s,t)$, contains as a subgraph either a monochromatic $K_s$ or a monochromatic
+    $K_t$.
+
 \end{theorem}
 
+\begin{proof}
+
+    We begin first by defining some more notation:
+    \begin{definition}[Arrow-notation]
+        We write $n\rightarrow (l_1,...,l_r)$ if, for every r-colouring of $K_n$, there exists
+        a monochromatic complete subgraph $K_{l_i}$, for some $i=1,...r$.\\
+
+        Hence $R(s,t)$ is the least $n$ such that $n\rightarrow(s,t)$.
+
+    \end{definition}
+
+    The result we are proving here is the case $r=2$. Once we have proved this, we shall generalise the result
+    to arbitrary $r$. We proceed by double induction on $s$ and $t$. Note that $R(s,2) = R(2,s)=s$, since a 2-colouring (say, red and blue)
+    of $K_2$ either has a blue edge, or every other edge is red. This is illustrated in the graph below.\\
+
+    Hence $R(s,2),R(2,s),R(t,2),R(2,t)$ all exist. We now assume, by induction, that $R(s,t-1)$ and $R(s-1,t)$ both exist.
+
+    \textbf{Remark}: If $\chi$ is a 2-colouring of the edges of $K_n$, I will refer to the edges $\{ S \subseteq[n]^2 : \chi(S)=\{1\}\}$ as being `red',
+        and the edges $\{ T \subseteq[n]^2 : \chi(T)=\{2\}\}$ as being `blue'.
+
+    \begin{lemma}[$R(s,t)\leq R(s-1,t)+ R(s,t-1)$]\cite{Bollobas1998} 
+
+    \end{lemma}
+        
+    \begin{proof}
+
+        Let $n_1=R(s-1,t), n_2=R(s,t-1), n = n_1+n_2$, and consider a
+        2-colouring of the edges of $K_n$. We need to show that we have
+        either a red $K_s$ or a blue $K_t$. So let $x$ be any vertex of
+        $K_n$. Since $x$ is joined by edges to $n-1=n_1+n_2-1$ other vertices,
+        either there is at least $n_1$ red edges incident with $x$, or there
+        are at least $n_2$ blue edges incident with $x$. We will assume that
+        the first case holds, since the opposite result follows by symmetry.\\
+        
+        Consider a complete subgraph $K_{n_1}$ spanned by $n_1$ vertices
+        joined to $x$ by red edges. If $K_{n_1}$ has a blue $K_t$, then we 
+        are done. Otherwise, by the definition of $R(s-1,t)$, the graph
+        $K_{n_1}$ contains a red $K_{s-1}$, which forms a red $K_s$ with x.
+
+    \end{proof}
+
+
+
+
+
+\end{proof}
+
+
+
+\subsection{Generalised Ramsey Numbers}
+\label{sec:1.2}
 
