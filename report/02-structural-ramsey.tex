@@ -7,7 +7,7 @@ generality and the implications of applying Ramsey type results to different
 objects.
 An object that demonstrates many of the results in Structural Ramsey theory is
 the Random (or Rado) graph.
-It is an example of a Fraïssé limit, which is a construction that is found in
+It is an example of a Fraïssé limit, which is a construction found in
 model theory.
 Results from Structural Ramsey theory can then be used to state properties of
 the Random graph.
@@ -106,7 +106,7 @@ exhibit a few more properties.
     Prove properties, suppose $\str{B_1},\str{B_2}\in\class{R}$.
     \begin{itemize}
     \item\textbf{HP}: Given $B_1 \subseteq B_2$, we
-      have $\card{\str{B_1}} \leq \card{\str{B}}$. Every $\str{A}\in\class{R} :
+      have $\card{\str{B_1}} \leq \card{\str{B_2}}$. Every $\str{A}\in\class{R} :
       \card{\str{A}} = m$ is isomorphic to $\str{N}_m$ as defined above and
       there is a clear embedding of $\str{N}_m$ into $\str{N}_n$ where $m \leq
       n$.
@@ -143,7 +143,7 @@ exhibit a few more properties.
   \end{proof}
 \end{example}
 
-Another useful construction on structures is the age of a structure.
+Another useful construction is the age of a structure.
 
 \begin{definition}[Age\supercite{Cameron1990,Macpherson2011}]
   The age of a countable structure, say $\str{A}$, is the class of finite
@@ -151,7 +151,9 @@ Another useful construction on structures is the age of a structure.
   a substructure of $\str{A}$.
 \end{definition}
 
-It is reasonably clear that $\age\str{A}$ has the hereditary property, 
+It is reasonably clear that $\age\str{A}$ has the hereditary property. 
+% THIS IS WRONG
+\textbf{WRONG -->}
 $\age\str{A}$ also has the joint embedding property as $\str{B}_1, \str{B}_2
 \in \age\str{A} \implies \str{B}_1, \str{B}_2$ embed in $\str{A} \in \age\str{A}$.
 
@@ -219,8 +221,10 @@ countably many structures in $\class{R}$ up to isomorphism.
 \subsection{The Random Graph}
 \label{sec:4.3}
 
-We now focus on the behaviour of finite graphs as structures over a relational
-language.
+We now focus on the existence, construction and uniqueness of the random graph.
+The random graph is another example of a Fraïssé limit, but the amalgamation class in this
+case is the class of finite graphs\cite{Cameron2013}.
+
 
 
 \subsection{Ramsey Classes}
