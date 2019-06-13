@@ -58,9 +58,27 @@ $$[n] = \{1, 2,\ldots, n\}$$
 $$[n]^k = \{Y:Y\subseteq [n], |Y|=k\}$$
 $$[K]^k = \{Y:Y\subseteq K, |Y|=k\}$$
 
-We say a graph is $complete$, and we denote a graph of order $n$ is \textit{complete}
-if the set of edges is equal to $[n]^2$. We denote the complete graph $K_n$. Intuitively,]
-a graph is complete if for every pair of vertices, there is an edge connecting them.
+\begin{definition}[Graph]
+
+    A \textit{graph G} is an ordered pair of disjoint sets $(V,E)$ such that $E$ 
+    is a subset of $[V]^2$, the set of unordered pairs of $V$. We call $V$ the 
+    set of \textit{vertices}, and $E$ the set of \textit{edges}. The \textit{order} 
+    of $G$ is the number of vertices, i.e $|V|$.
+
+\end{definition}
+
+\begin{definition}[Complete graph]
+
+    We say a graph $G=(V,E)$ is \textit{complete} if $E=[V]^2$. Intuitively, if 
+    every pair of vertices has an edge connecting them. We denoted the complete 
+    graph of order $n$ by $K_n$
+
+\end{definition}
+
+\begin{definition}[Subgraphs and Cliques]
+
+    We say $G'=(V',E')$ is a \textit{subgraph} of $G=(V,E)$ if $V'\subseteq V$, 
+    and $E'\subseteq E$. We call $G'$ a \textit{clique} of $G$ if it is complete.
 
 So in terms of complete graphs, $[n]$ represents the vertices and $[n]^2$ represents the
 edges. We define an r-colouring of the edges of a graph (of order n) as a map \cite{Graham1990}:
@@ -68,12 +86,6 @@ edges. We define an r-colouring of the edges of a graph (of order n) as a map \c
 $$\chi : [n]^2 \rightarrow [r]$$
 
 We say a subgraph $K$ of $[n]^2$ is monochromatic if the restriction $\chi|_{[K]^2})$ is the constant map.
-
-\begin{definition}[Clique]
-
-    Given a complete graph $G$, $C$ is a clique of $G$ if 
-
-\end{definition}
 
 \begin{theorem}[Ramsey's theorem for graphs]
 
@@ -84,15 +96,6 @@ We say a subgraph $K$ of $[n]^2$ is monochromatic if the restriction $\chi|_{[K]
 \end{theorem}
 
 \begin{proof}
-
-    We begin first by defining some more notation:
-    \begin{definition}[Arrow-notation]
-        We write $n\rightarrow (l_1,\ldots,l_r)$ if, for every r-colouring of $K_n$, there exists
-        a monochromatic complete subgraph $K_{l_i}$, for some $i=1,...r$.\\
-
-        Hence $R(s,t)$ is the least $n$ such that $n\rightarrow(s,t)$.
-
-    \end{definition}
 
     The result we are proving here is the case $r=2$. Once we have proved this, we shall generalise the result
     to arbitrary $r$. We proceed by double induction on $s$ and $t$. Note that $R(s,2) = R(2,s)=s$, since a 2-colouring (say, red and blue)
