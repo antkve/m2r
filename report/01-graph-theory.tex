@@ -180,8 +180,9 @@ This result is easily generalised to any finite r-colouring of $K_n$:
 
 \end{definition}
 
-    When we r-colour the edges of the infinite graph $K_\infty$, there exists 
-    within in an infinite monochromatic complete subgraph. I.e. $\exists
+    For ant r-colouring of the edges of the infinite graph $K_\infty$, i.e. 
+    $\chi :[\mathbb{N}]^2\rightarrow \{c_1,\ldots, c_r\}$ there exists 
+    within it an infinite monochromatic complete subgraph. I.e. $\exists
     X \subseteq K_\infty$ such that $X$ is infinite, and $\chi|_{[X]^2}$ is the
     constant function.
 
@@ -191,16 +192,39 @@ This result is easily generalised to any finite r-colouring of $K_n$:
 
     Fix an arbitrary $a_1 \in \mathbb{N}$. Then by the pigeonhole principal, 
     there must exist an infinite set $\mathcal{B}_1\subseteq\mathbb{N}\setminus
-    \{a_1\}$ such that all the $a_1-\mathcal{B}_1$ edges (i.e. edges of the form
-    $(a_1,b_1)$ with $b_1\in\mathcal{B}_1$ are of the same colour.
+    \{a_1\}$ such that all of the $a_1-\mathcal{B}_1$ edges (i.e. edges of the
+    form $(a_1,b_1)$ with $b_1\in\mathcal{B}_1$ are of the same colour, say $c_1$.\\
+
+    Now again fix an arbitrary $a_2\in\mathcal{B}_1$. Again, we find some infinite
+    $mathcal{B}_2\subseteq\mathcal{B}_1$ such that all of the $a_2-mathcal{B}_2$
+    are of the same colour, say $c_2$.\\
+
+    If we repeat this inductively, we obtain a sequence $a_1,a_2,\ldots$ 
+    and a sequence of colours $c_1,c_2,\ldots$ such that $\chi(\{a_i,a_j\})=
+    c_i$, for $i<j$.\\
+
+    Now again by the pigeonhole principal, since there are finitely many colours,
+    there exists an infinite subsequence $c_{i_1}, c_{i_2}, \ldots$ that is 
+    constant, i.e. each term is equal to $c_i$. Then $\{a_{i_1},a_{i_2}\}$ is a
+    monochromatic set, coloured by $c_i$.
 
 \end{proof}
 
+This result has the following result from analysis as an interesting corollary:
+
 \textbf{Corollary}: [Bolzano-Weierstrass Theorem]
 
-
+Let $(x_i)_{i\in\mathbb{N}}$ be a bounded sequence of real numbers. Then it has
+a convergent subsequence.
 
 \begin{proof}
+
+    We define a 2-colouring of $[\mathbb{N}]^2$ by calling $\{i,j\}$ \textit{red} 
+    if $x_i <x_j$, and \textit{blue} if $x_i\geq x_j$.
+
+    Then Ramsey's theorem for infinte graphs gives us an infinite monochromatic 
+    set, which in this case is a monotone subsequence of $(x_i)$. And since it 
+    is bounded, by the monotone convergence theorem it must converge.
 
 \end{proof}
 
