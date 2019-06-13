@@ -1,15 +1,16 @@
 \documentclass[./m2r-report.tex]{subfiles}
 
-\subsection{Rado's Theorem}
-\label{sec:3.1}
-
 In this section we show how a theorem from Rado (\cite{Rado1933}) generalising results
 from arithmetical Ramsey theory is the key to proving an interesting connection
-between combinatorial and algebraic properties of finite subsets of the 
+between combinatorial and geometrical properties of finite subsets of the 
 Euclidean space. Now, Rado's theorem and its variants use purely Ramsey 
 theoretical techniques in their proof. This illustrates once more how Ramsey theory is 
 capable of translating combinatorial properties into structural (ie. geometric, 
 algebraic, etc.) properties.
+
+
+\subsection{Rado's Theorem}
+\label{sec:4.1}
 
 %Here we denote, for $n\in\mathbb{N}$, $$[n]:=\{1,\cdots,n\}$$
 The following results are commonly seen as precursors of Ramsey theory: Hilbert's 
@@ -97,7 +98,7 @@ Let $\{v_{1},\cdots,v_{n},v\}\in \mathbb{Z}^m$. If $v \not\in span\{v_{1},\cdots
 then there exists $u\in\mathbb{Z}^m$ such that: $u.v\not = 0$ and $\forall i\in [n], u.v_{i}=0$.
 \end{lemma}
 
-To state our next Lemma, we need a definition:
+To state our next Lemma, we need a definition (by W. Deuber, see \cite{Graham1990}):
 
 \begin{definition}[(m,p,c)-sets]
 Let $m,p,c \in \mathbb{N}$. Then we define:
@@ -146,13 +147,13 @@ $\qed$
 \subsection{Euclidean Ramsey theory}
 \label{sec:3.2}
 
-Rado's theorem is beautiful because it translates a combinatorial 
-property of the positive integers into an algebraic property of matrices. 
+Rado's theorem translates a combinatorial 
+property of the positive integers into an algebraic property of matrices over $\mathbb{Q}$. 
 That is, it enables us to solve general problems of the Hilbert-Schur-van 
 der Waerden kind, through a unified algebraic approach. It also provides us 
 with an algebraic constraint on Ramsey sets in $\mathbb{Z}$.
 
-In this section show how a generalization of Rado's theorem (\cite{Erdös1973}) 
+In this section show how a generalisation of Rado's theorem (\cite{Erdös1973}) 
 enables us to translate a combinatorial property of finite subsets of the Euclidean 
 space into a geometric property. In particular we identify a geometrical necessary 
 condition for a finite set to be Ramsey in $\mathbb{R}^n$.
@@ -177,7 +178,7 @@ If $F$ and $F'$ are figures with $[F]=[F']$, we say that they have the same
 configuration.
 \end{definition}
 
-\begin{definition}[Ramsey property]
+\begin{definition}[Ramsey property for configurations]
 A configuration $K$ is Ramsey if: 
 \begin{center}
 $\forall r\in\mathbb{N}$, $\exists n\in\mathbb{N}$ such that, 
@@ -247,7 +248,7 @@ of scalar coefficients $\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$, as
 the equations (1) and (2) are invariant under isometry in $\mathbb{R}^n$.
 
 
-Our main tool in the proof is the following Lemma, which is a generalization of Rado's theorem.
+Our main tool in the proof is the following Lemma, which is a generalisation of Rado's theorem.
 In fact it builds up on later results from Rado (see \cite{Rado1945}).  
 The proof that follows is taken from Graham (see \cite{Graham1981}). Erd\H os gives a more general proof 
 involving arbitrary fields.
