@@ -15,24 +15,27 @@
 \usepackage[style=numeric]{biblatex}
 \usepackage{hyperref}
 
-\newtheoremstyle{NoBreak}
+\newtheoremstyle{BreakBold}
 {5pt}% measure of space to leave above the theorem.
 {}% measure of space to leave below the theorem.
 {\itshape}% name of font to use in the body of the theorem
 {}% measure of space to indent
 {\bfseries}% name of head font
-{}% punctuation between head and body
+{\newline}% punctuation between head and body
 {.5em}% space after theorem head
 %; " " = normal inter-word space
 % Manually specify theorem head
 {\thmname{#1}\thmnumber{ #2}:\thmnote{ [#3]}}
 
-\theoremstyle{NoBreak}
+\theoremstyle{BreakBold}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{prop}[theorem]{Proposition}
 \newtheorem*{cor}{Corollary}
+\newtheoremstyle{example}{5pt}{}{}{}{\bfseries}{\newline}{.5em}{\thmname{#1}:\thmnote{ #3}}
+\theoremstyle{example}
+\newtheorem*{example}{Example}
 
 \newcommand{\str}[1]{\mathbf{#1}}
 \newcommand{\rel}[2]{R^{#1}_{\str{#2}}}
@@ -40,7 +43,10 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\sstr}[2]{\binom{\str{#1}}{\str{#2}}}
 \newcommand{\ramsSplit}[3]{(#1)^{#2}_{#3}}
-\newcommand{\ramsArrow}[3]{\rightarrow\ramsSplit{#1}{#2}{#3}}
+\newcommand{\radoArrow}[3]{\rightarrow\ramsSplit{#1}{#2}{#3}}
+\newcommand{\card}[1]{|#1|}
+\newcommand{\sumin}{_{\text{min}}}
+\newcommand{\sumax}{_{\text{max}}}
 
 \usepackage{geometry}
 \geometry{
@@ -96,18 +102,18 @@
 \label{sec:1}
 \subfile{01-graph-theory}
 
-\newpage
-\section{Structural Ramsey Theory}
-\label{sec:2}
-\subfile{02-structural-ramsey}
-
 \section{The Hales-Jewett Theorem}
-\label{sec:3}
+\label{sec:2}
 
 \newpage
 \section{Euclidean Ramsey Theory}
 \label{sec:4}
 \subfile{04-euclidean-ramsey-theory}
+
+\newpage
+\section{Structural Ramsey Theory}
+\label{sec:4}
+\subfile{02-structural-ramsey}
 
 \printbibliography
 \end{document}

@@ -1,44 +1,76 @@
 \documentclass[../m2r-report.tex]{subfile}
 
-The original Ramsey theorem states the existence of a complete monochromatic
-subgraph in any two-colouring of a sufficiently large graph.
-Can this statement be extended to other classes of graphs or objects?
-A useful structure for exploring this question is the random graph.
-This is an example of a Fraïssé limit, a construction that can be applied to many
-different structures.
-In this section we look at how the random graph is constructed, some of its
-properties, and how its existence can be used to infer some Ramsey type results.
+As we've seen, Ramsey theory has manifestations in areas as diverse as graph
+theory, combinatorics, and geometry.
+The field of Structural Ramsey theory aims to use model theory to study this
+generality and the implications of applying Ramsey type results to different
+objects.
+An object that demonstrates many of the results in Structural Ramsey theory is
+the Random (or Rado) graph.
+It is an example of a Fraïssé limit, which is a construction best described
+using model theory.
+Results from Structural Ramsey theory can then be used to state properties of
+the Random graph.
 
-We begin with the definition of some model theoretic concepts that are needed to
-state the generalized form of Ramsey Theorem.
+This section will focus on the preliminaries behind the construction of Fraïssé
+limits, the existence and uniqueness of the Random graph, and some of the
+Ramsey type properties that it exhibits.
 
 \subsection{Structures, Ages and Amalgamation Classes}
-\label{sec:2.1}
+\label{sec:4.1}
 
-Let $I$ be an index set, we call $\Delta = (\delta_i \in \Z^+)_{i\in I}$ a
-type and the pair $L=(I,\Delta)$ a language.
-Given a set $A$, an $n$-ary relation is a subset of $A^n$.
-An $L$-structure $\str{A}$ is a pair $(A,(\rel{i}{\str{A}})_{i\in I})$ where each
-$\rel{i}{\str{A}}$ is a $\delta_i$-ary relation, i.e. a subset of $A^{\delta_i}$
-\cite{Hubicka2015}.
-If $A$ is finite, the structure $\str{A}$ is said to be finite, with a similar
-statement holding for countable sets.
-An example is the language of finite graphs $L = (\{1\}, \delta_1 = 2)$ where
-each structure $\str{A}$ is a graph over the set $A$.
+We begin with a few preliminaries and some important results about them.
 
-Homomorphisms between structures over the same language are maps that preserve
-relations, so $f : \str{A} \to \str{B}, \rel{i}{\str{A}} \mapsto
-\rel{i}{\str{B}}, \forall i \in I$.
-An injective homomorphism where $f^{-1} : \rel{i}{\str{B}} \mapsto
-\rel{i}{\str{A}}, \forall i \in I$ is called an embedding, an isomorphism of
-structures is a surjective embedding\cite{Hubicka2015}.
+\begin{definition}[Structures over a Relational Language\supercite{Hubicka2015}]
+  Let $I$ be a finite index set.
+  We call $\Delta = (\delta_i \in \Z^+)_{i\in I}$ a
+  type and the pair $L=(I,\Delta)$ a language.
+  Given a set $A$, an $n$-ary relation is a subset of $A^n$.
+  An $L$-structure $\str{A}$ is a pair $(A,(\rel{i}{\str{A}})_{i\in I})$ where each
+  $\rel{i}{\str{A}}$ is a $\delta_i$-ary relation, i.e. a subset of $A^{\delta_i}$.
 
-We say that $\str{B}$ is a substructure of $\str{A}$ if the inclusion $B
-\subseteq A$ is an embedding of structures.
-We denote the set of substructures of $\str{A}$ isomorphic to $\str{B}$ by
-$\sstr{A}{B}$\cite{Hubicka2016}.
+  If $A$ is finite, the structure $\str{A}$ is said to be finite, with a similar
+  statement holding for countable sets.
+  In general, the cardinality of a structure is defined to be the cardinality of
+  the set on which it is defined.
+\end{definition}
 
-\begin{definition}[Amalgamation Class\supercite{Hubicka2016}]
+An example of a language is $L=(\{1\}, (2))$.
+An example of a structure on that language is $\str{A} = (A, \rel{i}{A})$, where
+$A$ is any non-empty finite subset $A \subset \Z^+$, equipped with the relation
+$\rel{<}{A} = \{(x,y): x < y\} \subset A^2$. 
+This forms a class of structures that we will call $\class{R}$, the class of
+finite linear orderings.
+
+\begin{definition}[Homomorphisms and Substructures\supercite{Hubicka2016,Hubicka2015}]
+  Homomorphisms between structures over the same language are maps that preserve
+  relations,\\
+  so $f : \str{A} \to \str{B}, \rel{i}{\str{A}} \mapsto
+  \rel{i}{\str{B}}, \forall i \in I$.
+
+  An injective homomorphism where $f^{-1} : \rel{i}{\str{B}} \mapsto
+  \rel{i}{\str{A}}, \forall i \in I$ is called an embedding, an isomorphism of
+  structures is a surjective embedding.
+
+  We say that $\str{B}$ is a substructure of $\str{A}$ if the inclusion $B
+  \subseteq A$ is an embedding of structures.
+  We denote the set of substructures of $\str{A}$ isomorphic to $\str{B}$ by
+  $\sstr{A}{B}$.
+\end{definition}
+
+Returning to $\class{R}$, there are many bijections between subsets of $\Z^+$ of
+the same cardinality, but this may not always preserve the relation.
+To show that there is an isomorphism between any two $\str{A}, \str{B} \in
+\class{R} : \card{\str{A}} = \card{\str{B}}$ one can proceed by induction (show
+that there is an isomorphism between $\str{A} : \card{\str{A}} = n$ and
+$\str{N}_n = (\{1,\dots,n\},\{(1,2),\dots,(1,n),(2,3),\dots,(n-1,n)\})$).
+With this we can say that there are only countably many structures in
+$\class{R}$ up to isomorphism.
+
+$\class{R}$ is also an example of an amalgamation class, members of which
+exhibit a few more properties.
+
+\begin{definition}[Amalgamation Class\supercite{Cameron1990,Hubicka2016}]
   A class $\class{K}$ is an amalgamation class if it satisfies the following
   properties:
   
@@ -52,7 +84,7 @@ $\sstr{A}{B}$\cite{Hubicka2016}.
     \in \class{K}$ with $\str{A}$ embedding in both $\str{B}_1$ and $\str{B}_2$,
     there exists $\str{C} \in
     \class{K}$ such that $\str{B}_1$ and $\str{B}_2$
-    both embed into $\str{C}$ and the diagram below commutes\cite{Cameron1990}.
+    both embed into $\str{C}$ and the diagram below commutes.
   \end{itemize}
   \begin{center}
     \adjustbox{scale=1.5}{%
@@ -67,14 +99,61 @@ $\sstr{A}{B}$\cite{Hubicka2016}.
   \end{center}
 \end{definition}
 
+\begin{example}
+  $\class{R}$ is an amalgamation class
+
+  \begin{proof}
+    Prove properties, suppose $\str{B_1},\str{B_2}\in\class{R}$.
+    \begin{itemize}
+    \item\textbf{HP}: Given $B_1 \subseteq B_2$, we
+      have $\card{\str{B_1}} \leq \card{\str{B}}$. Every $\str{A}\in\class{R} :
+      \card{\str{A}} = m$ is isomorphic to $\str{N}_m$ as defined above and
+      there is a clear embedding of $\str{N}_m$ into $\str{N}_n$ where $m \leq
+      n$.
+    \item\textbf{JEP}: Suppose again that $\card{\str{B_1}} = m,
+      \card{\str{B_2}} = n$.
+      $\str{B_1}$ embeds into $\str{N}_{m+n}$ by mapping to the values
+      $1,\dots,m$ and $\str{B_2}$ also embeds by mapping to the values $m+1,\dots,n$.
+    \item\textbf{AP}: Suppose that there is $\str{A}$ which embeds into both
+      $\str{B_1}$ and $\str{B_2}$ by $\alpha_1, \alpha_2$ respectively.
+      Partition $B_1, B_2$ into three classes each:
+      \begin{itemize}
+      \item The $x\in B_i$ such that $\exists y \in A$ with
+        $(x,\alpha_i(y)) \in \rel{<}{B_i}$, call these sets $B^-_i$.
+      \item The $x\in B_i$ such that $\exists y \in A$ with
+        $x=\alpha_i(y)$, call these sets $B^A_i$.
+      \item The $x\in B_i$ such that $\exists y \in A$ with
+        $(\alpha_i(y),x) \in \rel{<}{B_i}$, call these sets $B^+_i$.
+      \end{itemize}
+      Define, $n_1 = \card{B^-_1}, n_2 = n_1 + \card{B^-_2}, n_3 = n_2 + \card{A},
+      n_4 = n_3 + \card{B^+_2}, n_5 = n_4 + \card{B^+_2}$ and let $C = \str{N}_{n_5}$.
+      We define the embeddings as follows: 
+      \begin{align*}
+        \beta_1:&\str{B_1}\to\str{C},\\
+                &B^-_1\mapsto\{1,\dots,n_1\},\\
+                &B^A_1\mapsto\{n_2+1,\dots,n_3\},\\
+                &B^+_1\mapsto\{n_3+1,\dots,n_4\}\\
+        \beta_2:&\str{B_2}\to\str{C},\\
+                &B^-_2\mapsto\{n_1,\dots,n_2\},\\
+                &B^A_2\mapsto\{n_2+1,\dots,n_3\},\\
+                &B^+_2\mapsto\{n_4+1,\dots,n_5\}
+      \end{align*}
+      It is then clear that $\beta_1\circ\alpha_1 = \beta_2\circ\alpha_2$.
+    \end{itemize}
+  \end{proof}
+\end{example}
+
+Another useful construction on structures is the age of a structure.
+
 \begin{definition}[Age\supercite{Cameron1990,Macpherson2011}]
   The age of a countable structure, say $\str{A}$, is the class of finite
   $L$-structures, $\str{B}$, such that $\str{B}$ is isomorphic to
   a substructure of $\str{A}$.
-  It is reasonably clear that $\age\str{A}$ has the hereditary property, 
-  $\age\str{A}$ also has the joint embedding property as $\str{B}_1, \str{B}_2
-  \in \age\str{A} \implies \str{B}_1, \str{B}_2$ embed in $\str{A} \in \age\str{A}$.
 \end{definition}
+
+It is reasonably clear that $\age\str{A}$ has the hereditary property, 
+$\age\str{A}$ also has the joint embedding property as $\str{B}_1, \str{B}_2
+\in \age\str{A} \implies \str{B}_1, \str{B}_2$ embed in $\str{A} \in \age\str{A}$.
 
 Two natural questions to ask now are whether the age of a particular structure
 is an amalgamation class, and whether a given amalgamation
@@ -82,10 +161,36 @@ class is the age of some structure.
 The correspondence between the two is given by Fraïssé's theorem which makes use
 of the concept of homogeneity.
 
-A structure $\str{A}$ is homogeneous if for every pair of isomorphic
-substructures $\str{U}, \str{V} \subseteq \str{A}, f : \str{U} \to \str{V}$ the
-isomorphism, there exists an automorphism $\tilde{f} \in\aut\str{A}$ which
-extends $f$, i.e. $\tilde{f} : \str{U} \mapsto \str{V}$\cite{Macpherson2011}.
+\begin{definition}[Homogeneous Structures\supercite{Macpherson2011}]
+  A structure $\str{A}$ is homogeneous if for every pair of finite isomorphic
+  substructures $\str{U}, \str{V} \subseteq \str{A}$, with $f : \str{U} \to
+  \str{V}$ being the isomorphism, there exists an automorphism $\tilde{f}
+  \in\aut\str{A}$ which extends $f$, i.e. $\tilde{f}$ restricted to $\str{U}$ is
+  $f$.
+\end{definition}
+
+An example of homogeneity is given by the rationals with the order relation.
+The argument below is taken from \textcite[1601]{Macpherson2011}.
+\begin{example}
+  $\str{Q} = (\mathbb{Q},<)$ is homogeneous.
+  \begin{proof}
+    Let $\str{U}, \str{V} \subseteq \str{Q}$ be an isomorphic pair of
+    finite substructures with isomorphism $f$.
+    Since they are both finite, they both have a minimum and maximum.
+    Let $a \in \mathbb{Q}\setminus U$, since $\str{U}$ is finite either:
+    \begin{enumerate}
+    \item $\forall u \in U, a < u$, this is equivalent to $a < u\sumin$
+    \item $\exists u_1, u_2 \in U, u_1 < a < u_2$
+    \item $\forall u \in U, u < a$, this is equivalent to $u\sumax < a$
+    \end{enumerate}
+    Construct $\tilde{f}$ such that $\tilde{f} : (-\infty,u\sumin) \mapsto
+    (-\infty,f(u\sumin)), (u_i,u_{i+1}) \mapsto (f(u_i),f(u_{i+1})),
+    (u\sumax,\infty) \mapsto (f(u\sumax),\infty)$ where the bounded intervals
+    are mapped via a linear interpolation and the unbounded intervals are mapped
+    linearly.
+    This is an automorphism on $\str{Q}$
+  \end{proof}
+\end{example}
 
 We now state the main theorem of this subsection
 
@@ -94,10 +199,9 @@ We now state the main theorem of this subsection
   \begin{itemize}
   \item Given a homogeneous $L$-structure $\str{M}$, $\age\str{M}$ is an
     amalgamation class.
-  \item Given a non-empty amalgamation class of finite structures $\class{C}$,
-    there exists a homogeneous $L$-structure $\str{M}$ such that $\age\str{M}
-    = \class{C}$.
-    This structure is unique up to isomorphism
+  \item Given a countable non-empty amalgamation class of finite structures
+    $\class{C}$, there exists a unique homogeneous $L$-structure $\str{M}$ such
+    that $\age\str{M} = \class{C}$.
   \end{itemize}
 \end{theorem}
 
@@ -105,22 +209,37 @@ We omit a proof of this theorem, but a sketch is given in \textcite[1602]{Macphe
 We call the structure given by the second point of the theorem the Fraïssé limit
 of the class $\class{C}$.
 
+A good example of a Fraïssé limit is that of $\class{R}$, which has limit $\str{Q}$.
+It is clear that any finite linear order can be embedded into $\str{Q}$, so it
+only remains to show that any finite substructure of $\str{Q}$ is isomorphic to
+some structure in $\class{R}$.
+This can be done by induction in a similar manner to showing that there are only
+countably many structures in $\class{R}$ up to isomorphism.
+
+\subsection{The Random Graph}
+\label{sec:4.3}
+
+We now focus on the behaviour of finite graphs as structures over a relational
+language.
+
+
 \subsection{Ramsey Classes}
-\label{sec:2.4}
+\label{sec:4.4}
 The original statement of Ramsey's theorem is, broadly speaking, a statement
 about the existence of a sub-object in any partition of a 'large-enough' object.
-We now introduce the idea of a Ramsey class which applies this to classes.
+We now introduce the idea of a Ramsey class which applies this to classes of
+structures.
 
 \begin{definition}[Ramsey Class\supercite{Nesetril1995}]
   A structure $\str{C}$ is said to be $(t,\str{A})$ Ramsey for a structure
   $\str{B}$ if every $t$-colouring of the set $\sstr{C}{A}$ contains
   $\str{B'}: \str{C}\supseteq\str{B'} \simeq \str{B}$ such that $\sstr{B'}{A}$ is
   monochromatic.
-  To make this more concise, we write $\str{C}\ramsArrow{\str{B}}{\str{A}}{t}$.
+  To make this more concise, we write $\str{C}\radoArrow{\str{B}}{\str{A}}{t}$.
 
   A class $\class{K}$ is said to have the $\str{A}$-Ramsey property if for every
   $\str{B}\in\class{K}$ and $t\in\Z^+$, there exists $\str{C}\in\class{K}$ such that
-  $\str{C}\ramsArrow{\str{B}}{\str{A}}{t}$.
+  $\str{C}\radoArrow{\str{B}}{\str{A}}{t}$.
 
   If $\class{K}$ has the $\str{A}$-Ramsey property for every $\str{A}\in
   \class{K}$, then $\class{K}$ is a Ramsey class.
@@ -128,14 +247,13 @@ We now introduce the idea of a Ramsey class which applies this to classes.
 
 A concrete example can be given in terms of finite complete graphs.
 The well-known fact that any 2-colouring of $K_6$ contains a monochromatic
-$K_3$ translates to the statement $K_6\ramsArrow{K_3}{K_2}{2}$.
-Due to the generalised Ramsey theorem we can even state that the class of finite
-complete graphs has $K_2$ Ramsey property.
-Since for any $K_n$ and any $t$ a positive integer, there exists a $K_m$ such
-that any $t$-colouring of the $K_2$ substructures of $K_m$, the edges, 
+$K_3$ translates to the statement $K_6\radoArrow{K_3}{K_2}{2}$.
+Due to the generalised Ramsey theorem, we can state that the class of finite
+complete graphs has $K_2$-Ramsey property.
+In fact, a direct corollary of the finite Ramsey theorem from the original paper
+\cite[267]{Ramsey1930} is that the class of finite complete graphs is a Ramsey
+class.
 
-\subsection{The Random Graph}
-\label{sec:2.3}
 % LocalWords:  Ramsey subgraphs subgraph Fraïssé surjective
 
 % Local Variables:
