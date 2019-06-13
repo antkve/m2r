@@ -53,9 +53,10 @@ lie within the graph.
 We can now ask a question which lies at the heart of Ramsey theory: Given positive
 integers $s$ and $t$, can we always find a large enough group of people
 such that $s$ mutually know each other, and $t$ do not? the answer
-is yes, and I shall now define some notation:
-$$[n] = \{1, 2, 3, ..., n\}$$
-$$[n]^2 = \{\{1, 1\}, \{1, 2\}, ..., \{n, n\}\}$$
+is yes, and I shall now define some notation: \cite{Graham1990}
+$$[n] = \{1, 2,\ldots, n\}$$
+$$[n]^k = \{Y:Y\subseteq [n], |Y|=k\}$$
+$$[K]^k = \{Y:Y\subseteq K, |Y|=k\}$$
 
 We say a graph is $complete$, and we denote a graph of order $n$ is \textit{complete}
 if the set of edges is equal to $[n]^2$. We denote the complete graph $K_n$. Intuitively,]
@@ -66,7 +67,7 @@ edges. We define an r-colouring of the edges of a graph (of order n) as a map \c
 
 $$\chi : [n]^2 \rightarrow [r]$$
 
-We say a subgraph $K$ of $[n]^2$ is monochromatic if the restriction $\chi|_K$ is the constant map.
+We say a subgraph $K$ of $[n]^2$ is monochromatic if the restriction $\chi|_{[K]^2})$ is the constant map.
 
 \begin{definition}[Clique]
 
@@ -76,7 +77,7 @@ We say a subgraph $K$ of $[n]^2$ is monochromatic if the restriction $\chi|_K$ i
 
 \begin{theorem}[Ramsey's theorem for graphs]
 
-    Given positive integers $l_1$, there exist a least positive integer $R(s,t)$ such that any r-colouring
+    Given positive integers $s, t$, there exist a least positive integer $R(s,t)$ such that any r-colouring
     of $K_n, \hspace{1em} n\geq R(s,t)$, contains as a subgraph either a monochromatic $K_s$ or a monochromatic
     $K_t$.
 
@@ -86,7 +87,7 @@ We say a subgraph $K$ of $[n]^2$ is monochromatic if the restriction $\chi|_K$ i
 
     We begin first by defining some more notation:
     \begin{definition}[Arrow-notation]
-        We write $n\rightarrow (l_1,...,l_r)$ if, for every r-colouring of $K_n$, there exists
+        We write $n\rightarrow (l_1,\ldots,l_r)$ if, for every r-colouring of $K_n$, there exists
         a monochromatic complete subgraph $K_{l_i}$, for some $i=1,...r$.\\
 
         Hence $R(s,t)$ is the least $n$ such that $n\rightarrow(s,t)$.
@@ -115,22 +116,94 @@ We say a subgraph $K$ of $[n]^2$ is monochromatic if the restriction $\chi|_K$ i
         either there is at least $n_1$ red edges incident with $x$, or there
         are at least $n_2$ blue edges incident with $x$. We will assume that
         the first case holds, since the opposite result follows by symmetry.\\
-        
+
         Consider a complete subgraph $K_{n_1}$ spanned by $n_1$ vertices
         joined to $x$ by red edges. If $K_{n_1}$ has a blue $K_t$, then we 
         are done. Otherwise, by the definition of $R(s-1,t)$, the graph
-        $K_{n_1}$ contains a red $K_{s-1}$, which forms a red $K_s$ with x.
+        $K_{n_1}$ contains a red $K_{s-1}$, which forms a red $K_s$ with $x$.
 
     \end{proof}
 
+\end{proof}
 
+This result is easily generalised to any finite r-colouring of $K_n$:
 
+\begin{theorem}[General Case]
 
+    Given $k$ positive integers $s_1, s_2,\ldots, s_k$, there exist a least
+    positive integer $R_k(s_1,\ldots,s_k)$ such that any r-colouring of $K_n, \hspace{1em}
+    n\geq R(s_1,\ldots,s_k)$, contains as a subgraph a monochromatic $K_{s_i}$,
+    for some $i\in{1,\ldots k}$, coloured by the $i^{\text{th}}$ colour.
+
+\end{theorem}
+
+\begin{proof}
+
+    We again proceed by induction on $k$. The base case for $R_2(s_1,s_2)$ is
+    true by the previous theorem. So we assume by induction that
+    $R_{k-1}(s_1,\ldots ,s_{k-1})$ exists. Then in any k-colouring of $K_n$ we 
+    replace the first two colours by a new colour. If $n$ is sufficiently large,
+    then either there is a $K_{s_1}$ coloured with the $i^{\text{th}}$ colour for
+    some $i \in \{3,\ldots,k\}$, or else for $m=R(s_1,s_2)$ there is a $K_m$
+    coloured with the new colour. I.e. in the original colouring this $K_m$ is 
+    coloured with the first two original colours. In the first case we are done,
+    and in the second, for $i=1$ or 2, we can find a monochromatic $K_{s_i}]]$ in
+    $K_m$ coloured in $K_m$ coloured with the $i^{\text{th}}$ colour. Hence,
+    $$R_k(s_1,\ldots,s_k)\leq R_{k-1}(R(s_1,s_2),s_3,\ldots,s_k)$$
 
 \end{proof}
 
+%We can generalise Ramsey's theorem one step further, this time to hypergraphs.
+%
+%\begin{definition}[Hypergraph]
+%
+%    Let $V = [n]$, $E=[n]^k$. A \textit(hypergraph) is an ordered pair $(V,E)$
+%    such that $V\cap E = \varnothing $, and $E\subseteq \mathcal{P}(V)$, the power
+%    set of $V$.
+%
+%\end{definition}
+%
+%\begin{theorem}[Ramsey's theorem for Hypergraphs]
+%
+%\end{theorem}
+
+\begin{theorem}[Ramsey's theorem for Infinite Graphs]%\cite{lecturenotes}
+
+\begin{definition}[Infinite graph]
+
+    We can biject the set of infinitely many vertices with the natural numbers,
+    denoted $\mathbb{N}$, and the set of edges between the vertices with the set
+    of all unordered pairs of natural numbers, denoted $[\mathbb{N}]^2$.\\
+
+    Then we define the infinite graph, $K_\infty$, as the ordered pair
+    $K_\infty:=(\mathbb{N},[\mathbb{N}]^2)$.
+
+\end{definition}
+
+    When we r-colour the edges of the infinite graph $K_\infty$, there exists 
+    within in an infinite monochromatic complete subgraph. I.e. $\exists
+    X \subseteq K_\infty$ such that $X$ is infinite, and $\chi|_{[X]^2}$ is the
+    constant function.
+
+\end{theorem}
+
+\begin{proof}
+
+    Fix an arbitrary $a_1 \in \mathbb{N}$. Then by the pigeonhole principal, 
+    there must exist an infinite set $\mathcal{B}_1\subseteq\mathbb{N}\setminus
+    \{a_1\}$ such that all the $a_1-\mathcal{B}_1$ edges (i.e. edges of the form
+    $(a_1,b_1)$ with $b_1\in\mathcal{B}_1$ are of the same colour.
+
+\end{proof}
+
+\textbf{Corollary}: [Bolzano-Weierstrass Theorem]
 
 
-\subsection{Generalised Ramsey Numbers}
+
+\begin{proof}
+
+\end{proof}
+
+\subsection{Generalised Ramsey Numbers}\cite{Bollobas1998}
 \label{sec:1.2}
 
