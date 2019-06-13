@@ -3,36 +3,43 @@
 \subsection{Ramsey's Theorem}
 \label{sec:1.1}
 
-The idea of finding regular substructure from chaotic structure is immediately
-applicable to graphs.
-The statement in the introduction - ``Given 6 people, either 3 mutually know each
-other, or 3 do not" - can be rephrased in a graph theoretic sense.
-We identify a person with a vertex of the graph, and a relation between them as
-an edge.
-A relation between two people can have  two states: either the two know each other,
-or they have never met.
-We can illustrate this relation status by `colouring' the edge, with a red edge
-showing that the two know each other, and a blue edge showing that they haven't.
-Hence, the situation described by the statement is shown by the following graph:
+Whilst Ramsey's original paper was concerned with a problem of logic, Erd{\"o}s and 
+Szekeres reformulated his work in a graph theoretic sense. The idea of proving 
+the existence of regular substructure within an apparently chaotic superstructure
+is immediately applicable to graphs.\\
+
+In the graph below, we partition the edges into two disjoint classes: dotted lines and dashed 
+lines. In turns out that no matter how we partition our edges, we will always get
+dotted triangles or dashed triangles. In this particular partition, we get two 
+dashed triangles.
+%The statement in the introduction - ``Given 6 people, either 3 mutually know each
+%other, or 3 do not" - can be rephrased in a graph theoretic sense.
+%We identify a person with a vertex of the graph, and a relation between them as
+%an edge.
+%A relation between two people can have  two states: either the two know each other,
+%or they have never met.
+%We can illustrate this relation status by `colouring' the edge, with a red edge
+%showing that the two know each other, and a blue edge showing that they haven't.
+%Hence, the situation described by the statement is shown by the following graph:
 
 \begin{figure}[h]
 \begin{center}
 \begin{tikzpicture}
-    \draw[line width=2pt, blue] (0,0) -- (1,0);
-    \draw[line width=2pt, blue] (1,0) -- (1.55,1);
-    \draw[line width=2pt, blue] (1.55,1) -- (1,2);
-    \draw[line width=2pt, blue] (1,2) -- (0,2);
-    \draw[line width=2pt, blue] (0,2) -- (-0.55,1);
-    \draw[line width=2pt, blue] (-0.55,1) -- (0,0);
-    \draw[line width=2pt, blue] (0,0) -- (1,2);
-    \draw[line width=2pt, blue] (1.55,1) -- (-0.55,1);
-    \draw[line width=2pt, blue] (1,0) -- (0,2);
-    \draw[line width=2pt, red] (0,0) -- (0,2);
-    \draw[line width=2pt, red] (1,0) -- (1,2);
-    \draw[line width=2pt, red] (1,0) -- (-0.55,1);
-    \draw[line width=2pt, red] (1.55,1) -- (0,2);
-    \draw[line width=2pt, red] (1,2) -- (-0.55,1);
-    \draw[line width=2pt, red] (0,0) -- (1.55,1);
+    \draw[dotted] (0,0) -- (1,0);
+    \draw[dotted] (1,0) -- (1.55,1);
+    \draw[dotted] (1.55,1) -- (1,2);
+    \draw[dotted] (1,2) -- (0,2);
+    \draw[dotted] (0,2) -- (-0.55,1);
+    \draw[dotted] (-0.55,1) -- (0,0);
+    \draw[dotted] (0,0) -- (1,2);
+    \draw[dotted] (1.55,1) -- (-0.55,1);
+    \draw[dotted] (1,0) -- (0,2);
+    \draw[dashed] (0,0) -- (0,2);
+    \draw[dashed] (1,0) -- (1,2);
+    \draw[dashed] (1,0) -- (-0.55,1);
+    \draw[dashed] (1.55,1) -- (0,2);
+    \draw[dashed] (1,2) -- (-0.55,1);
+    \draw[dashed] (0,0) -- (1.55,1);
 
     \filldraw (0,0) circle (2pt);
     \filldraw (1,0) circle (2pt);
@@ -42,21 +49,14 @@ Hence, the situation described by the statement is shown by the following graph:
     \filldraw (1,2) circle (2pt);
 
 \end{tikzpicture}
-\caption{An arbitrary 2-colouring of $K_6$}
+\caption{2 dashed triangles within a graph of 6 vertices}
 \end{center}
-\end{figure}
+\end{figure}.
 
-This graph describes a situation in which we have two disjoint sets of 3 people
-which mutually do not know each other, illustrated by the two blue triangle which
-lie within the graph.
-
-We can now ask a question which lies at the heart of Ramsey theory: Given positive
-integers $s$ and $t$, can we always find a large enough group of people
-such that $s$ mutually know each other, and $t$ do not? the answer
-is yes, and I shall now define some notation: \cite{Graham1990}
-$$[n] = \{1, 2,\ldots, n\}$$
-$$[n]^k = \{Y:Y\subseteq [n], |Y|=k\}$$
-$$[K]^k = \{Y:Y\subseteq K, |Y|=k\}$$
+Before continuing, we first need to state some notation and definitions. \cite{Graham1990}
+$$[n] := \{1, 2,\ldots, n\}$$
+$$[n]^k := \{Y:Y\subseteq [n], |Y|=k\}$$
+$$[K]^k := \{Y:Y\subseteq K, |Y|=k\}$$
 
 \begin{definition}[Graph]
 
@@ -69,37 +69,50 @@ $$[K]^k = \{Y:Y\subseteq K, |Y|=k\}$$
 
 \begin{definition}[Complete graph]
 
-    We say a graph $G=(V,E)$ is \textit{complete} if $E=[V]^2$. Intuitively, if 
-    every pair of vertices has an edge connecting them. We denoted the complete 
-    graph of order $n$ by $K_n$
+    We say a graph $G:=(V,E)$ is \textit{complete} if $E=[V]^2$. Intuitively, a graph 
+    is complete if every pair of vertices has an edge connecting them. We denoted the complete 
+    graph of order $n$ by $K_n$.
 
 \end{definition}
 
 \begin{definition}[Subgraphs and Cliques]
 
-    We say $G'=(V',E')$ is a \textit{subgraph} of $G=(V,E)$ if $V'\subseteq V$, 
-    and $E'\subseteq E$. We call $G'$ a \textit{clique} of $G$ if it is complete.
+    We say $G':=(V',E')$ is a \textit{subgraph} of $G:=(V,E)$ if $V'\subseteq V$, 
+    and $E'\subseteq E$. We write $G'\subseteq G$. We call $G'$ a \textit{clique} of $G$ if it is complete.
 
-So in terms of complete graphs, $[n]$ represents the vertices and $[n]^2$ represents the
-edges. We define an r-colouring of the edges of a graph (of order n) as a map \cite{Graham1990}:
+\end{definition}
 
-$$\chi : [n]^2 \rightarrow [r]$$
+Earlier we mentioned partitioning the edges into disjoint classes. We can think 
+of these classes as being `colourings' of the edges. In an \textit{r-colouring}, 
+we partition our edges into $r$ disjoint classes, called \textit{colours}. The 
+following definition helps explain this:
 
-We say a subgraph $K$ of $[n]^2$ is monochromatic if the restriction $\chi|_{[K]^2})$ is the constant map.
+\begin{definition}[Colouring]
+    
+    An \textit{r-colouring} of the edges of a graph $G=(V,E)$ is a map \cite{Graham1990}:
 
-\begin{theorem}[Ramsey's theorem for graphs]
+    $$\chi : E \rightarrow [r]$$
 
-    Given positive integers $s, t$, there exist a least positive integer $R(s,t)$ such that any r-colouring
-    of $K_n, \hspace{1em} n\geq R(s,t)$, contains as a subgraph either a monochromatic $K_s$ or a monochromatic
+    We say a subgraph $G' = (V',E')$ of $G$ is monochromatic if the restriction
+    $\chi|_{E'}$ is the constant map.
+
+\end{definition}
+
+We can now state the fundamental question that lies at the heart of Ramsey 
+theory in graph theoretic sense.
+
+\begin{theorem}[Ramsey's theorem]
+
+    Given positive integers $s,t$, there exist a least positive integer $R(s,t)$ such that any 2-colouring
+    of $K_n, \hspace{0.5em} n\geq R(s,t)$, contains as a clique either a monochromatic $K_s$ or a monochromatic
     $K_t$.
 
 \end{theorem}
 
 \begin{proof}
 
-    The result we are proving here is the case $r=2$. Once we have proved this, we shall generalise the result
-    to arbitrary $r$. We proceed by double induction on $s$ and $t$. Note that $R(s,2) = R(2,s)=s$, since a 2-colouring (say, red and blue)
-    of $K_2$ either has a blue edge, or every other edge is red. This is illustrated in the graph below.\\
+    We proceed by double induction on $s$ and $t$. Note that $R(s,2) = R(2,s)=s$, since a 2-colouring (say, red and blue)
+    of $K_2$ either has a blue edge, or every other edge is red. This is illustrated in the graph below. \cite{Graham1990}\\
 
     Hence $R(s,2),R(2,s),R(t,2),R(2,t)$ all exist. We now assume, by induction, that $R(s,t-1)$ and $R(s-1,t)$ both exist.
 
@@ -120,8 +133,7 @@ We say a subgraph $K$ of $[n]^2$ is monochromatic if the restriction $\chi|_{[K]
         are at least $n_2$ blue edges incident with $x$. We will assume that
         the first case holds, since the opposite result follows by symmetry.\\
 
-        Consider a complete subgraph $K_{n_1}$ spanned by $n_1$ vertices
-        joined to $x$ by red edges. If $K_{n_1}$ has a blue $K_t$, then we 
+        Consider a clique $K_{n_1}$ joined to $x$ by red edges. If $K_{n_1}$ has a blue $K_t$, then we 
         are done. Otherwise, by the definition of $R(s-1,t)$, the graph
         $K_{n_1}$ contains a red $K_{s-1}$, which forms a red $K_s$ with $x$.
 
@@ -131,28 +143,28 @@ We say a subgraph $K$ of $[n]^2$ is monochromatic if the restriction $\chi|_{[K]
 
 This result is easily generalised to any finite r-colouring of $K_n$:
 
-\begin{theorem}[General Case]
+\begin{theorem}[Ramsey's Theorem for r-colours]
 
-    Given $k$ positive integers $s_1, s_2,\ldots, s_k$, there exist a least
-    positive integer $R_k(s_1,\ldots,s_k)$ such that any r-colouring of $K_n, \hspace{1em}
-    n\geq R(s_1,\ldots,s_k)$, contains as a subgraph a monochromatic $K_{s_i}$,
-    for some $i\in{1,\ldots k}$, coloured by the $i^{\text{th}}$ colour.
+    Given $r$ positive integers $s_1, s_2,\ldots, s_r$, there exist a least
+    positive integer $R_r(s_1,\ldots,s_r)$ such that any r-colouring of $K_n, \hspace{1em}
+    n\geq R(s_1,\ldots,s_r)$, contains as a clique a monochromatic $K_{s_i}$,
+    for some $i\in{1,\ldots r}$, coloured by the $i^{\text{th}}$ colour.
 
 \end{theorem}
 
 \begin{proof}
 
-    We again proceed by induction on $k$. The base case for $R_2(s_1,s_2)$ is
+    We again proceed by induction on $r$. The base case for $R_2(s_1,s_2)$ is
     true by the previous theorem. So we assume by induction that
-    $R_{k-1}(s_1,\ldots ,s_{k-1})$ exists. Then in any k-colouring of $K_n$ we 
+    $R_{r-1}(s_1,\ldots ,s_{r-1})$ exists. Then in any k-colouring of $K_n$ we 
     replace the first two colours by a new colour. If $n$ is sufficiently large,
     then either there is a $K_{s_1}$ coloured with the $i^{\text{th}}$ colour for
-    some $i \in \{3,\ldots,k\}$, or else for $m=R(s_1,s_2)$ there is a $K_m$
+    some $i \in \{3,\ldots,r\}$, or else for $m=R(s_1,s_2)$ there is a $K_m$
     coloured with the new colour. I.e. in the original colouring this $K_m$ is 
     coloured with the first two original colours. In the first case we are done,
-    and in the second, for $i=1$ or 2, we can find a monochromatic $K_{s_i}]]$ in
+    and in the second, for $i=1$ or 2, we can find a monochromatic $K_{s_i}$ in
     $K_m$ coloured in $K_m$ coloured with the $i^{\text{th}}$ colour. Hence,
-    $$R_k(s_1,\ldots,s_k)\leq R_{k-1}(R(s_1,s_2),s_3,\ldots,s_k)$$
+    $$R_r(s_1,\ldots,s_r)\leq R_{r-1}(R(s_1,s_2),s_3,\ldots,s_r)$$
 
 \end{proof}
 
@@ -170,22 +182,24 @@ This result is easily generalised to any finite r-colouring of $K_n$:
 %
 %\end{theorem}
 
-\begin{theorem}[Ramsey's theorem for Infinite Graphs]%\cite{lecturenotes}
+Interestingly enough, Ramsey's theorem also holds for graphs of infinite order, 
+so long as the number of colours used is finite. We can biject the set of infinitely 
+many vertices with the natural numbers, denoted $\mathbb{N}$, and the set of infinitely 
+many edges between those vertices with the set of all unordered pairs of natural 
+numbers, which we denote $[\mathbb{N}]^2$.
 
 \begin{definition}[Infinite graph]
 
-    We can biject the set of infinitely many vertices with the natural numbers,
-    denoted $\mathbb{N}$, and the set of edges between the vertices with the set
-    of all unordered pairs of natural numbers, denoted $[\mathbb{N}]^2$.\\
-
-    Then we define the infinite graph, $K_\infty$, as the ordered pair
+    We define the infinite complete graph, $K_\infty$, as the ordered pair
     $K_\infty:=(\mathbb{N},[\mathbb{N}]^2)$.
 
 \end{definition}
 
-    For ant r-colouring of the edges of the infinite graph $K_\infty$, i.e. 
+\begin{theorem}[Ramsey's theorem for Infinite Graphs]%\cite{lecturenotes}
+
+    For any r-colouring of the edges of $K_\infty$, i.e. 
     $\chi :[\mathbb{N}]^2\rightarrow \{c_1,\ldots, c_r\}$ there exists 
-    within it an infinite monochromatic complete subgraph. I.e. $\exists
+    within it an infinite monochromatic clique. I.e. $\exists
     X \subseteq K_\infty$ such that $X$ is infinite, and $\chi|_{[X]^2}$ is the
     constant function.
 
@@ -231,6 +245,6 @@ a convergent subsequence.
 
 \end{proof}
 
-\subsection{Generalised Ramsey Numbers}\cite{Bollobas1998}
+\subsection{Generalised Ramsey Numbers \cite{Bollobas1998}}
 \label{sec:1.2}
 
