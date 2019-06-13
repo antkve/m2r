@@ -7,6 +7,8 @@
 \usepackage{titling}
 
 \usepackage{enumitem}
+\usepackage{setspace}
+%\doublespacing
 
 \usepackage{tikz}
 \usepackage{adjustbox}
@@ -32,6 +34,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{prop}[theorem]{Proposition}
+\newtheorem{remark}{Remark}[section]
 \newtheorem*{cor}{Corollary}
 \newtheoremstyle{example}{5pt}{}{}{}{\bfseries}{\newline}{.5em}{\thmname{#1}:\thmnote{ #3}}
 \theoremstyle{example}
@@ -55,6 +58,8 @@
 
 \DeclareMathOperator{\age}{Age}
 \DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\prob}{Pr}
+\DeclareMathOperator{\neigh}{Adj}
 
 \bibliography{ref.bib}
 
@@ -81,8 +86,8 @@
   demonstrating the breadth of the subject area.
   We begin by providing an overview of the classical results from Ramsey in
   their graph theoretic formulation.
-  We then proceed to analyse outstanding results from Hales and Jewett, Szemerédi,
-  and van der Waereden.
+  We then proceed to analyse outstanding results from van der Waereden, Hales
+  and Jewett, and Szemerédi.
   Next we show how an early generalization of results by van der Waerden and
   Rado leads to a geometric constraint on Ramsey configurations in Euclidean
   space.
@@ -107,7 +112,7 @@
 
 \newpage
 \section{Euclidean Ramsey Theory}
-\label{sec:4}
+\label{sec:3}
 \subfile{04-euclidean-ramsey-theory}
 
 \newpage
