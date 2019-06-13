@@ -151,11 +151,10 @@ Another useful construction is the age of a structure.
   a substructure of $\str{A}$.
 \end{definition}
 
-It is reasonably clear that $\age\str{A}$ has the hereditary property. 
-% THIS IS WRONG
-\textbf{WRONG -->}
-$\age\str{A}$ also has the joint embedding property as $\str{B}_1, \str{B}_2
-\in \age\str{A} \implies \str{B}_1, \str{B}_2$ embed in $\str{A} \in \age\str{A}$.
+It is reasonably clear that when $\str{A}$ is a countable relational structure,
+$\age\str{A}$ has the hereditary property.
+By a proof similar to the one given for finite linear orders, it can also be
+shown that $\age\str{A}$ has the JEP.
 
 Two natural questions to ask now are whether the age of a particular structure
 is an amalgamation class, and whether a given amalgamation
@@ -221,11 +220,84 @@ countably many structures in $\class{R}$ up to isomorphism.
 \subsection{The Random Graph}
 \label{sec:4.3}
 
-We now focus on the existence, construction and uniqueness of the random graph.
-The random graph is another example of a Fraïssé limit, but the amalgamation class in this
-case is the class of finite graphs\cite{Cameron2013}.
+The defining property of the random graph is
 
+\begin{remark}[Extensibility Property\supercite{Cameron2013}]
+  \label{extprop}
+  Given two finite sets of distinct vertices $U = \{u_1,\dots,u_m\}, V =
+  \{v_1,\dots,v_n\}$, we write $\neigh{U}$ as the set of vertices adjacent to
+  every element in $U$.
+  There exists a vertex $z$ which is adjacent to all elements in $U$, but not
+  those in $V$.
+\end{remark}
 
+\textcite{Erdos1963} show that by taking a countable set of vertices and
+assigning edges between vertices with probability $\frac{1}{2}$, one produces a
+graph that is isomorphic to the random graph with probability 1.
+While the original paper gives a proof, we reproduce a proof by
+\textcite[1-2]{Cameron2013}.
+
+\begin{prop}
+  We define a countable random graph as a countable structure $\str{G}=(G,R)$
+  which satisfies
+  \begin{itemize}
+  \item $\forall x\in G, \neg((x,x)\in R)$
+  \item $\forall x\in G,\forall y\in G,(x,y)\in R \implies (y,x)\in R$
+  \item $\forall x\in G,\forall y\in G, \prob((x,y)\in R)=\frac{1}{2}$
+  \end{itemize}
+
+  Then any countable random graph satisfies \ref{extprop} with probability 1.
+
+  \begin{proof}
+    We show that the set of countable graphs that do not satisfy property \ref{extprop}
+    has probability 0, i.e. it is a null set.
+    We use an elementary lemma from measure theory that states a countable union
+    of null sets is also null, which follows from countable additivity of a
+    measure.
+    Since we only have countably many choices of $m$ and $n$, there are only
+    countably many choices of $U = \{u_1,\dots,u_m\}$ and $V =
+    \{v_1,\dots,v_n\}$ so we only need to consider a particular choice of $U$
+    and $V$ and show that the set of graphs that fail \ref{extprop} for that choice is
+    null in the limit.
+
+    Suppose that $Z = \{z_1,\dots,z_N\}$ are distinct vertices such that each
+    $z_i$ fails \ref{extprop}.
+    For any particular $z_i$, the probability of this occurring is $1 - Pr(z_i \in
+    \neigh U \text{ and } z_i \notin \neigh V) = 1 - \frac{1}{2^{m+n}}$
+    (adjacency is a union of independent events).
+    The probability of this occurring for every $z_i \in Z$ is $\left(1 -
+      \frac{1}{2^{m+n}}\right)^N$.
+    This approaches 0 as $N\to\infty$ so we can state that every countable
+    random graph fails $\ref{extprop}$ with probability 0 $\implies$ it
+    satisfies it with probability 1.
+  \end{proof}
+\end{prop}
+
+Note that the fixed probability of an edge occurring could be replaced with any
+$p\in(0,1)$ and the proof would be identical.
+
+\begin{prop}
+  If two countable graphs both satisfy \ref{extprop}, then they are isomorphic.
+
+  \begin{proof}
+    Let $\str{G_1}$ and $\str{G_2}$ be two graphs that satisfy \ref{extprop}.
+
+    \textit{sketch, to fill out}
+    \begin{itemize}
+    \item Construct isomorphism for finite points
+    \item Use back and forth to create partial iso.s and take countable union to
+      make a full iso.
+    \end{itemize}
+  \end{proof}
+\end{prop}
+
+\textit{yet to write}
+\begin{itemize}
+\item Proof that this is the Fraïssé limit we want (Cameron2013, p6;
+  Macpherson2011, Ex 2.2.1)
+\item Show that the random graph is indeed homogeneous (Cameron2013, p8)
+\item Mention $\aleph_0$-categoricity (Cameron2013, p9; Babai in Graham, p1509).
+\end{itemize}
 
 \subsection{Ramsey Classes}
 \label{sec:4.4}
@@ -257,6 +329,15 @@ complete graphs has $K_2$-Ramsey property.
 In fact, a direct corollary of the finite Ramsey theorem from the original paper
 \cite[267]{Ramsey1930} is that the class of finite complete graphs is a Ramsey
 class.
+
+\textit{yet to write}
+\begin{itemize}
+\item Mention Ramsey + JEP => AP
+\item Automorphisms of the random graph (Cameron2013; Cameron1990)
+\item Define Strong Amalgamation Property and Extreme Amenability 
+\item Theorems 4.7/8 from Kechris2005 
+\item Conclusion, apply Ramsey Class property to random graph and state why
+\end{itemize}
 
 % LocalWords:  Ramsey subgraphs subgraph Fraïssé surjective
 
