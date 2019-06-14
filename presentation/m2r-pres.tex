@@ -1,0 +1,42 @@
+\documentclass[noamsthm]{beamer}
+\usepackage{subfiles}
+\usepackage{texstyle}
+\usepackage{pgfpages}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+\usetikzlibrary{backgrounds}
+
+\setbeameroption{show notes}
+\setbeameroption{show notes on second screen=right}
+
+% referencing
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=ynt
+]{biblatex}
+\usepackage[UKenglish]{babel}
+\usepackage{csquotes}
+%\bibliographystyle{amsalpha}
+\addbibresource{../references/ref.bib}
+\defbibheading{bibliography}{}
+
+
+\author{Gautam Chaudhuri}
+\title{What we mean by the Lagrangian}
+\subtitle{Differential Geometry in Mechanics}
+
+\usetheme{Antibes}
+\usecolortheme{orchid}
+
+\begin{document}
+\frame{\titlepage}
+
+\section[Lagrange]{The Lagrangian Formalism}
+\subfile{S3}
+\section[Examples]{Motivating Examples of Lagrangian Mechanics}
+\subfile{S4}
+\section[Symmetry]{Symmetry and Noether's Theorem}
+\subfile{S5}
+\end{document}
