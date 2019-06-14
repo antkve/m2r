@@ -36,7 +36,7 @@ systems of linear homogeneous equations, in the sense that will be specified now
 \begin{definition}[Monochromatic vectors]
 Let $X$ be non-empty and let $\chi$ be a $k$-colouring of $X$ for some 
 $k\in\mathbb{N}$. Then an element $x = (x_{1},\cdots,x_{n})\in X^n$ is 
-monochromatic if: 
+\emph{monochromatic} if: 
 $$\exists p \in [k] : \chi\bigg(\{x_{1},\cdots,x_{n}\}\bigg) = \{p\}$$
 \end{definition}
 
@@ -48,10 +48,10 @@ We can formulate our problem in the following way:
 
 \begin{definition}[Partition Regular matrices]
 Let $\Lambda\in\mathbb{Q}^{m\times n}$ be a $(m\times n)$ matrix with 
-coefficients in $\mathbb{Q}$. We say that $\Lambda$ is $k$-regular over 
+coefficients in $\mathbb{Q}$. We say that $\Lambda$ is \emph{$k$-regular} over 
 $\mathbb{N}$ if, under any $k$-colouring of $\mathbb{N}$, there exists a 
 monochromatic $x\in\mathbb{N}^n$ such that $\Lambda x  = 0$.
-Then the matrix $\Lambda$ is Partition Regular (PR) over $\mathbb{N}$ if $\Lambda$ is 
+Then the matrix $\Lambda$ is \emph{partition regular} (PR) over $\mathbb{N}$ if $\Lambda$ is 
 $k$-regular over $\mathbb{N}$ for all $k$.
 \end{definition}
 
@@ -73,7 +73,7 @@ of matrices:
 \begin{definition}[Columns Property]
 A matrix $\Lambda = \begin{pmatrix}
 g_{1} & \cdots & g_{n} 
-\end{pmatrix}\in \mathbb{Q}^{m\times n}$ satisfies the Columns Property (CP) 
+\end{pmatrix}\in \mathbb{Q}^{m\times n}$ satisfies the \emph{columns property} (CP) 
 if $[n]$ can be partitioned into a family of sets 
 $$\bigg\{\Gamma_{1},\cdots,\Gamma_{r}\bigg\}$$ such that:
 
@@ -97,21 +97,27 @@ the first of which results almost immediately by application of Gram-Schmidt ort
 
 \begin{lemma}
 Let $\{v_{1},\cdots,v_{n},v\}\in \mathbb{Z}^m$. If $v \not\in span\{v_{1},\cdots,v_{n}\}$, 
-then there exists $u\in\mathbb{Z}^m$ such that: $u.v\not = 0$ and $\forall i\in [n], u.v_{i}=0$.
+then:
+\begin{center}
+    $\exists u\in\mathbb{Z}^m$ such that: $u.v\not = 0$ and $\forall i\in [n], u.v_{i}=0$.
+\end{center}
+
 \end{lemma}
 
 To state our next Lemma, we need a definition (by W. Deuber, see \cite{Graham1990}):
 
 \begin{definition}[(m,p,c)-sets]
 Let $m,p,c \in \mathbb{N}$. Then we define:
-$$N_{m,p,c}:=\bigg\{ n = (n_{1},\cdots,n_{m+1}) \in \mathbb{Z}^{m+1} \  
+\begin{center}
+   $ N_{m,p,c}:=\bigg\{ n = (n_{1},\cdots,n_{m+1}) \in \mathbb{Z}^{m+1}  
 \bigg|  \ \exists j 
-\in [m]: \forall i<j, \ n_{i}= 0 \ \emph{and} \ n_{j}=c \ \emph{and}  
-\ \forall i>j, \ |n_{i}|\leq p\bigg\} $$
-and for a given $y\in \mathbb{N}^{m+1}$ the (m,p,c)-set is defined as:
+\in [m]: \forall i<j, \ n_{i}= 0 \ $ and $\ n_{j}=c \ $ and  
+ $ \forall i>j, \ |n_{i}|\leq p\bigg\} $
+\end{center} 
+and for a given $y\in \mathbb{N}^{m+1}$ the \emph{(m,p,c)-set} is defined as:
 $$S_{m,p,c}(y):=\bigg\{y.n \ | n\in N_{m,p,c}\bigg\}$$
 
-Then $y$ is called a generator of the $(m,p,c)$-set.
+Then $y$ is called a \emph{generator} of the $(m,p,c)$-set.
 \end{definition}
 
 
@@ -158,10 +164,12 @@ That is, it enables us to solve general problems of the Hilbert-Schur-van
 der Waerden kind, through a unified algebraic approach. It also provides us 
 with an algebraic constraint on Ramsey sets in $\mathbb{Z}$.
 
-In this section show how a generalisation of Rado's theorem (\cite{Erdös1973}) 
-enables us to translate a combinatorial property of finite subsets of the Euclidean 
-space into a geometric property. In particular we identify a geometrical necessary 
-condition for a finite set to be Ramsey in $\mathbb{R}^n$.
+Rado's approach was to phrase an arithmetical problem as a question about 
+monochromatic solutions to certain systems of homogeneous equations.
+A similar approach enables us to translate a combinatorial property of finite subsets 
+of the Euclidean space into a geometrical property. In particular we are now interested
+in affine linear equations on $\mathbb{R}$ that do not admit monochromatic solutions (Lemma \ref{lem:radreal}).
+These allow us to formulate a necessary condition for a finite set to be Ramsey in $\mathbb{R}^n$.
 
 We first define a notion of Ramseyness for finite sets $F\in\mathbb{R}^n$. 
 
@@ -255,12 +263,12 @@ of scalar coefficients $\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$, as
 the equations (1) and (2) are invariant under isometry in $\mathbb{R}^n$.
 
 
-Our main tool in the proof is the following Lemma, which is a generalisation of Rado's theorem.
-In fact it builds up on later results from Rado (see \cite{Rado1945}).  
-The proof that follows is taken from Graham (see \cite{Graham1981}). Erd\H os gives a more general proof 
+Our main tool in the proof is the following Lemma, which builds up on later results from Rado 
+(see \cite{Rado1945}). 
+The proof that follows is taken from Graham (see \cite{Graham1981}). In \cite{}  gives a more general proof 
 involving arbitrary fields.
 
-\begin{lemma}[Erd\H os,1973]
+\begin{lemma}[\textcite{Erdös1973}]\label{lem:radreal}
 Let $\mu_{1},\cdots,\mu_{k}$ and $b\neq 0$ be elements of $\mathbb{R}$. Then there 
 exists a colouring $\chi$ of $\mathbb{R}$ such that the equation: 
 $$\sum_{i = 1}^{k} \mu_{i}(x_{i} - x_{0}) = b \ \ \ \ \ \ \ \ (A) $$ has no monochromatic solution.
