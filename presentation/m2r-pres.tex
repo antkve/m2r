@@ -1,0 +1,79 @@
+\documentclass{beamer}
+\usepackage{subfiles}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}
+
+% referencing
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=ynt
+]{biblatex}
+\usepackage[UKenglish]{babel}
+\usepackage{csquotes}
+%\bibliographystyle{amsalpha}
+\addbibresource{../references/ref.bib}
+\defbibheading{bibliography}{}
+
+\newtheoremstyle{BreakBold}
+{5pt}% measure of space to leave above the theorem.
+{}% measure of space to leave below the theorem.
+{\itshape}% name of font to use in the body of the theorem
+{}% measure of space to indent
+{\bfseries}% name of head font
+{\newline}% punctuation between head and body
+{.5em}% space after theorem head
+%; " " = normal inter-word space
+% Manually specify theorem head
+{\thmname{#1}\thmnumber{ #2}:\thmnote{ [#3]}}
+
+\theoremstyle{BreakBold}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{cor}{Corollary}
+
+\newcommand{\str}[1]{\mathbf{#1}}
+\newcommand{\rel}[2]{R^{#1}_{\str{#2}}}
+\newcommand{\class}[1]{\mathcal{#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\sstr}[2]{\binom{\str{#1}}{\str{#2}}}
+\newcommand{\ramsSplit}[3]{(#1)^{#2}_{#3}}
+\newcommand{\radoArrow}[3]{\rightarrow\ramsSplit{#1}{#2}{#3}}
+\newcommand{\card}[1]{|#1|}
+\newcommand{\sumin}{_{\text{min}}}
+\newcommand{\sumax}{_{\text{max}}}
+
+\author{
+  Chaudhuri, Gautam\\
+  \and
+  Kveder, Anthony\\
+  \and
+  Malbon, Joe\\
+  \and
+  Tarallo, Guglielmo\\
+}
+\title{An Overview of Ramsey Theory}
+\subtitle{Why colour doesn't matter}
+
+\usetheme{Antibes}
+\usecolortheme{orchid}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{Introduction}
+
+\section{Graph Theoretic Ramsey Theory}
+
+\section{The Hales-Jewett Theorem and Extensions}
+
+\section{Euclidean Ramsey Theory}
+
+\section{The Random Graph}
+
+
+\end{document}
