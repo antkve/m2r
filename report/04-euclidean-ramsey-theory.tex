@@ -147,11 +147,11 @@ increasing fashion by position $\pi(x_{j})$ of the first non-zero coefficient
 $d(x_{j})$ in their $p$-expansion. Partition their indices into sets 
 $\Gamma_{i}:=\{j\in [n] \ | \ \pi(x_{j})=i\}$. Then by means of properties of 
 primes integers and our first Lemma one shows that such a partition satisfies 
-the Columns Property conditions.
+the columns property conditions.
 
 For the sufficient implication, we show that there exist $m,p,c\in\mathbb{N}$ 
 such that for all $x\in\mathbb{N}$, $S_{m,p,c}(x)$ contains a solution to our 
-system of equations. This is done constructively, using the Columns Property 
+system of equations. This is done constructively, using the columns property 
 that we assume. Then, by our second Lemma, one such solution must be monochromatic. 
 $\qed$
 
@@ -232,7 +232,7 @@ We will use the following characterisation of a spherical figure:
 
 \begin{lemma}
 A figure $F = \{v_{0},\cdots,v_{k}\}$ is not spherical if and only if there 
-exist scalars $\{0\}\neq\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$ such that:
+exist scalars $\{0\}\neq\{\mu_{1},\cdots, \mu_{k},b\}\subset\mathbb{R}$ such that:
 
 \begin{enumerate}[label=(\roman*)]
 \item $\sum_{i=1}^{k} \mu_{i} (v_{i} - v_{0})= 0$;
@@ -265,12 +265,12 @@ As otherwise $F$ is spherical. So (ii) holds. $\qed$
 Notice that if $F$ is not spherical, then any other figure with the same 
 configuration is not spherical. In particular, if $F$ has the same configuration 
 as $E$, then the elements of $E$ satisfy our last Lemma for the same choice 
-of scalar coefficients $\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$, as 
+of scalars $\{\mu_{1},\cdots, \mu_{k},b\}\subset\mathbb{R}$, as 
 the equations (1) and (2) are invariant under isometry in $\mathbb{R}^n$.
 
 
 Our main tool in the proof is the following Lemma, which builds up on later results from Rado 
-(see \cite{Rado1945}). 
+about systems of non-homogeneous equations (see \cite{Rado1945}). 
 The proof that follows is taken from Graham (see \cite{Graham1981}). In \cite{Erdös1973} a more general proof
 is given, involving arbitrary fields.
 
@@ -327,18 +327,42 @@ which is absurd.
 Thus (A) has no monochromatic solution under $\overline{\chi}$. $\qed$
 
 \textit{Proof of Theorem \ref{thm:sph}}. Let $F$ be a non-spherical figure. Then there exist 
-coefficients $\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$ such that equations 
-(i) and (ii) from our second Lemma are satisfied. By our first Lemma there exists 
+scalars $\{\mu_{1},\cdots, \mu_{k},b\}\subset\mathbb{R}$ such that equations 
+(i) and (ii) from our first Lemma are satisfied. By Lemma \ref{lem:radreal} there exists 
 an $r$-colouring $\chi$ of $\mathbb{R}$ such that (ii) has no monochromatic 
 solution. For $n \in \mathbb{N}$ we define the following colouring of 
 $\mathbb{R}^n$: $$\chi_{n}^*: \mathbb{R}^n\to [r] : v \mapsto \chi(|v|^2) $$
 Now, if there exists a monochromatic $E\in [F]$ in $\mathbb{R}^n$, then there 
-exists a monochromatic solution to (ii), since the elements of $E$ satisfy (ii) with the same choice of coefficients by a 
-previous observation. But this contradicts our first Lemma.
+exists a monochromatic solution to (ii), since the elements of $E$ satisfy (ii) with 
+the same choice of scalars by a previous observation. But this contradicts our first Lemma.
 
 Thus there exists an $r\in \mathbb{N}$ such that for all $n \in \mathbb{N}$ 
 there exists an $r$-colouring of $\mathbb{R}^n$ under which no element of $[F]$
 in $\mathbb{R}^n$ is monochromatic. That is, $[F]$ is not Ramsey.\qed
+
+Thus being spherical is a necessary condition for a figure (a configuration)
+to be Ramsey. It is not known whether this is also a sufficient condition (\cite{Graham1994}). 
+Yet there are some classes of configurations that have been proved to be Ramsey.
+As an example, consider the following:
+
+\begin{definition}[Brick]
+    A configuration $\mathfrak{B}$ is a \emph{brick} if $\mathfrak{B} 
+    = [B]$ for some $B\in \mathbb{R}^n$ of the form:
+
+    \begin{center}
+        $B = \{(b,\cdots,b).\delta \ | \ \delta \in \{0,1\}^n \}$
+    \end{center}
+
+    for some $n\in\mathbb{N}$, where $(b,\cdots,b)\in\mathbb{R}^n$ 
+    for some fixed $b\in\mathbb{R}\setminus{\{0\}}$.
+\end{definition}
+
+The following theorem is proved in \cite{Erdös1973}:
+
+\begin{theorem}
+    Eevery brick is Ramsey.
+\end{theorem}
+
 
 % Local Variables:
 % TeX-master: "m2r-report.tex"
