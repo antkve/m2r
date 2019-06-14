@@ -1,5 +1,6 @@
 resources/**
 report/out/**
+notes/**
 .DS_Store
 *.log
 .vscode/**
