@@ -1,4 +1,5 @@
 resources/**
+notes/**
 **/out/**
 .DS_Store
 *.log

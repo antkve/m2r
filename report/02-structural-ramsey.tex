@@ -17,7 +17,6 @@ limits, the existence and uniqueness of the Random graph, and some of the
 Ramsey type properties that it exhibits.
 
 \subsection{Structures, Ages and Amalgamation Classes}
-\label{sec:4.1}
 
 We begin with a few preliminaries and some important results about them.
 
@@ -218,7 +217,6 @@ This can be done by induction in a similar manner to showing that there are only
 countably many structures in $\class{R}$ up to isomorphism.
 
 \subsection{The Random Graph}
-\label{sec:4.3}
 
 The defining property of the random graph is
 
@@ -280,14 +278,28 @@ $p\in(0,1)$ and the proof would be identical.
   If two countable graphs both satisfy \ref{extprop}, then they are isomorphic.
 
   \begin{proof}
-    Let $\str{G_1}$ and $\str{G_2}$ be two graphs that satisfy \ref{extprop}.
+    Let $\str{\Gamma_1} = (\Gamma_1,\rel{1}{\Gamma_1})$ and $\str{\Gamma_2} =
+    (\Gamma_2,\rel{1}{\Gamma_2})$ be two graphs that satisfy \ref{extprop}. 
 
-    \textit{sketch, to fill out}
-    \begin{itemize}
-    \item Construct isomorphism for finite points
-    \item Use back and forth to create partial iso.s and take countable union to
-      make a full iso.
-    \end{itemize}
+    Suppose we have an isomorphism $f$ between two finite substructures
+    $\str{G_1}\subset\str{\Gamma_1},\str{G_2}\subset\str{\Gamma_2}$, these are
+    induced subgraphs which necessarily have the same cardinality $n$, and we
+    take an additional vertex $x_{n+1} \in \Gamma_1\setminus G_1$.
+    We can extend this to an isomorphism between the induced subgraphs on $G_1'
+    = G_1 \cup \{x_{n+1}\}$ and $G_2' = G_2 \cup \{y_{n+1}\}$ using
+    \ref{extprop} in the following manner.
+
+    We can partition $G_1$ into $U = \{x \in G_1 : x \in \neigh\{x_{n+1}\}\},
+    V = \{x \in G_1 : x \notin \neigh\{x_{n+1}\}\}$ and take the images of these
+    classes under $f$, say $U', V'$.
+    By \ref{extprop}, we have a $y_{n+1} \in \Gamma_2\setminus G_2 : y_{n+1} \in \neigh{U'}$ and
+    $y_{n+1} \notin \neigh{V'}$, so we can extend the isomorphism by setting
+    $f'(x_{n+1}) = y_{n+1}$.
+    It is clear to see that this is an isomorphism between substructures.
+    Furthermore, note that we could switch $\str{\Gamma_1}$ and $\str{\Gamma_2}$
+   and the proof would be identical.
+
+    So given any finite substructure, we can generate an isomorphism for
   \end{proof}
 \end{prop}
 
