@@ -1,0 +1,88 @@
+\documentclass[./m2r-report.tex]{subfile}
+
+\section{Combinatorial Ramsey Theory}
+
+
+\paragraph*{}
+
+Although there is much utility in using Ramsey theory to study highly structured sets such as graphs and models, it is also useful to be able to prove facts about the existence of regularity in sets with less structure. For example, Ramsey's original theorem stated that given $n, r, k \in \mathbb{N}$ we have that for any r-colouring of the class of subsets of size k of a set $\Gamma$ of sufficient size, there exists a subset $\Delta \subset \Gamma$ of size n such that the class of subsets of size  k is monochromatic. This is a statement about sets with no structure whatsoever.
+
+A related class of foundational theorems of Ramsey theory concerns sets with an ordering and sets of words of symbols. This class includes the Hales-Jewett theorem, the Gallai-Witt theorem and Van der Waerden's theorem. The first concerns sets of words of symbols, that is, ordered tuples of elements of an alphabet, the second concerns vectors over the integers, and the third concerns totally ordered sets. These theorems are related because ordered sets and integer vectors can be related to sets of words in a way that allows a colouring of the ordered set or vector space to induce a colouring of the set of words, and represents substructures of the type considered in Van der Waerden's theorem or the Gallai-Witt theorem as those of the type considered in Hales-Jewett; hence, as we will show, Van der Waerden's theorem and the Gallai-Witt theorem can both be proved using the Hales-Jewett theorem.
+
+\subsection{The Hales-Jewett Theorem}
+Consider the set $\Omega$ of k-words of symbols from an alphabet $A$, that is, the set $\{(a_1, a_2, ..., a_k) : a_i \in A\}$. We define a \textbf{root} of $\Omega$ to be a k-word of symbols from $A \bigcup \{x\}$ which contains at least one x, where $x \notin A$; in other words, a root is a word obtained by replacing one or more of the symbols in a word of $\Omega$ with $x$. Given a root $\tau$, we define, through slight abuse of notation, the function $\tau (a): A \rightarrow \Omega$ to be the word obtained by replacing every instance of x in $\tau$ with a. For example, for a root $\tau = (1, 3, 2, x, x)$, we have $\tau (5) = (1, 3, 2, 5, 5)$. Finally, we define a \textbf{combinatorial line} to be a set $\{\tau(a) : a \in A\}$ for some root $\tau$.
+
+The statement of the original Hales-Jewett theorem is as follows:
+Given positive integers n and r, there exists a positive integer H such that for any r-colouring of the set of H-words of an alphabet of size n, there exists a monochromatic combinatorial line. The smallest such number H is called the Hales-Jewett number, and is denoted HJ(r, n).
+
+The set of k-words over a finite alphabet of size n can be considered as the set of unit cells of a hypercube of dimension k and side length n. In this conception, a combinatorial line represents a hypercolumn or a (certain kind of) diagonal of the cube. Thus, Hales-Jewett is equivalent to the statement that for any n and r there exists an H such that for any r-colouring of the cells of an H-cube of side length n, there exists a monochromatic hypercolumn or diagonal.
+
+There are several proofs of the theorem. The one given in the original paper by Hales and Jewett gives a much larger upper bound for $HJ(r, n)$ than subsequent proofs, so we will be outlining the one given by Shelah [1998], which gives a primitive-recursive upper bound.
+
+\subsubsection*{Proof of the Hales-Jewett Theorem}
+We prove the theorem by induction on $n$, the size of the alphabet, keeping the number of colours $r$ constant. The base case is trivial, as for an alphabet of size 1, all single-member subsets of $A^H$ are combinatorial lines for any $H$, and thus $HJ(r, 1) = 1$. For the inductive step we assume that the theorem holds for $n-1$.	We set $H = HJ(r, n-1)$, and define a strictly increasing sequence of positive integers $N_1, N_2, ... , N_H$ as follows:
+$$
+N_1 := r^{t^H}, \ \ \ 
+N_i := r^{t^H + \sum_{j = 1}^{i - 1}{N_j}}
+$$
+We will prove that $N := N_1 + ... + N_H$ is an upper bound for $HJ(r, n)$.
+\paragraph*{}
+Consider an alphabet $A$ of size n. For a set $\{\tau_1, \tau_2, ..., \tau_H\}$ of roots with $\tau_i \in (A \bigcup \{x\})^{N_i}$, i.e. a set of roots of the $N_i$-words in $A$ for each i, we define the \textbf{concatenation} of these roots $\tau (a) = \tau_1(a_1) \tau_2 (a_2) ... \tau_H (a_H) \in A^{N_1 + N_2 + ... + N_H} = A^N$, where $a = (a_1, a_2, ..., a_H) \in A^H$. For example, for $H = 2$ and $\tau_1 = (1, x), \tau_2 = (x, x)$ we have $\tau (2, 3) = (1, 2, 3, 3)$.
+We also define two members of $A^H$ to be \textbf{neighbours} if they differ in exactly one coordinate, e.g. $	(1, 2, 2)$ and $(1, 2, 4)$.
+
+To prove the inductive step, we require the following lemma:
+
+\textbf{Lemma} Given $H, N_i, N, r, n$ as above, for any r-colouring of $A^N$, there exist H roots $\tau_1, ..., \tau_H$ with $\tau_i \in (A \bigcup \{x\})^{N_i}$ such that for their concatenation $\tau$ and any two neighbours $a, b \in A^H$, the words $\tau(a)$ and $\tau(b)$ are the same colour.
+
+This lemma can be proved by backwards induction on i; in other words, we assume that $\tau_{i+1}, ..., \tau_{H}$ are already defined, and show that there exists $\tau_i$ such that the lemma is satisfied for $\kappa_1, ..., \kappa_{i-1}, \tau_i, ..., \tau_H$ for any roots $\kappa_1, ..., \kappa_{i-1}$ and any neighbours that differ in their $i$th coordinates. We skip this proof due to space constraints.
+
+Given an r-colouring $\chi: A^N \rightarrow \{1, ..., r\}$ of $A^N$, take a $\tau$ as in the lemma, and an arbitrary element $\xi \in A$, and define a colouring $\chi'$ for the set $(A \backslash \{\xi\})^H$ such that 
+$
+\chi'(a) = \chi(\tau(a))
+$. Since $\left| A \backslash \{\xi\} \right| = n-1$, by the inductive hypothesis there exists a combinatorial line in $(A \backslash \{\xi\})^H$ which is monochromatic under the $\chi'$ colouring, hence there is a root $\nu \in ((A \backslash \{\xi\}) \bigcup \{x\})^H$ such that $\mathcal{L}_{\nu} := \{\nu(a) : a \in A \backslash \{\xi\} \}$ is monochromatic with respect to $\chi'$. Say $\nu = \nu_1 \nu_2 ... \nu_H$, where $\nu_i \in (A \backslash \{\xi\}) \bigcup \{x\}$.
+
+Now consider the set $\mathcal{L}_{\tau(\nu)} := \{\tau(\nu(a)) : a \in A\}$, where $\tau(\nu(a)) = \tau_1(\nu_1(a)) \tau_2(\nu_2(a)) ... \tau_H(\nu_H(a))$. This function $\tau \circ \nu $ is a root of $A^N$, and thus $\mathcal{L}_{\tau( \nu)}$ is a combinatorial line. Since $\mathcal{L}_{\nu}$ is monochromatic with respect to $\chi'$, we have that $\chi'(\nu(a)) = \chi'(\nu(b))\  \forall a, b \in A \backslash \{\xi\}$. Therefore by the definition of $\chi'$, $\chi(\tau(\nu(a))) = \chi(\tau(\nu(b))) \ \forall a, b \in A \backslash \{\xi\}$.
+To prove that $\mathcal{L}_{\tau(\nu)}$ is monochromatic, we need only prove that there exists some $a \in A$ such that $\chi(\tau(\nu(a))) = \chi(\tau(\nu(\xi)))$. Here we use the lemma.
+
+Take some arbitrary $a \in A$. Assume that $\nu$ has exactly one instance of $x$ in it. Then $\nu(\xi)$ is a neighbor of $\nu(a)$ in $A$ since it differs only in the coordinate containing the x, and thus by the definition of $\tau$ we have that $\chi(\tau(\nu(\xi))) =  \chi(\tau(\nu(a)))$.
+Otherwise, say $\nu$ has more than one instance of x in it. Enumerate the instances of x, so that $\nu = ...\ x\ ...\ x\ ...\ ...\ x\ .... = ...\ x_1\ ...\ x_2\ ...\ ...\ x_k\ ...$. Now, $\nu(a)$ may be obtained from $\nu(\xi)$ by passing through a sequence of neighbours, by sequentially changing each instance of $x_i$ to $a$. Therefore by the definition of $\tau$ from the lemma, we have that $\chi(\tau(\nu(\xi))) =  \chi(\tau(\nu(a)))$.
+
+Finally, we have that $\chi(\tau(\nu(a))) = \chi(\tau(\nu(b))) \forall a, b \in A$, and therefore $\mathcal{L}_{\tau(\nu)} = \{\tau(\nu(a)) : a \in A\}$ is a monochromatic combinatorial line in $A^N$, QED $\square$
+
+
+\subsection{Van der Waerden's Theorem}
+The theorem of Van der Waerden [1927] was actually stated and proved some time before Hales and Jewett's paper, but can be considered as a direct result of the more general Hales-Jewett theorem. It states the following:
+
+For any $r, n \in \mathbb{Z}_{>	 0}$, there exists an $N \in \mathbb{Z}_{> 0}$ such that for any r-colouring of the set $\{1, ..., N\}$, there exists a monochromatic arithmetic progression of n terms, i.e. a monochromatic set $\{a, a + d, a + 2d, ..., a + (t - 1)d\}$.
+
+This N is called the Van der Waerden number of $r$ and $n$, and is denoted $W(r, n)$
+\subsubsection*{Proof of Van der Waerden's Theorem}
+Given $r$ and $n$, we shall provide an upper bound for $W(r, n)$. Let $H = HJ(r, n)$, $N = (n - 1)H + 1$ and set $A = \{0, 1, ..., n-1\}$. Define $f: A^H \rightarrow \{1, ..., N\}$ as $f(a_1 a_2 ... a_H) = a_1 + a_2 + ... + a_H + 1$. Then given a colouring $\chi$ of $\{1, ..., N\}$, we can define a colouring $\chi'$ of $A^H$ such that $\chi'(x) = \chi(f(x)) \ \forall x \in A^H$.
+
+By Hales-Jewett, there must exist some root $\tau$ of $A^H$ such that $\{\tau(0),\
+ \tau(1),\ ..., \tau(n-1)\}$ is monochromatic with respect to $\chi'$. Say $\tau$ has $d$ instances of $x$ in it. Then $f$ maps $\tau(1)$ to $f(\tau(0)) + d$, $\tau(2)$ to $f(\tau(0)) + 2d$, etcetera. Hence the image of the combinatorial line is an arithmetic progression of length $n$, and by the definition of $\chi'$, this image is monochromatic with respect to $\chi$, QED $\square$ 
+ 
+ 
+\subsection{The Gallai-Witt Theorem}
+Consider a subset V of the set $\mathbb{Z}^m$ of vectors of integers. We define a \textbf{homothetic copy} of V to be a set $\{u + \lambda v : v \in V\}$ for some vector $u \in \mathbb{Z}^m$ and scalar $\lambda \in \mathbb{N}$. The Gallai-Witt theorem provides a direct result of Hales-Jewett concerning such homothetic copies:
+
+\textbf{Theorem:} For any r-colouring of $\mathbb{Z}^m$, and any finite subset $U \in \mathbb{Z}^m$, there exists a monochromatic homothetic copy of $U$.
+
+The proof of this theorem is extremely similar to that of Van der Waerden's, and is thus left out.
+
+
+\subsection{Szemeredi's theorem and the Density Hales-Jewett theorem}
+More recent results in combinatorial Ramsey theory concern the density of subsets. Instead of proving the existence of regular structures contained in at least one class of a colouring, these results prove that such structures exist within any specific subset with a certain \textbf{density} in a set -- the density of a set $A \subset B$ in a set $B$ is $\frac{|A|}{|B|}$. The results in question are known as the density Hales-Jewett theorem and Szemeredi's theorem. They are density equivalents of Hales-Jewett and Van der Waerden's theorem, respectively, and just as with the original theorems, Szemeredi's theorem can be easily deduced from the density Hales-Jewett theorem. The formal statement of the Density Hales-Jewett theorem is as follows.
+
+\textbf{Theorem:} For $k \in \mathbb{Z}_{\geq 2}$ and $\delta \in (0, 1]$, there exists an integer N such that for $n \geq N$ and any set $A$ such that $|A| = k$, and any subset $B$ of $A^n$ with density $\delta$ in $A$, $B$ contains a combinatorial line.
+
+The smallest such N is called the Density Hales-Jewett number, and is denoted $DHJ(\delta, k)$. This theorem can be seen to immediately imply the original Hales-Jewett theorem, as follows:
+
+Given any $k$, by DHJ, setting $\delta := \frac{1}{r}$, there is an $N \in \mathbb{N}$ such that for a set $A$ of size $k$, any subset of $A^N$ with density $\frac{1}{r}$ contains a combinatorial line. If $A^N$ is r-coloured, i.e. split into r disjoint subsets, then at least one of these subsets must have density at least $\frac{1}{r}$, since the sum of all their densities in the set is 1. Hence, that subset must contain a combinatorial line.
+
+This proof also implies that $HJ(r, n) \leq DHJ(\frac{1}{r}, n)$.
+
+\paragraph*{}
+The Density Hales-Jewett theorem was originally proven by Furstenberg and Katznelson [1991] using ergodic theory, the theory of measure-invariant dynamical systems. It used techniques developed in Furstenberg's proof of Szemeredi's theorem, which considered the Bernoulli system, a dynamical system on the set of subsets of the integers under the operation of "shifting" subsets by 1. A more recent and elementary proof was produced by the Polymath project, whichproved the theorem by contradiction using the strategy of density increment, which can be used to prove similar facts for general structures. The core of this strategy is the following:
+
+Firstly, one proves that for any N, if a subset $A$ has density $\delta$ in some structured set $S$ (e.g. $[k]^N$, or $\mathbb{Z}$ for the proof of szemeredi's), and does not contain a substructure of the desired kind, then there must exist a substructure $S'$ of $S$ in which $A$ has density $\delta + c$, where c depends only on $\delta$. This process is incremented by showing that $S'$ must then contain a substructure of the same kind where $A$ has density $\delta + 2c$. For a large enough structure, this iteration can be continued until $A$ has a density greater than 1 in some substructure, a contradiction.
