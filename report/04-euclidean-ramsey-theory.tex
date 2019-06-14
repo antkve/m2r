@@ -1,9 +1,9 @@
 \documentclass[./m2r-report.tex]{subfiles}
 
-In this section we show how a theorem from Rado (\cite{Rado1933}) generalising results
+In this section we show how a theorem of Rado (\cite{Rado1933}) generalising results
 from arithmetical Ramsey theory is the key to proving an interesting connection
-between combinatorial and geometrical properties of finite subsets of the 
-Euclidean space. Now, Rado's theorem and its variants use purely Ramsey 
+between combinatorial and geometrical properties of finite subsets of Euclidean 
+space. Now, Rado's theorem and its variants use purely Ramsey 
 theoretical techniques in their proof. This illustrates once more how Ramsey theory is 
 capable of translating combinatorial properties into structural (ie. geometric, 
 algebraic, etc.) properties.
@@ -19,19 +19,19 @@ They are all usually classified as arithmetical results, as they deal with
 combinatorial properties of $\mathbb{N}$.
 
 Rado, who was a student of Schur's, generalised these results in 1933 (\cite{Schacht2011}). 
-In fact they can all be seen as statements abot monochromatic solutions to 
+In fact they can all be seen as statements about monochromatic solutions to 
 systems of linear homogeneous equations, in the sense that will be specified now.
 
-\begin{definition}[Colouring of a set]
-Let $X$ be a non-empty set. For $k\in\mathbb{N}$, a $k$-colouring of $X$ is a 
-partition of $X$ into $k$ equivalence classes. 
-\end{definition}
+%\begin{definition}[Colouring of a set]
+%Let $X$ be a non-empty set. For $k\in\mathbb{N}$, a $k$-colouring of $X$ is a 
+%partition of $X$ into $k$ equivalence classes. 
+%\end{definition}
 
-Equivalently, a $k$-colouring of $X$ is the partition of $X$ induced by an 
-arbitrary map: $$\chi: X \to [k]$$ through the equivalence relation: 
-$$\mathcal{R}_{\chi}:= \{(x_{1},x_{2})\in X | \chi(x_{1})=\chi(x_{2}) \}$$
-and $\chi$ is called the colouring function. Somewhat improperly, 
-we will identify a $k$-colouring of $X$ with its colouring function.
+%Equivalently, a $k$-colouring of $X$ is the partition of $X$ induced by an 
+%arbitrary map: $$\chi: X \to [k]$$ through the equivalence relation: 
+%$$\mathcal{R}_{\chi}:= \{(x_{1},x_{2})\in X | \chi(x_{1})=\chi(x_{2}) \}$$
+%and $\chi$ is called the colouring function. Somewhat improperly, 
+%we will identify a $k$-colouring of $X$ with its colouring function.
 
 \begin{definition}[Monochromatic vectors]
 Let $X$ be non-empty and let $\chi$ be a $k$-colouring of $X$ for some 
@@ -42,14 +42,16 @@ $$\exists p \in [k] : \chi\bigg(\{x_{1},\cdots,x_{n}\}\bigg) = \{p\}$$
 
 In the following, we will be studying systems of linear equations with rational 
 coefficients. These will be denoted $\mathcal{L }=\mathcal{L}(x_{1},\cdots,x_{n})$. 
-We are interested in monochromatic solutions $x\in \mathbb{N}^n$ to $\mathcal{L}$. 
+We are interested in monochromatic solutions $x\in \mathbb{N}^n$ to $\mathcal{L}$, where
+$\mathbb{N}:= \Z^+$. 
 We can formulate our problem in the following way:
 
 \begin{definition}[Partition Regular matrices]
-Let $\Lambda\in\mathbb{Q}^{n\times m}$. $\Lambda$ is $k$-regular over 
+Let $\Lambda\in\mathbb{Q}^{m\times n}$ be a $(m\times n)$ matrix with 
+coefficients in $\mathbb{Q}$. We say that $\Lambda$ is $k$-regular over 
 $\mathbb{N}$ if, under any $k$-colouring of $\mathbb{N}$, there exists a 
 monochromatic $x\in\mathbb{N}^n$ such that $\Lambda x  = 0$.
-$\Lambda$ is Partition Regular (PR) over $\mathbb{N}$ if $\Lambda$ is 
+Then the matrix $\Lambda$ is Partition Regular (PR) over $\mathbb{N}$ if $\Lambda$ is 
 $k$-regular over $\mathbb{N}$ for all $k$.
 \end{definition}
 
@@ -85,13 +87,13 @@ $$\bigg\{\Gamma_{1},\cdots,\Gamma_{r}\bigg\}$$ such that:
 
 Rado's theorem states:
 
-\begin{theorem}[Rado, 1933]
+\begin{theorem}[\textcite{Rado1933}]
 Let $\Lambda\in\mathbb{Q}^{m\times n}$. Then $\Lambda$ is partition regular if 
 and only if it satisfies the columns property.
 \end{theorem}
 
-To prove Rado's theorem we use the following lemmas, the first of which results 
-almost immediately by application of Gram-Schmidt orthogonalization:
+To prove Rado's theorem we use the following lemmas (following Liu, see \cite{Liu2016}), 
+the first of which results almost immediately by application of Gram-Schmidt orthogonalization:
 
 \begin{lemma}
 Let $\{v_{1},\cdots,v_{n},v\}\in \mathbb{Z}^m$. If $v \not\in span\{v_{1},\cdots,v_{n}\}$, 
@@ -102,11 +104,14 @@ To state our next Lemma, we need a definition (by W. Deuber, see \cite{Graham199
 
 \begin{definition}[(m,p,c)-sets]
 Let $m,p,c \in \mathbb{N}$. Then we define:
-$$N_{m,p,c}:=\bigg\{\mu = (\mu_{1},\cdots,\mu_{m+1}) \  \bigg|  \ \exists j 
-\in [m]: \forall i<j, \ \mu_{i}= 0 \ \emph{and} \ \mu_{j}=c \ \emph{and}  
-\ \forall i>j, \ |\mu_{i}|\leq p\bigg\} $$
-and for a given generator $y\in \mathbb{N}^{m+1}$ the (m,p,c)-set is defined as:
-$$S_{m,p,c}(y):=\bigg\{y.\mu \ | \mu\in N_{m,p,c}\bigg\}$$
+$$N_{m,p,c}:=\bigg\{ n = (n_{1},\cdots,n_{m+1}) \in \mathbb{Z}^{m+1} \  
+\bigg|  \ \exists j 
+\in [m]: \forall i<j, \ n_{i}= 0 \ \emph{and} \ n_{j}=c \ \emph{and}  
+\ \forall i>j, \ |n_{i}|\leq p\bigg\} $$
+and for a given $y\in \mathbb{N}^{m+1}$ the (m,p,c)-set is defined as:
+$$S_{m,p,c}(y):=\bigg\{y.n \ | n\in N_{m,p,c}\bigg\}$$
+
+Then $y$ is called a generator of the $(m,p,c)$-set.
 \end{definition}
 
 
@@ -123,7 +128,7 @@ We omit the proof, which results through application of van der Waerden (see \ci
 We now sketch a proof of Rado's theorem. The proof is taken from Liu (see \cite{Liu2016}).
 
 
-\textit{Sketch of proof of Rado}.
+\textit{Sketch of proof of Rado's Theorem}.
 We work with $\Lambda\in\mathbb{Z}^{m\times n}$ without loss of generality.
 
 For the necessary implication, we choose the following colouring: for an arbitrary 
@@ -172,7 +177,7 @@ Define an equivalence relation as follows: $$F \sim F'
 \iff \ \textit{there exists an isometry} \ \Psi \ \textit{such that} 
 \ \Psi(F)=F'$$
 Then we define the set of Euclidean configurations 
-$$\mathfrak{K}:=\frac{\mathfrak{F}}{\sim}$$
+$$\mathfrak{K}:=\mathfrak{F}\backslash\sim$$
 An element $K=[F]$ of $\mathfrak{K}$ is called a configuration.
 If $F$ and $F'$ are figures with $[F]=[F']$, we say that they have the same 
 configuration.
@@ -193,7 +198,9 @@ property of a figure:
 
 \begin{definition}[Spherical figures]
 A figure $F\in\mathbb{R}^m$ is spherical if there exists a sphere 
-$S\in\mathbb{R}^m$ such that $F\subset S$.
+$S\in\mathbb{R}^m$ such that $F\subset S$. That is, there exist $z\in\mathbb{R}^m$
+and $r\in\mathbb{R}^{+}$ such that: $$\forall x\in F, \ \ |x - z| = r$$
+where $|\cdot|$ is the Euclidean norm in $\mathbb{R}^m$.
 \end{definition}
 
 It is easy to see that if a figure $F$ is spherical, then any figure with 
@@ -203,7 +210,7 @@ Hence it makes sense to talk about spherical configurations.
 Our aim in this section is to prove an interesting connection between Ramseyness
 and the property of being spherical:
 
-\begin{theorem}[Erd\H os,1973]
+\begin{theorem}[\textcite{Erdös1973}]
 If $K$ is Ramsey, $K$ is spherical.
 \end{theorem}
 

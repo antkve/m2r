@@ -8,7 +8,7 @@
 
 \usepackage{enumitem}
 \usepackage{setspace}
-\doublespacing
+%\doublespacing
 
 \usepackage{tikz}
 \usepackage{adjustbox}
@@ -31,14 +31,20 @@
 
 \theoremstyle{BreakBold}
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{definition}[theorem]{Definition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{prop}[theorem]{Proposition}
 \newtheorem{remark}{Remark}[section]
 \newtheorem*{cor}{Corollary}
-\newtheoremstyle{example}{5pt}{}{}{}{\bfseries}{\newline}{.5em}{\thmname{#1}:\thmnote{ #3}}
+
+\newtheoremstyle{example}{5pt}{}{}{}{\bfseries}{\newline}{.5em}%
+{\thmname{#1}:\thmnote{ #3}}
 \theoremstyle{example}
 \newtheorem*{example}{Example}
+ 
+\newtheoremstyle{definition}{5pt}{}{}{}{\bfseries}{\newline}{.5em}%
+{\thmname{#1}\thmnumber{ #2}:\thmnote{ #3}}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
 
 \newcommand{\str}[1]{\mathbf{#1}}
 \newcommand{\rel}[2]{R^{#1}_{\str{#2}}}
@@ -61,7 +67,7 @@
 \DeclareMathOperator{\prob}{Pr}
 \DeclareMathOperator{\neigh}{Adj}
 
-\bibliography{ref.bib}
+\bibliography{ref}
 
 \title{An Overview of Ramsey Theory}
 \author{
