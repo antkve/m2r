@@ -3,10 +3,12 @@
 \subsection{Ramsey's Theorem}
 \label{sec:1.1}
 
-Whilst Ramsey's original paper was concerned with a problem of logic, Erd{\"o}s and 
-Szekeres reformulated his work in a graph theoretic sense. The idea of proving 
+Whilst Ramsey's original paper \cite{Ramsey1930} concerned with a problem of logic, Erd{\"o}s and 
+Szekeres \cite{Erdos1935} reformulated his work in a graph theoretic sense. The idea of proving 
 the existence of regular substructure within an apparently chaotic superstructure
-is immediately applicable to graphs.\\
+is immediately applicable to graphs. The content of this section primarily follows 
+that of Bollobas book \textit{Modern Graph Theory} \cite{Bollobas1998}, and 
+I will be using his notation throughout.\\
 
 In the graph below, we partition the edges into two disjoint classes: dotted lines and dashed 
 lines. In turns out that no matter how we partition our edges, we will always get
@@ -25,21 +27,21 @@ dashed triangles.
 \begin{figure}[h]
 \begin{center}
 \begin{tikzpicture}
-    \draw[dotted] (0,0) -- (1,0);
-    \draw[dotted] (1,0) -- (1.55,1);
-    \draw[dotted] (1.55,1) -- (1,2);
-    \draw[dotted] (1,2) -- (0,2);
-    \draw[dotted] (0,2) -- (-0.55,1);
-    \draw[dotted] (-0.55,1) -- (0,0);
-    \draw[dotted] (0,0) -- (1,2);
-    \draw[dotted] (1.55,1) -- (-0.55,1);
-    \draw[dotted] (1,0) -- (0,2);
-    \draw[dashed] (0,0) -- (0,2);
-    \draw[dashed] (1,0) -- (1,2);
-    \draw[dashed] (1,0) -- (-0.55,1);
-    \draw[dashed] (1.55,1) -- (0,2);
-    \draw[dashed] (1,2) -- (-0.55,1);
-    \draw[dashed] (0,0) -- (1.55,1);
+    \draw [dotted] (0,0) -- (1,0);
+    \draw [dotted] (1,0) -- (1.55,1);
+    \draw [dotted] (1.55,1) -- (1,2);
+    \draw [dotted] (1,2) -- (0,2);
+    \draw [dotted] (0,2) -- (-0.55,1);
+    \draw [dotted] (-0.55,1) -- (0,0);
+    \draw [dotted] (0,0) -- (1,2);
+    \draw [dotted] (1.55,1) -- (-0.55,1);
+    \draw [dotted] (1,0) -- (0,2);
+    \draw [dashed] (0,0) -- (0,2);
+    \draw [dashed] (1,0) -- (1,2);
+    \draw [dashed] (1,0) -- (-0.55,1);
+    \draw [dashed] (1.55,1) -- (0,2);
+    \draw [dashed] (1,2) -- (-0.55,1);
+    \draw [dashed] (0,0) -- (1.55,1);
 
     \filldraw (0,0) circle (2pt);
     \filldraw (1,0) circle (2pt);
@@ -53,23 +55,26 @@ dashed triangles.
 \end{center}
 \end{figure}.
 
-Before continuing, we first need to state some notation and definitions. \cite{Graham1990}
-$$[n] := \{1, 2,\ldots, n\}$$
-$$[n]^k := \{Y:Y\subseteq [n], |Y|=k\}$$
-$$[K]^k := \{Y:Y\subseteq K, |Y|=k\}$$
+Before continuing, we first need to state some notation and definitions.\\ \cite{Graham1990}
 
+For $n,k\in \mathbb{N}$, and any non-empty set $X$, let
+
+\begin{align}
+[n] &= \{1, 2,\ldots, n\},
+X^{(k)} &= \{Y:Y\subseteq X, |Y|=k\}.
+\end{align}
 \begin{definition}[Graph]
 
-    A graph G is an ordered pair of disjoint sets $(V,E)$ such that $E$ 
-    is a subset of $[V]^2$, the set of unordered pairs of $V$. We call $V$ the 
-    set of vertices, and $E$ the set of edges. The order 
+    A \textit{graph G} is an ordered pair of disjoint sets $(V,E)$ such that $E$ 
+    is a subset of $V^{(2)}$, the set of unordered pairs of $V$. We call $V$ the 
+    set of vertices, and $E$ the set of edges. The \textit{order}
     of $G$ is the number of vertices, i.e $|V|$.
 
 \end{definition}
 
 \begin{definition}[Complete graph]
 
-    We say a graph $G:=(V,E)$ is complete if $E=[V]^2$. Intuitively, a graph 
+    We say a graph $G:=(V,E)$ is \textit{complete} if $E=V^{(2)}$. Intuitively, a graph 
     is complete if every pair of vertices has an edge connecting them. We denoted the complete 
     graph of order $n$ by $K_n$.
 
@@ -77,8 +82,9 @@ $$[K]^k := \{Y:Y\subseteq K, |Y|=k\}$$
 
 \begin{definition}[Subgraphs and Cliques]
 
-    We say $G':=(V',E')$ is a subgraph of $G:=(V,E)$ if $V'\subseteq V$, 
-    and $E'\subseteq E$. We write $G'\subseteq G$. We call $G'$ a clique of $G$ if it is complete.
+    We say $G':=(V',E')$ is a \textit{subgraph} of $G:=(V,E)$ if $V'\subseteq V$, 
+    and $E'\subseteq E$. We write $G'\subseteq G$. We say $G'$ is an \textit{induced} 
+    subgraph of $G$ if $E'=E\cap V'^{(2)}$. We say an induced subgraph $G'$ a \textit{clique} of $G$ if it is complete.
 
 \end{definition}
 
@@ -89,22 +95,33 @@ following definition helps explain this:
 
 \begin{definition}[Colouring]
     
-    An r-colouring of the edges of a graph $G=(V,E)$ is a map \cite{Graham1990}:
+    An \textit{r-colouring} of the edges of a graph $G=(V,E)$ is a map \cite{Graham1990}:
 
     $$\chi : E \rightarrow [r]$$
 
-    We say a subgraph $G' = (V',E')$ of $G$ is monochromatic if the restriction
+    We say a subgraph $G' = (V',E')$ of $G$ is \textit{monochromatic} if the restriction
     $\chi|_{E'}$ is the constant map.
 
 \end{definition}
 
+\begin{definition}[Colouring of a set]
+    Let $X$ be a non-empty set. For $k\in\mathbb{N}$, a $k$-colouring of $X$ is a 
+    partition of $X$ into $k$ equivalence classes. 
+    \end{definition}
+    
+    Equivalently, a $k$-colouring of $X$ is the partition of $X$ induced by an 
+    arbitrary map: $$\chi: X \to [k]$$ through the equivalence relation: 
+    $$\mathcal{R}_{\chi}:= \{(x_{1},x_{2})\in X | \chi(x_{1})=\chi(x_{2}) \}$$
+    and $\chi$ is called the colouring function. Somewhat improperly, 
+    we will identify a $k$-colouring of $X$ with its colouring function.
+
 We can now state the fundamental question that lies at the heart of Ramsey 
 theory in graph theoretic sense.
 
-\begin{theorem}[Ramsey's theorem]
+\begin{theorem}[Ramsey's theorem for graphs]
 
     Given positive integers $s,t$, there exist a least positive integer $R(s,t)$ such that any 2-colouring
-    of $K_n, \hspace{0.5em} n\geq R(s,t)$, contains as a clique either a monochromatic $K_s$ or a monochromatic
+    of $K_n$ with $n\geq R(s,t)$, contains as a clique either a monochromatic $K_s$ or a monochromatic
     $K_t$.
 
 \end{theorem}
@@ -116,8 +133,8 @@ theory in graph theoretic sense.
 
     Hence $R(s,2),R(2,s),R(t,2),R(2,t)$ all exist. We now assume, by induction, that $R(s,t-1)$ and $R(s-1,t)$ both exist.
 
-    \textbf{Remark}: If $\chi$ is a 2-colouring of the edges of $K_n$, I will refer to the edges $\{ S \subseteq[n]^2 : \chi(S)=\{1\}\}$ as being `red',
-        and the edges $\{ T \subseteq[n]^2 : \chi(T)=\{2\}\}$ as being `blue'.
+    \textbf{Remark}: If $\chi$ is a 2-colouring of the edges of $K_n$, I will refer to the edges $\{ S \subseteq[n]^{(2)} : \chi(S)=\{1\}\}$ as being `red',
+        and the edges $\{ T \subseteq[n]^{(2)} : \chi(T)=\{2\}\}$ as being `blue'.
 
     \begin{lemma}[$R(s,t)\leq R(s-1,t)+ R(s,t-1)$]\cite{Bollobas1998} 
 
@@ -139,6 +156,8 @@ theory in graph theoretic sense.
 
     \end{proof}
 
+    Hence the result, by induction.
+
 \end{proof}
 
 This result is easily generalised to any finite $r$-colouring of $K_n$:
@@ -146,8 +165,8 @@ This result is easily generalised to any finite $r$-colouring of $K_n$:
 \begin{theorem}[Ramsey's Theorem for $r$-colours]
 
     Given $r$ positive integers $s_1, s_2,\ldots, s_r$, there exist a least
-    positive integer $R_r(s_1,\ldots,s_r)$ such that any r-colouring of $K_n, \hspace{1em}
-    n\geq R(s_1,\ldots,s_r)$, contains as a clique a monochromatic $K_{s_i}$,
+    positive integer $R_r(s_1,\ldots,s_r)$ such that any r-colouring of $K_n$ with 
+    $n\geq R_r(s_1,\ldots,s_r)$, contains as a clique a monochromatic $K_{s_i}$,
     for some $i\in{1,\ldots r}$, coloured by the $i^{\text{th}}$ colour.
 
 \end{theorem}
@@ -156,7 +175,7 @@ This result is easily generalised to any finite $r$-colouring of $K_n$:
 
     We again proceed by induction on $r$. The base case for $R_2(s_1,s_2)$ is
     true by the previous theorem. So we assume by induction that
-    $R_{r-1}(s_1,\ldots ,s_{r-1})$ exists. Then in any k-colouring of $K_n$ we 
+    $R_{r-1}(s_1,\ldots ,s_{r-1})$ exists. Then in any $r$-colouring of $K_n$ we 
     replace the first two colours by a new colour. If $n$ is sufficiently large,
     then either there is a $K_{s_1}$ coloured with the $i^{\text{th}}$ colour for
     some $i \in \{3,\ldots,r\}$, or else for $m=R(s_1,s_2)$ there is a $K_m$
@@ -167,20 +186,6 @@ This result is easily generalised to any finite $r$-colouring of $K_n$:
     $$R_r(s_1,\ldots,s_r)\leq R_{r-1}(R(s_1,s_2),s_3,\ldots,s_r)$$
 
 \end{proof}
-
-%We can generalise Ramsey's theorem one step further, this time to hypergraphs.
-%
-%\begin{definition}[Hypergraph]
-%
-%    Let $V = [n]$, $E=[n]^k$. A \textit(hypergraph) is an ordered pair $(V,E)$
-%    such that $V\cap E = \varnothing $, and $E\subseteq \mathcal{P}(V)$, the power
-%    set of $V$.
-%
-%\end{definition}
-%
-%\begin{theorem}[Ramsey's theorem for Hypergraphs]
-%
-%\end{theorem}
 
 Interestingly enough, Ramsey's theorem also holds for graphs of infinite order, 
 so long as the number of colours used is finite. We can biject the set of infinitely 
@@ -236,15 +241,40 @@ a convergent subsequence.
 
 \begin{proof}
 
-    We define a 2-colouring of $[\mathbb{N}]^2$ by calling $\{i,j\}$ \textit{red} 
+    We define a 2-colouring of $\mathbb{N}^{(2)}$ by calling $\{i,j\}$ \textit{red} 
     if $x_i <x_j$, and \textit{blue} if $x_i\geq x_j$.
 
-    Then Ramsey's theorem for infinte graphs gives us an infinite monochromatic 
+    Then Ramsey's theorem for infinite graphs gives us an infinite monochromatic 
     set, which in this case is a monotone subsequence of $(x_i)$. And since it 
     is bounded, by the monotone convergence theorem it must converge.
 
 \end{proof}
 
-\subsection{Generalised Ramsey Numbers \cite{Bollobas1998}}
+Whilst we have been discussing Ramsey's theorem in a strictly graph-theoretic sense,
+the original statement extends beyond that. If we are given a set $V$ (which we 
+have been referring to as the set of vertices of a given graph), so far we have been 
+looking at partitioning (colouring) the set $V^{(2)}$ (the edges) into $r$ classes. 
+However, the theorem still holds when we partition $V^{(k)}$ into $r$ classes, 
+for any integer $k$.
+
+\begin{theorem}[Ramsey's Theorem \cite{Ramsey1930}]
+
+    Given $r$ positive integers $s_1, s_2,\ldots, s_r$, there exist a least
+    positive integer $R_r(s_1,\ldots,s_r)$ such that any $r$-colouring of $[n]^{(k)}$ with 
+    $n\geq R_r(s_1,\ldots,s_r)$, contains as a clique a monochromatic $[s_i]^{(k)}$,
+    for some $i\in{1,\ldots r}$, coloured by the $i^{\text{th}}$ colour.
+
+\end{theorem}
+
+
+
+\subsection{Graph Ramsey theory \cite{Bollobas1998}}
 \label{sec:1.2}
 
+\begin{definition}[Isomorphism of Graphs]
+
+\end{definition}
+
+
+
+    
