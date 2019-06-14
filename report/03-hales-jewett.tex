@@ -1,9 +1,4 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\begin{document}
+\documentclass[./m2r-report.tex]{subfile}
 
 \section{Combinatorial Ramsey Theory}
 
@@ -91,7 +86,3 @@ This proof also implies that $HJ(r, n) \leq DHJ(\frac{1}{r}, n)$.
 The Density Hales-Jewett theorem was originally proven by Furstenberg and Katznelson [1991] using ergodic theory, the theory of measure-invariant dynamical systems. It used techniques developed in Furstenberg's proof of Szemeredi's theorem, which considered the Bernoulli system, a dynamical system on the set of subsets of the integers under the operation of "shifting" subsets by 1. A more recent and elementary proof was produced by the Polymath project, whichproved the theorem by contradiction using the strategy of density increment, which can be used to prove similar facts for general structures. The core of this strategy is the following:
 
 Firstly, one proves that for any N, if a subset $A$ has density $\delta$ in some structured set $S$ (e.g. $[k]^N$, or $\mathbb{Z}$ for the proof of szemeredi's), and does not contain a substructure of the desired kind, then there must exist a substructure $S'$ of $S$ in which $A$ has density $\delta + c$, where c depends only on $\delta$. This process is incremented by showing that $S'$ must then contain a substructure of the same kind where $A$ has density $\delta + 2c$. For a large enough structure, this iteration can be continued until $A$ has a density greater than 1 in some substructure, a contradiction.
-
-
-
-\end{document}
