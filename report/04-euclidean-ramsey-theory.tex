@@ -51,8 +51,8 @@ Let $\Lambda\in\mathbb{Q}^{m\times n}$ be a $(m\times n)$ matrix with
 coefficients in $\mathbb{Q}$. We say that $\Lambda$ is \emph{$k$-regular} over 
 $\mathbb{N}$ if, under any $k$-colouring of $\mathbb{N}$, there exists a 
 monochromatic $x\in\mathbb{N}^n$ such that $\Lambda x  = 0$.
-Then the matrix $\Lambda$ is \emph{partition regular} (PR) over $\mathbb{N}$ if $\Lambda$ is 
-$k$-regular over $\mathbb{N}$ for all $k$.
+Then the matrix $\Lambda$ is \emph{partition regular} (PR) over 
+$\mathbb{N}$ if $\Lambda$ is $k$-regular over $\mathbb{N}$ for all $k$.
 \end{definition}
 
 It is easy to see that $\Lambda$ is PR if and only if $\mu\Lambda$ is PR for all 
@@ -133,9 +133,8 @@ We omit the proof, which results through application of van der Waerden (see \ci
 
 We now sketch a proof of Rado's theorem. The proof is adapted from Liu (see \cite{Liu2016}).
 
-
-\textit{Sketch of proof of Rado's Theorem}.
-We work with $\Lambda\in\mathbb{Z}^{m\times n}$ without loss of generality.
+\begin{proof}[Sketch of proof of Rado's Theorem]
+    We work with $\Lambda\in\mathbb{Z}^{m\times n}$ without loss of generality.
 
 For the necessary implication, consider an arbitrary prime $p\in \mathbb{N}$. 
 Now, if $y\in\mathbb{N}$, $y$ has a $p$-expansion of the following form:
@@ -191,7 +190,8 @@ For the sufficient implication, we show that there exist $m,p,c\in\mathbb{N}$
 such that for all $x\in\mathbb{N}$, $S_{m,p,c}(x)$ contains a solution to our 
 system of equations. This is done constructively, using the columns property 
 that we assume. Then, by Lemma \ref{lem:mpc}, one such solution must be monochromatic. 
-$\qed$
+\end{proof}
+
 
 \subsection{Euclidean Ramsey theory}
 \label{sec:3.2}
@@ -206,8 +206,10 @@ Rado's approach was to phrase an arithmetical problem as a question about
 monochromatic solutions to certain systems of homogeneous equations.
 A similar approach enables us to translate a combinatorial property of finite subsets 
 of the Euclidean space into a geometrical property. In particular we are now interested
-in affine linear equations on $\mathbb{R}$ that do not admit monochromatic solutions (Lemma \ref{lem:radreal}).
-These allow us to formulate a geometrical necessary condition for a finite set to be Ramsey in $\mathbb{R}^n$.
+in affine linear equations on $\mathbb{R}$ that do not admit monochromatic solutions 
+(Lemma \ref{lem:radreal}).
+These allow us to formulate a geometrical necessary condition for a finite 
+set to be Ramsey in $\mathbb{R}^n$.
 
 We first define a notion of Ramseyness for finite sets $F\in\mathbb{R}^n$. 
 
@@ -278,7 +280,8 @@ exist scalars $\{0\}\neq\{\mu_{1},\cdots, \mu_{k},b\}\subset\mathbb{R}$ such tha
 \end{enumerate}
 \end{lemma}
 
-\textit{Proof}. Assume that $F$ is spherical and (i) holds. Then, $\forall 
+\begin{proof}
+Assume that $F$ is spherical and (i) holds. Then, $\forall 
 i \in \{0,\cdots,k\}$, $$|v_{i}|^2 - |v_{0}|^2 = |v_{i} - z|^2 - |v_{0} - z|^2 + 
 2 \langle v_{i} - v_{0}, z \rangle = r^2 - r^2 + 2 \langle v_{i} - v_{0}, z \rangle 
 = 2 \langle v_{i} - v_{0}, z \rangle $$ where $z$ and $r$ are respectively the 
@@ -298,7 +301,8 @@ centre $z$. Then:
 $$\sum_{i=1}^{k} \mu_{i} (|v_{i}|^2 - |v_{0}|^2) \stackrel{(i)}{=} \mu_{k} (|v_{k} - z|^2 
 - |v_{0} - z|^2)\neq 0 $$ 
 
-As otherwise $F$ is spherical. So (ii) holds. $\qed$
+As otherwise $F$ is spherical. So (ii) holds. 
+\end{proof}
 
 Notice that if $F$ is not spherical, then any other figure with the same 
 configuration is not spherical. In particular, if $F$ has the same configuration 
@@ -318,7 +322,10 @@ exists a colouring $\chi$ of $\mathbb{R}$ such that the equation:
 $$\sum_{i = 1}^{k} \mu_{i}(x_{i} - x_{0}) = b \ \ \ \ \ \ \ \ (A) $$ has no monochromatic solution.
 \end{lemma}
 
-\textit{Proof}. I. We first show that there exists a $2n$-colouring $\chi$ of 
+\begin{proof}
+We divide the proof in two parts.
+
+I. We first show that there exists a $2n$-colouring $\chi$ of 
 $\mathbb{R}$ such that the equation $$\sum_{i = 1}^{k} (x_{i} - x_{i}') 
 = 1 \ \ \ \ \ \ \ \ (B)$$ 
 has no solution with $\chi(x_{i}) = \chi(x_{i}')$ for all $i\in [k]$.
@@ -367,9 +374,11 @@ Where the $m_i$,$\epsilon_{i}$ satisfy the same properties as before for $i\in [
 But then, by the same reasoning as before, (C) implies that $1\not\in\mathbb{Z}$ or 
 $\sum_{i = 1}^{k} 2m_{i}\not\in\mathbb{Z}$, which is absurd.
 
-Thus (A) has no monochromatic solution under $\overline{\chi}$. $\qed$
+Thus (A) has no monochromatic solution under $\overline{\chi}$. 
+\end{proof}
 
-\textit{Proof of Theorem \ref{thm:sph}}. Let $F$ be a non-spherical figure. Then there exist 
+\begin{proof}[Proof of Theorem \ref{thm:sph}] 
+Let $F$ be a non-spherical figure. Then there exist 
 scalars $\{\mu_{1},\cdots, \mu_{k},b\}\subset\mathbb{R}$ such that equations 
 (i) and (ii) from our first Lemma are satisfied. By Lemma \ref{lem:radreal} there exists 
 an $r$-colouring $\chi$ of $\mathbb{R}$ such that (ii) has no monochromatic 
@@ -381,7 +390,8 @@ the same choice of scalars by a previous observation. But this contradicts our L
 
 Thus there exists an $r\in \mathbb{N}$ such that for all $n \in \mathbb{N}$ 
 there exists an $r$-colouring of $\mathbb{R}^n$ under which no element of $[F]$
-in $\mathbb{R}^n$ is monochromatic. That is, $[F]$ is not Ramsey.\qed
+in $\mathbb{R}^n$ is monochromatic. That is, $[F]$ is not Ramsey.
+\end{proof}
 
 Thus being spherical is a necessary condition for a figure (a configuration)
 to be Ramsey. It is not known whether this is also a sufficient condition (\cite{Graham1994}). 
