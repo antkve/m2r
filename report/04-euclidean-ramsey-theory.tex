@@ -346,15 +346,19 @@ Yet there are some classes of configurations that have been proved to be Ramsey.
 As an example, consider the following:
 
 \begin{definition}[Brick]
-    A configuration $\mathfrak{B}$ is a \emph{brick} if $\mathfrak{B} 
-    = [B]$ for some $B\in \mathbb{R}^n$ of the form:
+    Let $n\in \mathbb{N}$. We say that $B\subset \mathbb{R}^n$ is 
+    a \emph{rectangle} if it is of the form:
 
     \begin{center}
-        $B = \{(b,\cdots,b).\delta \ | \ \delta \in \{0,1\}^n \}$
+        $B = \{(b_{1}\delta_{1},\cdots,b_{n}\delta_{n}) \ | \ 
+        (\delta_{1},\cdots,\delta_{n}) \in \{0,1\}^n \}$
     \end{center}
 
-    for some $n\in\mathbb{N}$, where $(b,\cdots,b)\in\mathbb{R}^n$ 
-    for some fixed $b\in\mathbb{R}\setminus{\{0\}}$.
+    where $(b_{1},\cdots,b_{n})\in\mathbb{R}^n$ for some fixed 
+    $\{b_{1},\cdots,b_{n}\}\subset \mathbb{R}_{0}^+$.
+
+A configuration $\mathfrak{B}$ is a \emph{brick} if there exists a 
+rectangle $B$ such that $\mathfrak{B}=[B]$.
 \end{definition}
 
 The following theorem is proved in \cite{Erdös1973}:
