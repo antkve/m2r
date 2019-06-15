@@ -285,17 +285,22 @@ $\mathbb{R}$ such that the equation $$\sum_{i = 1}^{k} (x_{i} - x_{i}')
 = 1 \ \ \ \ \ \ \ \ (B)$$ 
 has no solution with $\chi(x_{i}) = \chi(x_{i}')$ for all $i\in [k]$.
 
-Choose the following colouring: $$\chi: \mathbb{R} \to [2n] \ | \ x \mapsto j \ \ \
-\textit{if} \ \ \ \exists m \in \mathbb{Z} \ : \ x \in \bigg[2m + \frac{j}{n}, 
-2m + \frac{j+1}{n}\bigg]$$
+Choose the following colouring: 
+\begin{center}
+
+    $\chi: \mathbb{R} \to [2n] \ | \ x \mapsto j$ \ \ if \ \
+    $\exists m \in \mathbb{Z} \ : \ x \in \bigg[2m + \frac{j}{n}, 
+    2m + \frac{j+1}{n}\bigg]$
+\end{center}
+
 Notice that if $\chi(x) = \chi(y)$, then $\exists m \in \mathbb{Z} : x - y =
 2m + \epsilon$ for some $\epsilon$ with $|\epsilon| < \frac{1}{n}$.
 Now assume that there exists a solution of (B) with $\chi(x_{i}) = \chi(x_{i}')$ 
 for all $i\in [k]$. Then there exist integers $m_{i}$ and real $\epsilon_{i}$ such that:
 $$1 = \sum_{i = 1}^{k} (x_{i} - x_{i}') = \sum_{i = 1}^{k} (2m_{i} + \epsilon_{i})
 = 2M + \sum_{i = 1}^{k} \epsilon_{i} $$
-Now, $2M = \sum_{i = 1}^{k} 2m_{i}$ is an integer, whereas $|\sum_{i = 1}^{k} 
-\epsilon_{i}| < 1$. But then $1 \notin \mathbb{Z}$, which is absurd.
+Now, $2M = \sum_{i = 1}^{k} 2m_{i}$ is an integer and $|\sum_{i = 1}^{k} 
+\epsilon_{i}| < 1$. But then $1 \notin \mathbb{Z}$ or $M \notin \mathbb{Z}$ , which is absurd.
 \\
 
 II. We now prove that there exists a colouring $\overline{\chi}$ of $\mathbb{R}$ such 
@@ -321,8 +326,8 @@ and thus: $$ \forall i \in [k], \ \ \exists m_{i}, \epsilon_{i} \ : \
 \overline{\mu}_{i} x_{i} - \overline{\mu}_{i} x_{0} = 2m_{i} + \epsilon_{i}$$ 
 
 Where the $m_i$,$\epsilon_{i}$ satisfy the same properties as before for $i\in [k]$.
-But then, by the same reasoning as before, (C) implies that $1\not\in\mathbb{Z}$,
-which is absurd.
+But then, by the same reasoning as before, (C) implies that $1\not\in\mathbb{Z}$ or 
+$\sum_{i = 1}^{k} 2m_{i}\not\in\mathbb{Z}$, which is absurd.
 
 Thus (A) has no monochromatic solution under $\overline{\chi}$. $\qed$
 
@@ -334,7 +339,7 @@ solution. For $n \in \mathbb{N}$ we define the following colouring of
 $\mathbb{R}^n$: $$\chi_{n}^*: \mathbb{R}^n\to [r] : v \mapsto \chi(|v|^2) $$
 Now, if there exists a monochromatic $E\in [F]$ in $\mathbb{R}^n$, then there 
 exists a monochromatic solution to (ii), since the elements of $E$ satisfy (ii) with 
-the same choice of scalars by a previous observation. But this contradicts our first Lemma.
+the same choice of scalars by a previous observation. But this contradicts our Lemma \ref{lem:radreal}.
 
 Thus there exists an $r\in \mathbb{N}$ such that for all $n \in \mathbb{N}$ 
 there exists an $r$-colouring of $\mathbb{R}^n$ under which no element of $[F]$
@@ -346,15 +351,19 @@ Yet there are some classes of configurations that have been proved to be Ramsey.
 As an example, consider the following:
 
 \begin{definition}[Brick]
-    A configuration $\mathfrak{B}$ is a \emph{brick} if $\mathfrak{B} 
-    = [B]$ for some $B\in \mathbb{R}^n$ of the form:
+    Let $n\in \mathbb{N}$. We say that $B\subset \mathbb{R}^n$ is 
+    a \emph{rectangle} if it is of the form:
 
     \begin{center}
-        $B = \{(b,\cdots,b).\delta \ | \ \delta \in \{0,1\}^n \}$
+        $B = \{(b_{1}\delta_{1},\cdots,b_{n}\delta_{n}) \ | \ 
+        (\delta_{1},\cdots,\delta_{n}) \in \{0,1\}^n \}$
     \end{center}
 
-    for some $n\in\mathbb{N}$, where $(b,\cdots,b)\in\mathbb{R}^n$ 
-    for some fixed $b\in\mathbb{R}\setminus{\{0\}}$.
+    where $(b_{1},\cdots,b_{n})\in\mathbb{R}^n$ for some fixed 
+    $\{b_{1},\cdots,b_{n}\}\subset \mathbb{R}_{0}^+$.
+
+A configuration $\mathfrak{B}$ is a \emph{brick} if there exists a 
+rectangle $B$ such that $\mathfrak{B}=[B]$.
 \end{definition}
 
 The following theorem is proved in \cite{Erdös1973}:
