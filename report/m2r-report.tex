@@ -16,6 +16,7 @@
 
 \usepackage[style=numeric]{biblatex}
 \usepackage{hyperref}
+\usepackage{aliascnt}
 
 \newtheoremstyle{BreakBold}
 {5pt}% measure of space to leave above the theorem.
@@ -32,8 +33,10 @@
 \theoremstyle{BreakBold}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{prop}[theorem]{Proposition}
-\newtheorem{remark}{Remark}[section]
+\newaliascnt{prop}{theorem}
+\newtheorem{prop}[prop]{Proposition}
+\aliascntresetthe{prop}
+\providecommand*{\propautorefname}{Proposition}
 \newtheorem*{cor}{Corollary}
 
 \newtheoremstyle{example}{5pt}{}{}{}{\bfseries}{\newline}{.5em}%
