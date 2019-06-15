@@ -16,6 +16,7 @@
 
 \usepackage[style=numeric]{biblatex}
 \usepackage{hyperref}
+\usepackage{aliascnt}
 
 \newtheoremstyle{BreakBold}
 {5pt}% measure of space to leave above the theorem.
@@ -32,8 +33,10 @@
 \theoremstyle{BreakBold}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{prop}[theorem]{Proposition}
-\newtheorem{remark}{Remark}[section]
+\newaliascnt{prop}{theorem}
+\newtheorem{prop}[prop]{Proposition}
+\aliascntresetthe{prop}
+\providecommand*{\propautorefname}{Proposition}
 \newtheorem*{cor}{Corollary}
 
 \newtheoremstyle{example}{5pt}{}{}{}{\bfseries}{\newline}{.5em}%
@@ -41,16 +44,22 @@
 \theoremstyle{example}
 \newtheorem*{example}{Example}
  
-\newtheoremstyle{definition}{5pt}{}{}{}{\bfseries}{\newline}{.5em}%
+\newtheoremstyle{definition}{6pt}{6pt}{}{}{\bfseries}{\newline}{.5em}%
 {\thmname{#1}\thmnumber{ #2}:\thmnote{ #3}}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}[section]
 
+\usepackage{ifthen}
 \newcommand{\str}[1]{\mathbf{#1}}
-\newcommand{\rel}[2]{R^{#1}_{\str{#2}}}
+\newcommand{\rel}[2][\empty]{
+  \ifthenelse{\equal{#1}{}}
+  {R_{\mathbf{#2}}}
+  {R^{#1}_{\mathbf{#2}}}
+}
 \newcommand{\class}[1]{\mathcal{#1}}
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\sstr}[2]{\binom{\str{#1}}{\str{#2}}}
+\newcommand{\sstr}[2]{\binom{\mathbf{#1}}{\mathbf{#2}}}
 \newcommand{\ramsSplit}[3]{(#1)^{#2}_{#3}}
 \newcommand{\radoArrow}[3]{\rightarrow\ramsSplit{#1}{#2}{#3}}
 \newcommand{\card}[1]{|#1|}
@@ -65,7 +74,11 @@
 \DeclareMathOperator{\age}{Age}
 \DeclareMathOperator{\aut}{Aut}
 \DeclareMathOperator{\prob}{Pr}
-\DeclareMathOperator{\neigh}{Adj}
+\DeclareMathOperator{\adj}{Adj}
+
+\newcommand{\flo}{\class{R}^{\text{lo}}}
+\newcommand{\gra}{\class{G}^{\text{fin}}}
+\newcommand{\rand}{\mathbf{G}^{\text{Ran}}}
 
 \bibliography{ref}
 
