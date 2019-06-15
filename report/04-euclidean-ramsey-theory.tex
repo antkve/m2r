@@ -95,7 +95,7 @@ and only if it satisfies the columns property.
 To prove Rado's theorem we use the following lemmas (following Liu, see \cite{Liu2016}), 
 the first of which results almost immediately by application of Gram-Schmidt orthogonalization:
 
-\begin{lemma}
+\begin{lemma}\label{lem:vec}
 Let $\{v_{1},\cdots,v_{n},v\}\in \mathbb{Z}^m$. If $v \not\in span\{v_{1},\cdots,v_{n}\}$, 
 then:
 \begin{center}
@@ -122,7 +122,7 @@ Then $y$ is called a \emph{generator} of the $(m,p,c)$-set.
 
 
 
-\begin{lemma}
+\begin{lemma}\label{lem:mpc}
 Let $m,p,c \in \mathbb{N}$. For any finite colouring of $\mathbb{N}$, 
 there exists $y\in \mathbb{N}^{m+1}$ such that $S_{m,p,c}(y)$ is monochromatic.
 \end{lemma}
@@ -131,28 +131,62 @@ there exists $y\in \mathbb{N}^{m+1}$ such that $S_{m,p,c}(y)$ is monochromatic.
 We omit the proof, which results through application of van der Waerden (see \cite{Liu2016}).
 
 
-We now sketch a proof of Rado's theorem. The proof is taken from Liu (see \cite{Liu2016}).
+We now sketch a proof of Rado's theorem. The proof is adapted from Liu (see \cite{Liu2016}).
 
 
 \textit{Sketch of proof of Rado's Theorem}.
 We work with $\Lambda\in\mathbb{Z}^{m\times n}$ without loss of generality.
 
-For the necessary implication, we choose the following colouring: for an arbitrary 
-prime $p$, let $\chi_{p}:\mathbb{N}\to[p-1]$ such that, if $y\in\mathbb{N}$ is 
-written in basis $p$, its colour is the least non-zero coefficient $d(y)$. 
-Call $\pi(y)$ its position in the expansion. Since $\Lambda$ is PR, there exists 
-a monochromatic solution $x = (x_{1},\cdots,x_{n})\in \mathbb{N}^n$ such that 
-$\Lambda x = 0$. Now order the natural numbers $x_{1},\cdots,x_{n}$ in an 
-increasing fashion by position $\pi(x_{j})$ of the first non-zero coefficient 
-$d(x_{j})$ in their $p$-expansion. Partition their indices into sets 
-$\Gamma_{i}:=\{j\in [n] \ | \ \pi(x_{j})=i\}$. Then by means of properties of 
-primes integers and our first Lemma one shows that such a partition satisfies 
-the columns property conditions.
+For the necessary implication, consider an arbitrary prime $p\in \mathbb{N}$. 
+Now, if $y\in\mathbb{N}$, $y$ has a $p$-expansion of the following form:
+
+$$y = \sum_{i =0}^{\infty} a_{i}p^i$$
+
+where $A_{y}^p := \{a_{i} : i \in \{0\} \cup \mathbb{N}\}$ is such that 
+$A_{y}^p \subset [p-1]$ and $A_{y}^p \cap \mathbb{N}$ is finite.
+Let $\pi(y):=\min\{i\ | \ a_{i} \neq 0\}$ and $d(y):=a_{\pi(y)}$.
+
+Choose the following colouring of $\mathbb{N}$:
+
+$$\chi_{p}:\mathbb{N}\to[p-1] : y \mapsto d(y)$$
+
+Since $\Lambda$ is PR, there exists a monochromatic $x = (x_{1},\cdots,x_{n})\in 
+\mathbb{N}^n$ such that $\Lambda x = 0$. Now consider the partition
+$\Gamma_{p}:=\{\Gamma_{1},\cdots,\Gamma{k}\}$ of $[n]$ induced by the equivalence relation:
+
+$$i \sim j \iff \pi(x_{i}) = \pi(x_{j})$$
+
+Order $[k]$ as follows: $$i\leq j \iff  \pi(x_{i}) \leq \pi(x_{j})$$
+This defines a newly indexed partition $\Gamma^*_{p}$ of [n].
+
+Now there exist infinitely many prime integers $p$ in $\mathbb{N}$, 
+and hence the set $\{\Gamma^*_{p}\ : \ p$ is prime in $\mathbb{N}\}$
+is infinite. Then, since there exist only finitely many possible
+partitions of $[n]$, one such partition $\overline{\Gamma}$ must be shared
+by infinitley many prime numbers.
+
+By Lemma \ref{lem:vec} and properties of prime integers, $\overline{\Gamma}$ 
+can be shown to satisfy the columns property conditions. 
+
+
+
+%prime $p$, let $\chi_{p}:\mathbb{N}\to[p-1]$
+%For the necessary implication, we choose the following colouring: for an arbitrary 
+%prime $p$, let $\chi_{p}:\mathbb{N}\to[p-1]$ such that, if $y\in\mathbb{N}$ is 
+%written in basis $p$, its colour is the first non-zero coefficient $d(y)$ in the
+%expansion. Call $\pi(y)$ the position of $d(y)$ in the expansion. Since $\Lambda$ is PR, there exists 
+%a monochromatic solution $x = (x_{1},\cdots,x_{n})\in \mathbb{N}^n$ such that 
+%$\Lambda x = 0$. Now order the natural numbers $x_{1},\cdots,x_{n}$ in an 
+%increasing fashion by position $\pi(x_{j})$ of the first non-zero coefficient 
+%$d(x_{j})$ in their $p$-expansion. Partition their indices into sets 
+%$\Gamma_{i}:=\{j\in [n] \ | \ \pi(x_{j})=i\}$. Then by means of properties of 
+%primes integers and our first Lemma one shows that such a partition satisfies 
+%the columns property conditions.
 
 For the sufficient implication, we show that there exist $m,p,c\in\mathbb{N}$ 
 such that for all $x\in\mathbb{N}$, $S_{m,p,c}(x)$ contains a solution to our 
 system of equations. This is done constructively, using the columns property 
-that we assume. Then, by our second Lemma, one such solution must be monochromatic. 
+that we assume. Then, by Lemma \ref{lem:mpc}, one such solution must be monochromatic. 
 $\qed$
 
 \subsection{Euclidean Ramsey theory}
