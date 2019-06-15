@@ -55,14 +55,24 @@ dashed triangles.
 \end{center}
 \end{figure}.
 
-Before continuing, we first need to state some notation and definitions.\\ \cite{Graham1990}
+Before continuing, we first need to state some notation and definitions\cite{Graham1990}.
+% I've moved the citation into the sentence to keep it consistent with the rest
+% of the report.
 
 For $n,k\in \mathbb{N}$, and any non-empty set $X$, let
 
-\begin{align}
-[n] &= \{1, 2,\ldots, n\},
+\begin{align*}%\label{eq:bracketDef}
+[n] &= \{1, 2,\ldots, n\},\\
 X^{(k)} &= \{Y:Y\subseteq X, |Y|=k\}.
-\end{align}
+\end{align*}
+% At the end of an align, you need to add \\ to go to the next line, I've fixed
+% that for you here.
+% I'm not sure if you intended to number these equations since I couldn't find
+% any references to them in the rest of the section.
+% If you did intend to number them, change 'align*' back to 'align' and
+% uncomment the label on line 64.
+% You can then refer to this definition by \ref{eq:bracketDef} or \hyperlink{eq:bracketDef}{text_to_display}
+
 \begin{definition}[Graph]
 
     A \textit{graph G} is an ordered pair of disjoint sets $(V,E)$ such that $E$ 
@@ -137,7 +147,9 @@ theory in graph theoretic sense.
         and the edges $\{ T \subseteq[n]^{(2)} : \chi(T)=\{2\}\}$ as being `blue'.
 
     \begin{lemma}[$R(s,t)\leq R(s-1,t)+ R(s,t-1)$]\cite{Bollobas1998} 
-
+    % I don't think this lemma is well set out, I'd probably change things to
+    %\begin{lemma}[From \textcite[<page_number>]{Bollobas1998}] 
+    %  $R(s,t)\leq R(s-1,t)+ R(s,t-1)$
     \end{lemma}
         
     \begin{proof}
