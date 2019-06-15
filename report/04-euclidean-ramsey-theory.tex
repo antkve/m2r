@@ -51,8 +51,8 @@ Let $\Lambda\in\mathbb{Q}^{m\times n}$ be a $(m\times n)$ matrix with
 coefficients in $\mathbb{Q}$. We say that $\Lambda$ is \emph{$k$-regular} over 
 $\mathbb{N}$ if, under any $k$-colouring of $\mathbb{N}$, there exists a 
 monochromatic $x\in\mathbb{N}^n$ such that $\Lambda x  = 0$.
-Then the matrix $\Lambda$ is \emph{partition regular} (PR) over $\mathbb{N}$ if $\Lambda$ is 
-$k$-regular over $\mathbb{N}$ for all $k$.
+Then the matrix $\Lambda$ is \emph{partition regular} (PR) over 
+$\mathbb{N}$ if $\Lambda$ is $k$-regular over $\mathbb{N}$ for all $k$.
 \end{definition}
 
 It is easy to see that $\Lambda$ is PR if and only if $\mu\Lambda$ is PR for all 
@@ -75,7 +75,7 @@ A matrix $\Lambda = \begin{pmatrix}
 g_{1} & \cdots & g_{n} 
 \end{pmatrix}\in \mathbb{Q}^{m\times n}$ satisfies the \emph{columns property} (CP) 
 if $[n]$ can be partitioned into a family of sets 
-$$\bigg\{\Gamma_{1},\cdots,\Gamma_{r}\bigg\}$$ such that:
+$$\Pi := \bigg\{\Gamma_{1},\cdots,\Gamma_{r}\bigg\}$$ such that:
 
 \begin{enumerate}[label=(\roman*)]
 \item $\sum\limits_{j\in\Gamma_{1}}g_{j} = 0$
@@ -95,7 +95,7 @@ and only if it satisfies the columns property.
 To prove Rado's theorem we use the following lemmas (following Liu, see \cite{Liu2016}), 
 the first of which results almost immediately by application of Gram-Schmidt orthogonalization:
 
-\begin{lemma}
+\begin{lemma}\label{lem:vec}
 Let $\{v_{1},\cdots,v_{n},v\}\in \mathbb{Z}^m$. If $v \not\in span\{v_{1},\cdots,v_{n}\}$, 
 then:
 \begin{center}
@@ -122,7 +122,7 @@ Then $y$ is called a \emph{generator} of the $(m,p,c)$-set.
 
 
 
-\begin{lemma}
+\begin{lemma}\label{lem:mpc}
 Let $m,p,c \in \mathbb{N}$. For any finite colouring of $\mathbb{N}$, 
 there exists $y\in \mathbb{N}^{m+1}$ such that $S_{m,p,c}(y)$ is monochromatic.
 \end{lemma}
@@ -131,29 +131,67 @@ there exists $y\in \mathbb{N}^{m+1}$ such that $S_{m,p,c}(y)$ is monochromatic.
 We omit the proof, which results through application of van der Waerden (see \cite{Liu2016}).
 
 
-We now sketch a proof of Rado's theorem. The proof is taken from Liu (see \cite{Liu2016}).
+We now sketch a proof of Rado's theorem. The proof is adapted from Liu (see \cite{Liu2016}).
+
+\begin{proof}[Sketch of proof of Rado's Theorem]
+    We work with $\Lambda\in\mathbb{Z}^{m\times n}$ without loss of generality.
+
+For the necessary implication, consider an arbitrary prime $p\in \mathbb{N}$. 
+Now, if $y\in\mathbb{N}$, $y$ has a $p$-expansion of the following form:
+
+$$y = \sum_{i =0}^{\infty} a_{i}p^i$$
+
+where $A_{y}^p := \{a_{i} : i \in \{0\} \cup \mathbb{N}\}$ is such that 
+$A_{y}^p \subset [p-1]$ and $A_{y}^p \cap \mathbb{N}$ is finite.
+Let $\pi(y):=\min\{i\ | \ a_{i} \neq 0\}$ and $d(y):=a_{\pi(y)}$.
+
+Choose the following colouring of $\mathbb{N}$:
+
+$$\chi_{p}:\mathbb{N}\to[p-1] : y \mapsto d(y)$$
+
+Since $\Lambda$ is PR, there exists a monochromatic $x = (x_{1},\cdots,x_{n})\in 
+\mathbb{N}^n$ such that $\Lambda x = 0$. Now consider the partition
+$\Pi_{p}:=\{\Gamma_{1},\cdots,\Gamma_{k}\}$ of $[n]$ induced by the equivalence relation:
+
+$$i \sim j \iff \pi(x_{i}) = \pi(x_{j})$$
+
+Order $[k]$ as follows: 
+\begin{center}
+$i\leq j \iff$ for $\Gamma_{i} = [x_{i}]$ and $\Gamma_{j} = [x_{j}]$,
+$\pi(x_{i}) \leq \pi(x_{j})$
+\end{center}
+This defines a newly indexed partition $\Pi^*_{p}$ of [n].
+
+Now there exist infinitely many prime integers $p$ in $\mathbb{N}$, 
+and hence the set $\{\Pi^*_{p}\ : \ p$ is prime in $\mathbb{N}\}$
+is infinite. Then, since there exist only finitely many possible
+partitions of $[n]$, one such partition $\overline{\Pi}$ must be induced
+by infinitley many prime numbers.
+
+By Lemma \ref{lem:vec} and properties of prime integers, $\overline{\Pi}$ 
+can be shown to satisfy the columns property conditions. 
 
 
-\textit{Sketch of proof of Rado's Theorem}.
-We work with $\Lambda\in\mathbb{Z}^{m\times n}$ without loss of generality.
 
-For the necessary implication, we choose the following colouring: for an arbitrary 
-prime $p$, let $\chi_{p}:\mathbb{N}\to[p-1]$ such that, if $y\in\mathbb{N}$ is 
-written in basis $p$, its colour is the least non-zero coefficient $d(y)$. 
-Call $\pi(y)$ its position in the expansion. Since $\Lambda$ is PR, there exists 
-a monochromatic solution $x = (x_{1},\cdots,x_{n})\in \mathbb{N}^n$ such that 
-$\Lambda x = 0$. Now order the natural numbers $x_{1},\cdots,x_{n}$ in an 
-increasing fashion by position $\pi(x_{j})$ of the first non-zero coefficient 
-$d(x_{j})$ in their $p$-expansion. Partition their indices into sets 
-$\Gamma_{i}:=\{j\in [n] \ | \ \pi(x_{j})=i\}$. Then by means of properties of 
-primes integers and our first Lemma one shows that such a partition satisfies 
-the columns property conditions.
+%prime $p$, let $\chi_{p}:\mathbb{N}\to[p-1]$
+%For the necessary implication, we choose the following colouring: for an arbitrary 
+%prime $p$, let $\chi_{p}:\mathbb{N}\to[p-1]$ such that, if $y\in\mathbb{N}$ is 
+%written in basis $p$, its colour is the first non-zero coefficient $d(y)$ in the
+%expansion. Call $\pi(y)$ the position of $d(y)$ in the expansion. Since $\Lambda$ is PR, there exists 
+%a monochromatic solution $x = (x_{1},\cdots,x_{n})\in \mathbb{N}^n$ such that 
+%$\Lambda x = 0$. Now order the natural numbers $x_{1},\cdots,x_{n}$ in an 
+%increasing fashion by position $\pi(x_{j})$ of the first non-zero coefficient 
+%$d(x_{j})$ in their $p$-expansion. Partition their indices into sets 
+%$\Gamma_{i}:=\{j\in [n] \ | \ \pi(x_{j})=i\}$. Then by means of properties of 
+%primes integers and our first Lemma one shows that such a partition satisfies 
+%the columns property conditions.
 
 For the sufficient implication, we show that there exist $m,p,c\in\mathbb{N}$ 
 such that for all $x\in\mathbb{N}$, $S_{m,p,c}(x)$ contains a solution to our 
 system of equations. This is done constructively, using the columns property 
-that we assume. Then, by our second Lemma, one such solution must be monochromatic. 
-$\qed$
+that we assume. Then, by Lemma \ref{lem:mpc}, one such solution must be monochromatic. 
+\end{proof}
+
 
 \subsection{Euclidean Ramsey theory}
 \label{sec:3.2}
@@ -168,8 +206,10 @@ Rado's approach was to phrase an arithmetical problem as a question about
 monochromatic solutions to certain systems of homogeneous equations.
 A similar approach enables us to translate a combinatorial property of finite subsets 
 of the Euclidean space into a geometrical property. In particular we are now interested
-in affine linear equations on $\mathbb{R}$ that do not admit monochromatic solutions (Lemma \ref{lem:radreal}).
-These allow us to formulate a geometrical necessary condition for a finite set to be Ramsey in $\mathbb{R}^n$.
+in affine linear equations on $\mathbb{R}$ that do not admit monochromatic solutions 
+(Lemma \ref{lem:radreal}).
+These allow us to formulate a geometrical necessary condition for a finite 
+set to be Ramsey in $\mathbb{R}^n$.
 
 We first define a notion of Ramseyness for finite sets $F\in\mathbb{R}^n$. 
 
@@ -240,7 +280,8 @@ exist scalars $\{0\}\neq\{\mu_{1},\cdots, \mu_{k},b\}\subset\mathbb{R}$ such tha
 \end{enumerate}
 \end{lemma}
 
-\textit{Proof}. Assume that $F$ is spherical and (i) holds. Then, $\forall 
+\begin{proof}
+Assume that $F$ is spherical and (i) holds. Then, $\forall 
 i \in \{0,\cdots,k\}$, $$|v_{i}|^2 - |v_{0}|^2 = |v_{i} - z|^2 - |v_{0} - z|^2 + 
 2 \langle v_{i} - v_{0}, z \rangle = r^2 - r^2 + 2 \langle v_{i} - v_{0}, z \rangle 
 = 2 \langle v_{i} - v_{0}, z \rangle $$ where $z$ and $r$ are respectively the 
@@ -260,7 +301,8 @@ centre $z$. Then:
 $$\sum_{i=1}^{k} \mu_{i} (|v_{i}|^2 - |v_{0}|^2) \stackrel{(i)}{=} \mu_{k} (|v_{k} - z|^2 
 - |v_{0} - z|^2)\neq 0 $$ 
 
-As otherwise $F$ is spherical. So (ii) holds. $\qed$
+As otherwise $F$ is spherical. So (ii) holds. 
+\end{proof}
 
 Notice that if $F$ is not spherical, then any other figure with the same 
 configuration is not spherical. In particular, if $F$ has the same configuration 
@@ -280,22 +322,30 @@ exists a colouring $\chi$ of $\mathbb{R}$ such that the equation:
 $$\sum_{i = 1}^{k} \mu_{i}(x_{i} - x_{0}) = b \ \ \ \ \ \ \ \ (A) $$ has no monochromatic solution.
 \end{lemma}
 
-\textit{Proof}. I. We first show that there exists a $2n$-colouring $\chi$ of 
+\begin{proof}
+We divide the proof in two parts.
+
+I. We first show that there exists a $2n$-colouring $\chi$ of 
 $\mathbb{R}$ such that the equation $$\sum_{i = 1}^{k} (x_{i} - x_{i}') 
 = 1 \ \ \ \ \ \ \ \ (B)$$ 
 has no solution with $\chi(x_{i}) = \chi(x_{i}')$ for all $i\in [k]$.
 
-Choose the following colouring: $$\chi: \mathbb{R} \to [2n] \ | \ x \mapsto j \ \ \
-\textit{if} \ \ \ \exists m \in \mathbb{Z} \ : \ x \in \bigg[2m + \frac{j}{n}, 
-2m + \frac{j+1}{n}\bigg]$$
+Choose the following colouring: 
+\begin{center}
+
+    $\chi: \mathbb{R} \to [2n] \ | \ x \mapsto j$ \ \ if \ \
+    $\exists m \in \mathbb{Z} \ : \ x \in \bigg[2m + \frac{j}{n}, 
+    2m + \frac{j+1}{n}\bigg]$
+\end{center}
+
 Notice that if $\chi(x) = \chi(y)$, then $\exists m \in \mathbb{Z} : x - y =
 2m + \epsilon$ for some $\epsilon$ with $|\epsilon| < \frac{1}{n}$.
 Now assume that there exists a solution of (B) with $\chi(x_{i}) = \chi(x_{i}')$ 
 for all $i\in [k]$. Then there exist integers $m_{i}$ and real $\epsilon_{i}$ such that:
 $$1 = \sum_{i = 1}^{k} (x_{i} - x_{i}') = \sum_{i = 1}^{k} (2m_{i} + \epsilon_{i})
 = 2M + \sum_{i = 1}^{k} \epsilon_{i} $$
-Now, $2M = \sum_{i = 1}^{k} 2m_{i}$ is an integer, whereas $|\sum_{i = 1}^{k} 
-\epsilon_{i}| < 1$. But then $1 \notin \mathbb{Z}$, which is absurd.
+Now, $2M = \sum_{i = 1}^{k} 2m_{i}$ is an integer and $|\sum_{i = 1}^{k} 
+\epsilon_{i}| < 1$. But then $1 \notin \mathbb{Z}$ or $M \notin \mathbb{Z}$ , which is absurd.
 \\
 
 II. We now prove that there exists a colouring $\overline{\chi}$ of $\mathbb{R}$ such 
@@ -321,12 +371,14 @@ and thus: $$ \forall i \in [k], \ \ \exists m_{i}, \epsilon_{i} \ : \
 \overline{\mu}_{i} x_{i} - \overline{\mu}_{i} x_{0} = 2m_{i} + \epsilon_{i}$$ 
 
 Where the $m_i$,$\epsilon_{i}$ satisfy the same properties as before for $i\in [k]$.
-But then, by the same reasoning as before, (C) implies that $1\not\in\mathbb{Z}$,
-which is absurd.
+But then, by the same reasoning as before, (C) implies that $1\not\in\mathbb{Z}$ or 
+$\sum_{i = 1}^{k} 2m_{i}\not\in\mathbb{Z}$, which is absurd.
 
-Thus (A) has no monochromatic solution under $\overline{\chi}$. $\qed$
+Thus (A) has no monochromatic solution under $\overline{\chi}$. 
+\end{proof}
 
-\textit{Proof of Theorem \ref{thm:sph}}. Let $F$ be a non-spherical figure. Then there exist 
+\begin{proof}[Proof of Theorem \ref{thm:sph}] 
+Let $F$ be a non-spherical figure. Then there exist 
 scalars $\{\mu_{1},\cdots, \mu_{k},b\}\subset\mathbb{R}$ such that equations 
 (i) and (ii) from our first Lemma are satisfied. By Lemma \ref{lem:radreal} there exists 
 an $r$-colouring $\chi$ of $\mathbb{R}$ such that (ii) has no monochromatic 
@@ -334,11 +386,12 @@ solution. For $n \in \mathbb{N}$ we define the following colouring of
 $\mathbb{R}^n$: $$\chi_{n}^*: \mathbb{R}^n\to [r] : v \mapsto \chi(|v|^2) $$
 Now, if there exists a monochromatic $E\in [F]$ in $\mathbb{R}^n$, then there 
 exists a monochromatic solution to (ii), since the elements of $E$ satisfy (ii) with 
-the same choice of scalars by a previous observation. But this contradicts our first Lemma.
+the same choice of scalars by a previous observation. But this contradicts our Lemma \ref{lem:radreal}.
 
 Thus there exists an $r\in \mathbb{N}$ such that for all $n \in \mathbb{N}$ 
 there exists an $r$-colouring of $\mathbb{R}^n$ under which no element of $[F]$
-in $\mathbb{R}^n$ is monochromatic. That is, $[F]$ is not Ramsey.\qed
+in $\mathbb{R}^n$ is monochromatic. That is, $[F]$ is not Ramsey.
+\end{proof}
 
 Thus being spherical is a necessary condition for a figure (a configuration)
 to be Ramsey. It is not known whether this is also a sufficient condition (\cite{Graham1994}). 
@@ -346,15 +399,19 @@ Yet there are some classes of configurations that have been proved to be Ramsey.
 As an example, consider the following:
 
 \begin{definition}[Brick]
-    A configuration $\mathfrak{B}$ is a \emph{brick} if $\mathfrak{B} 
-    = [B]$ for some $B\in \mathbb{R}^n$ of the form:
+    Let $n\in \mathbb{N}$. We say that $B\subset \mathbb{R}^n$ is 
+    a \emph{rectangle} if it is of the form:
 
     \begin{center}
-        $B = \{(b,\cdots,b).\delta \ | \ \delta \in \{0,1\}^n \}$
+        $B = \{(b_{1}\delta_{1},\cdots,b_{n}\delta_{n}) \ | \ 
+        (\delta_{1},\cdots,\delta_{n}) \in \{0,1\}^n \}$
     \end{center}
 
-    for some $n\in\mathbb{N}$, where $(b,\cdots,b)\in\mathbb{R}^n$ 
-    for some fixed $b\in\mathbb{R}\setminus{\{0\}}$.
+    where $(b_{1},\cdots,b_{n})\in\mathbb{R}^n$ for some fixed 
+    $\{b_{1},\cdots,b_{n}\}\subset \mathbb{R}_{0}^+$.
+
+A configuration $\mathfrak{B}$ is a \emph{brick} if there exists a 
+rectangle $B$ such that $\mathfrak{B}=[B]$.
 \end{definition}
 
 The following theorem is proved in \cite{Erdös1973}:
