@@ -20,13 +20,15 @@ Ramsey type properties that it exhibits.
 
 We begin with a few preliminaries and some important results about them.
 
-\begin{definition}[Structures over a Relational Language\supercite{Hubicka2015}]
+\begin{definition}[Structures over a Relational Language\cite{Hubicka2015}]
   Let $I$ be a finite index set.
-  We call $\Delta = (\delta_i \in \Z^+)_{i\in I}$ a
-  type and the pair $L=(I,\Delta)$ a language.
+  We call the pair $L=(I,\Delta)$ a \textit{language}, where $\Delta$ is an
+  $I$-tuple of positive integers, called the \textit{type}.
+  
   Given a set $A$, an $n$-ary relation is a subset of $A^n$.
-  An $L$-structure $\str{A}$ is a pair $(A,(\rel{i}{\str{A}})_{i\in I})$ where each
-  $\rel{i}{\str{A}}$ is a $\delta_i$-ary relation, i.e. a subset of $A^{\delta_i}$.
+  An \textit{$L$-structure} $\str{A}$ is a pair $(A,\rel{A})$, where
+  $\rel{A}=(\rel[i]{\str{A}})_{i\in I}$ is an $I$-tuple of $\delta_i$-ary
+  relations, i.e. $\forall i \in I, \rel[i]{A}\subseteq A^{\delta_i}$.
 
   If $A$ is finite, the structure $\str{A}$ is said to be finite, with a similar
   statement holding for countable sets.
@@ -35,43 +37,53 @@ We begin with a few preliminaries and some important results about them.
 \end{definition}
 
 An example of a language is $L=(\{1\}, (2))$.
-An example of a structure on that language is $\str{A} = (A, \rel{i}{A})$, where
+An example of a structure on that language is $\str{A} = (A, \rel[<]{A})$, where
 $A$ is any non-empty finite subset $A \subset \Z^+$, equipped with the relation
-$\rel{<}{A} = \{(x,y): x < y\} \subset A^2$. 
-This forms a class of structures that we will call $\class{R}$, the class of
+$\rel[<]{A} = \{(x,y): x < y\} \subset A^2$. 
+This forms a class of structures that we will call $\flo$, the class of
 finite linear orderings.
+Any $\str{A}\in\flo$ must satisfy the following properties
+\begin{itemize}
+\item\textbf{Transitive}: $\forall x, y, z \in A : (x,y)\in\rel[<]{A}$ and
+  $(y,z)\in\rel[<]{A} \implies (x,z)\in\rel[<]{A}$
+\item\textbf{Semiconnex}: $\forall x, y \in A : x \neq y \implies (x,y) \in
+  \rel[<]{A}$ or $ (y,x) \in \rel[<]{A}$
+\item\textbf{Irreflexive}: $\forall x, y \in A : (x,y)\in\rel[<]{A} \implies
+  (y,x)\notin\rel[<]{A}$
+\end{itemize}
 
-\begin{definition}[Homomorphisms and Substructures\supercite{Hubicka2016,Hubicka2015}]
-  Homomorphisms between structures over the same language are maps that preserve
-  relations,\\
-  so $f : \str{A} \to \str{B}, \rel{i}{\str{A}} \mapsto
-  \rel{i}{\str{B}}, \forall i \in I$.
+\begin{definition}[Homomorphisms and Substructures\cite{Hubicka2016,Hubicka2015}]
+  \textit{Homomorphisms} between structures over the same language are maps that
+  preserve relations,\\
+  so $f : \str{A} \to \str{B}$ such that $\forall i \in I, f(\rel[i]{A})\subseteq
+  \rel[i]{B}$.
 
-  An injective homomorphism where $f^{-1} : \rel{i}{\str{B}} \mapsto
-  \rel{i}{\str{A}}, \forall i \in I$ is called an embedding, an isomorphism of
-  structures is a surjective embedding.
+  An injective homomorphism where $f^{-1}(\rel[i]{\str{B}}) \subseteq
+  \rel[i]{\str{A}}, \forall i \in I$ is called an \textit{embedding}, an
+  \textit{isomorphism} of structures is a surjective embedding.
 
-  We say that $\str{B}$ is a substructure of $\str{A}$ if the inclusion $B
-  \subseteq A$ is an embedding of structures.
+  If for two structures $\str{A},\str{B}$, the inclusion $B \subseteq A$ is an
+  embedding, we call $\str{B}$ an \textit{induced substructure} of $\str{A}$,
+  though we will shorten this to \textit{substructure}.
   We denote the set of substructures of $\str{A}$ isomorphic to $\str{B}$ by
   $\sstr{A}{B}$.
 \end{definition}
 
-Returning to $\class{R}$, there are many bijections between subsets of $\Z^+$ of
+Returning to $\flo$, there are many bijections between subsets of $\Z^+$ of
 the same cardinality, but this may not always preserve the relation.
 To show that there is an isomorphism between any two $\str{A}, \str{B} \in
-\class{R} : \card{\str{A}} = \card{\str{B}}$ one can proceed by induction (show
+\flo$ with $\card{\str{A}} = \card{\str{B}}$, one can proceed by induction (show
 that there is an isomorphism between $\str{A} : \card{\str{A}} = n$ and
 $\str{N}_n = (\{1,\dots,n\},\{(1,2),\dots,(1,n),(2,3),\dots,(n-1,n)\})$).
 With this we can say that there are only countably many structures in
-$\class{R}$ up to isomorphism.
+$\flo$ up to isomorphism.
 
-$\class{R}$ is also an example of an amalgamation class, members of which
+$\flo$ is also an example of an amalgamation class, members of which
 exhibit a few more properties.
 
-\begin{definition}[Amalgamation Class\supercite{Cameron1990,Hubicka2016}]
-  A class $\class{K}$ is an amalgamation class if it satisfies the following
-  properties:
+\begin{definition}[Amalgamation Class\cite{Cameron1990,Hubicka2016}]
+  A class $\class{K}$ is an \textit{amalgamation class} if it satisfies the
+  following properties:
   
   \begin{itemize}
   \item \textbf{Hereditary Property}: For every $\str{A} \in \class{K}$ and every
@@ -99,13 +111,13 @@ exhibit a few more properties.
 \end{definition}
 
 \begin{example}
-  $\class{R}$ is an amalgamation class
+  $\flo$ is an amalgamation class
 
   \begin{proof}
-    Prove properties, suppose $\str{B_1},\str{B_2}\in\class{R}$.
+    Prove properties, suppose $\str{B_1},\str{B_2}\in\flo$.
     \begin{itemize}
     \item\textbf{HP}: Given $B_1 \subseteq B_2$, we
-      have $\card{\str{B_1}} \leq \card{\str{B_2}}$. Every $\str{A}\in\class{R} :
+      have $\card{\str{B_1}} \leq \card{\str{B_2}}$. Every $\str{A}\in\flo :
       \card{\str{A}} = m$ is isomorphic to $\str{N}_m$ as defined above and
       there is a clear embedding of $\str{N}_m$ into $\str{N}_n$ where $m \leq
       n$.
@@ -118,11 +130,11 @@ exhibit a few more properties.
       Partition $B_1, B_2$ into three classes each:
       \begin{itemize}
       \item The $x\in B_i$ such that $\exists y \in A$ with
-        $(x,\alpha_i(y)) \in \rel{<}{B_i}$, call these sets $B^-_i$.
+        $(x,\alpha_i(y)) \in \rel[<]{B_i}$, call these sets $B^-_i$.
       \item The $x\in B_i$ such that $\exists y \in A$ with
         $x=\alpha_i(y)$, call these sets $B^A_i$.
       \item The $x\in B_i$ such that $\exists y \in A$ with
-        $(\alpha_i(y),x) \in \rel{<}{B_i}$, call these sets $B^+_i$.
+        $(\alpha_i(y),x) \in \rel[<]{B_i}$, call these sets $B^+_i$.
       \end{itemize}
       Define, $n_1 = \card{B^-_1}, n_2 = n_1 + \card{B^-_2}, n_3 = n_2 + \card{A},
       n_4 = n_3 + \card{B^+_2}, n_5 = n_4 + \card{B^+_2}$ and let $C = \str{N}_{n_5}$.
@@ -144,9 +156,9 @@ exhibit a few more properties.
 
 Another useful construction is the age of a structure.
 
-\begin{definition}[Age\supercite{Cameron1990,Macpherson2011}]
-  The age of a countable structure, say $\str{A}$, is the class of finite
-  $L$-structures, $\str{B}$, such that $\str{B}$ is isomorphic to
+\begin{definition}[Age\cite{Cameron1990,Macpherson2011}]
+  The \textit{age} of a countable structure, say $\str{A}$, is the class of
+  finite $L$-structures, $\str{B}$, such that $\str{B}$ is isomorphic to
   a substructure of $\str{A}$.
 \end{definition}
 
@@ -161,12 +173,12 @@ class is the age of some structure.
 The correspondence between the two is given by Fraïssé's theorem which makes use
 of the concept of homogeneity.
 
-\begin{definition}[Homogeneous Structures\supercite{Macpherson2011}]
-  A structure $\str{A}$ is homogeneous if for every pair of finite isomorphic
-  substructures $\str{U}, \str{V} \subseteq \str{A}$, with $f : \str{U} \to
-  \str{V}$ being the isomorphism, there exists an automorphism $\tilde{f}
-  \in\aut\str{A}$ which extends $f$, i.e. $\tilde{f}$ restricted to $\str{U}$ is
-  $f$.
+\begin{definition}[Homogeneous Structures\cite{Macpherson2011}]
+  A structure $\str{A}$ is \textit{homogeneous} if for every pair of finite
+  isomorphic substructures $\str{U}, \str{V} \subseteq \str{A}$, with $f :
+  \str{U} \to \str{V}$ being the isomorphism, there exists an automorphism
+  $\tilde{f} \in\aut\str{A}$ which extends $f$, i.e. $\tilde{f}$ restricted to
+  $\str{U}$ is $f$.
 \end{definition}
 
 An example of homogeneity is given by the rationals with the order relation.
@@ -188,20 +200,20 @@ The argument below is taken from \textcite[1601]{Macpherson2011}.
     (u\sumax,\infty) \mapsto (f(u\sumax),\infty)$ where the bounded intervals
     are mapped via a linear interpolation and the unbounded intervals are mapped
     linearly.
-    This is an automorphism on $\str{Q}$
+    This is an automorphism on $\str{Q}$.
   \end{proof}
 \end{example}
 
 We now state the main theorem of this subsection
 
-\begin{theorem}[Fraïssé\supercite{Fraisse1953}]
-  Let $L$ be a language
+\begin{theorem}[Fraïssé\cite{Fraisse1953}\label{thr:fraisse}]
+  Let $L$ be a language,
   \begin{itemize}
   \item Given a homogeneous $L$-structure $\str{M}$, $\age\str{M}$ is an
     amalgamation class.
   \item Given a countable non-empty amalgamation class of finite structures
-    $\class{C}$, there exists a unique homogeneous $L$-structure $\str{M}$ such
-    that $\age\str{M} = \class{C}$.
+    $\class{C}$, there exists a unique countable homogeneous $L$-structure
+    $\str{M}$ such that $\age\str{M} = \class{C}$.
   \end{itemize}
 \end{theorem}
 
@@ -209,29 +221,32 @@ We omit a proof of this theorem, but a sketch is given in \textcite[1602]{Macphe
 We call the structure given by the second point of the theorem the Fraïssé limit
 of the class $\class{C}$.
 
-A good example of a Fraïssé limit is that of $\class{R}$, which has limit $\str{Q}$.
+A good example of a Fraïssé limit is that of $\flo$, which has limit $\str{Q}$.
 It is clear that any finite linear order can be embedded into $\str{Q}$, so it
 only remains to show that any finite substructure of $\str{Q}$ is isomorphic to
-some structure in $\class{R}$.
+some structure in $\flo$.
 This can be done by induction in a similar manner to showing that there are only
-countably many structures in $\class{R}$ up to isomorphism.
+countably many structures in $\flo$ up to isomorphism.
 
 \subsection{The Random Graph}
 
 The defining property of the random graph is
 
-\begin{remark}[Extensibility Property\supercite{Cameron2013}]
-  \label{extprop}
-  Given two finite sets of distinct vertices $U = \{u_1,\dots,u_m\}, V =
-  \{v_1,\dots,v_n\}$, we write $\neigh{U}$ as the set of vertices adjacent to
-  every element in $U$.
-  There exists a vertex $z$ which is adjacent to all elements in $U$, but not
-  those in $V$.
+\begin{remark}[Extensibility Property (EP)\cite{Cameron2013}\label{rem:extprop}]
+  Given a finite set of vertices in a graph $U = \{u_1, \dots, u_m\} \subseteq
+  G_V$, we define $\adj{U}$ as the set of vertices in $G_V$ adjacent to every
+  element in $U$. 
+
+  
+  A graph $G = (G_V,G_E)$ has the \textit{extensibility property} if given two
+  finite sets of distinct vertices $U = \{u_1,\dots,u_m\}, V =
+  \{v_1,\dots,v_n\} \subseteq G_V$, there exists a vertex $z\in
+  G_V\setminus(U\cup V)$ such that $z \in \adj{U}$ and $z \notin \adj{V}$.
 \end{remark}
 
 \textcite{Erdos1963} show that by taking a countable set of vertices and
 assigning edges between vertices with probability $\frac{1}{2}$, one produces a
-graph that is isomorphic to the random graph with probability 1.
+graph that almost surely has the extensibility property.
 While the original paper gives a proof, we reproduce a proof by
 \textcite[1-2]{Cameron2013}.
 
@@ -244,29 +259,29 @@ While the original paper gives a proof, we reproduce a proof by
   \item $\forall x\in G,\forall y\in G, \prob((x,y)\in R)=\frac{1}{2}$
   \end{itemize}
 
-  Then any countable random graph satisfies \ref{extprop} with probability 1.
+  Then any countable random graph almost surely has the \hyperlink{rem:extprop}{EP}.
 
   \begin{proof}
-    We show that the set of countable graphs that do not satisfy property \ref{extprop}
-    has probability 0, i.e. it is a null set.
+    We show that the set of countable graphs that do not have the
+    \hyperlink{rem:extprop}{EP} has probability 0, i.e. it is a null set.
     We use an elementary lemma from measure theory that states a countable union
     of null sets is also null, which follows from countable additivity of a
     measure.
     Since we only have countably many choices of $m$ and $n$, there are only
     countably many choices of $U = \{u_1,\dots,u_m\}$ and $V =
     \{v_1,\dots,v_n\}$ so we only need to consider a particular choice of $U$
-    and $V$ and show that the set of graphs that fail \ref{extprop} for that choice is
-    null in the limit.
+    and $V$ and show that the set of graphs that don't have the
+    \hyperlink{rem:extprop}{EP} for that choice is null in the limit.
 
     Suppose that $Z = \{z_1,\dots,z_N\}$ are distinct vertices such that each
-    $z_i$ fails \ref{extprop}.
+    $z_i$ does not satisfy the \hyperlink{rem:extprop}{EP}.
     For any particular $z_i$, the probability of this occurring is $1 - Pr(z_i \in
-    \neigh U \text{ and } z_i \notin \neigh V) = 1 - \frac{1}{2^{m+n}}$
+    \adj U \text{ and } z_i \notin \adj V) = 1 - \frac{1}{2^{m+n}}$
     (adjacency is a union of independent events).
     The probability of this occurring for every $z_i \in Z$ is $\left(1 -
       \frac{1}{2^{m+n}}\right)^N$.
     This approaches 0 as $N\to\infty$ so we can state that every countable
-    random graph fails $\ref{extprop}$ with probability 0 $\implies$ it
+    random graph fails \hyperlink{rem:extprop}{EP} with probability 0 $\implies$ it
     satisfies it with probability 1.
   \end{proof}
 \end{prop}
@@ -274,42 +289,111 @@ While the original paper gives a proof, we reproduce a proof by
 Note that the fixed probability of an edge occurring could be replaced with any
 $p\in(0,1)$ and the proof would be identical.
 
-\begin{prop}
-  If two countable graphs both satisfy \ref{extprop}, then they are isomorphic.
+\begin{prop}\label{prop:EPIso}
+  If two countable graphs both satisfy the \hyperlink{rem:extprop}{EP}, then they
+  are isomorphic.
 
   \begin{proof}
-    Let $\str{\Gamma_1} = (\Gamma_1,\rel{1}{\Gamma_1})$ and $\str{\Gamma_2} =
-    (\Gamma_2,\rel{1}{\Gamma_2})$ be two graphs that satisfy \ref{extprop}. 
+    Let $\str{\Gamma_1} = (\Gamma_1,\rel{\Gamma_1})$ and $\str{\Gamma_2} =
+    (\Gamma_2,\rel{\Gamma_2})$ be two graphs that satisfy the
+    \hyperlink{rem:extprop}{EP}.
 
     Suppose we have an isomorphism $f$ between two finite substructures
     $\str{G_1}\subset\str{\Gamma_1},\str{G_2}\subset\str{\Gamma_2}$, these are
     induced subgraphs which necessarily have the same cardinality $n$, and we
     take an additional vertex $x_{n+1} \in \Gamma_1\setminus G_1$.
     We can extend this to an isomorphism between the induced subgraphs on $G_1'
-    = G_1 \cup \{x_{n+1}\}$ and $G_2' = G_2 \cup \{y_{n+1}\}$ using
-    \ref{extprop} in the following manner.
+    = G_1 \cup \{x_{n+1}\}$ and $G_2' = G_2 \cup \{y_{n+1}\}$ using the
+    \hyperlink{rem:extprop}{EP} in the following manner.
 
-    We can partition $G_1$ into $U = \{x \in G_1 : x \in \neigh\{x_{n+1}\}\},
-    V = \{x \in G_1 : x \notin \neigh\{x_{n+1}\}\}$ and take the images of these
+    We can partition $G_1$ into $U = \{x \in G_1 : x \in \adj\{x_{n+1}\}\},
+    V = \{x \in G_1 : x \notin \adj\{x_{n+1}\}\}$ and take the images of these
     classes under $f$, say $U', V'$.
-    By \ref{extprop}, we have a $y_{n+1} \in \Gamma_2\setminus G_2 : y_{n+1} \in \neigh{U'}$ and
-    $y_{n+1} \notin \neigh{V'}$, so we can extend the isomorphism by setting
-    $f'(x_{n+1}) = y_{n+1}$.
+    By the \hyperlink{rem:extprop}{EP}, we have a $y_{n+1} \in \Gamma_2\setminus G_2
+    : y_{n+1} \in \adj{U'}$ and $y_{n+1} \notin \adj{V'}$, so we can extend
+    the isomorphism by setting $f'(x_{n+1}) = y_{n+1}$.
     It is clear to see that this is an isomorphism between substructures.
     Furthermore, note that we could switch $\str{\Gamma_1}$ and $\str{\Gamma_2}$
    and the proof would be identical.
 
-    So given any finite substructure, we can generate an isomorphism for
+   We can now begin the construction of the full isomorphism.
+   Since $\Gamma_1, \Gamma_2$ are countable they can be enumerated as $\Gamma_1
+   = \{x_1,x_2,\dots\}, \Gamma_2=\{y_1,y_2,\dots\}$.
+   We construct our isomorphism as follows, start with $f_0$ being the empty
+   map and proceed by induction.
+   Suppose that the $n$th isomorphism has been constructed.
+   If $n$ is even, pick the $x_i\in\Gamma_1$ with the smallest index not in the
+   domain of $f_n$, and find the $y_j\in\Gamma_2$ with the least index which
+   extends the isomorphism in the manner above, call the result $f_{n+1}$.
+   If $n$ is odd, repeat the process but instead find the $y_i\in\Gamma_2$ with
+   the least index not in the range of $f_n$, and find the $x_j\in\Gamma_1$ with
+   the smallest index which will extend $f_n$.
+   
+   Take the countable union of these partial maps and call the result $f$,
+   We have a countable enumeration of $\Gamma_1$ given by how elements were
+   added to the domain of $f$ so we can be sure that every element in $\Gamma_1$
+   is mapped to a unique element of $\Gamma_2$.
+   We can also enumerate $\Gamma_2$ by how elements of the range were added, so
+   every element in $\Gamma_2$ has unique pre-image.
+   Thus $f$ is a bijection, and by our construction, an isomorphism.
+ \end{proof} 
+\end{prop}
+
+With the above two propositions, we have shown that there exists a countable
+structure that satisfies the \hyperlink{rem:extprop}{EP} and that it is unique up to
+isomorphism.
+We shall call this structure the random graph, $\rand$.
+
+From the proof of \autoref{prop:EPIso}, it can be deduced that if we have two
+finite isomorphic substructures of $\rand$, we can extend the partial
+isomorphism to an automorphism of the entire graph, i.e. $\rand$ is homogeneous.
+By~\autoref{thr:fraisse}, $\age{\rand}$ must be an amalgamation class over the
+same language as $\rand$.
+The final property we will show about the random graph is that it is the Fraïssé
+limit of the class of undirected finite graphs without loops, $\gra$.
+
+We define $\gra$ as follows.
+$\str{A}\in\gra$ is a finite structure over the language $(1,(2))$ satisfying the
+following properties.
+\begin{itemize}
+\item\textbf{Irreflexive}: $\forall x \in A, \neg((x,x)\in\rel{A})$
+\item\textbf{Symmetric}: $\forall x, y\in A, (x,y)\in\rel{A} \implies (y,x)\in\rel{A}$
+\end{itemize}
+
+\begin{prop}
+  The Fraïssé limit of $\gra$ is $\rand$.
+
+  \begin{proof}
+    We proceed by double inclusion.
+
+    It is clear that every finite substructure of $\rand$ is a member of $\gra$,
+    i.e. $\age\rand\subseteq\gra$, since the two defining properties of $\gra$
+    are satisfied by $\rand$ by definition.
+
+    So it remains to show that every $\str{A}\in\gra$ embeds into $\rand$, which
+    implies that $\gra\subseteq\age\rand$.
+    This is achieved in a similar fashion to the proof of~\autoref{prop:EPIso}.
+    Enumerate the vertices of $\str{A}$ as $A=\{x_1,\dots,x_m\}$ and let $f_0$
+    be the empty map, $D_0 = \emptyset$ its domain.
+
+    Proceed by induction, let $x_{n+1}\in A\setminus D_n$ be the element with
+    the least index.
+    We can partition the domain of $f_n$ into two finite sets, $U = \{x \in D_n :
+    x \in \adj\{x_{n+1}\}\}$ and $V = \{x \in D_n : x \notin
+    \adj\{x_{n+1}\}\}$.
+    Note that by symmetry we have $x_{n+1}\in\adj U$ and $x_{n+1}\notin\adj V$.
+    
+    We then extend the homomorphism via the~\hyperlink{rem:extprop}{EP} in the
+    usual manner to get $f_{n+1}:D_n\cup\{x_{n+1}\}\to\rand$ a homomorphism.
+    Note further than since $\str{A}$ is finite, this process will terminate.
+    After which we will have found a substructure of $\rand$ which is isomorphic
+    to $\str{A}$ implying that $\gra\subseteq\age\rand$.
+
+    Thus $\gra=\age\rand$
+
   \end{proof}
 \end{prop}
 
-\textit{yet to write}
-\begin{itemize}
-\item Proof that this is the Fraïssé limit we want (Cameron2013, p6;
-  Macpherson2011, Ex 2.2.1)
-\item Show that the random graph is indeed homogeneous (Cameron2013, p8)
-%\item Mention $\aleph_0$-categoricity (Cameron2013, p9; Babai in Graham, p1509).
-\end{itemize}
 
 \subsection{Ramsey Classes}
 \label{sec:4.4}
@@ -318,7 +402,7 @@ about the existence of a sub-object in any partition of a 'large-enough' object.
 We now introduce the idea of a Ramsey class which applies this to classes of
 structures.
 
-\begin{definition}[Ramsey Class\supercite{Nesetril1995}]
+\begin{definition}[Ramsey Class\cite{Nesetril1995}]
   A structure $\str{C}$ is said to be $(t,\str{A})$ Ramsey for a structure
   $\str{B}$ if every $t$-colouring of the set $\sstr{C}{A}$ contains
   $\str{B'}: \str{C}\supseteq\str{B'} \simeq \str{B}$ such that $\sstr{B'}{A}$ is
