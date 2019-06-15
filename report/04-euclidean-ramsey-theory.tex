@@ -75,12 +75,12 @@ A matrix $\Lambda = \begin{pmatrix}
 g_{1} & \cdots & g_{n} 
 \end{pmatrix}\in \mathbb{Q}^{m\times n}$ satisfies the \emph{columns property} (CP) 
 if $[n]$ can be partitioned into a family of sets 
-$$\Pi := \bigg\{\Gamma_{1},\cdots,\Gamma_{r}\bigg\}$$ such that:
+$$\Pi := \bigg\{\mathcal{C}_{1},\cdots,\mathcal{C}_{r}\bigg\}$$ such that:
 
 \begin{enumerate}[label=(\roman*)]
-\item $\sum\limits_{j\in\Gamma_{1}}g_{j} = 0$
-\item $\forall i \in [r]\setminus\{1\}$, $\sum\limits_{ j \in {\Gamma_{i}}}g_{j} 
-\in span\bigg\{g_{j} \ \bigg| \ j\in\bigcup\limits_{k \in [r]: k < i }\Gamma_{k}\bigg\}$
+\item $\sum\limits_{j\in\mathcal{C}_{1}}g_{j} = 0$
+\item $\forall i \in [r]\setminus\{1\}$, $\sum\limits_{ j \in {\mathcal{C}_{i}}}g_{j} 
+\in span\bigg\{g_{j} \ \bigg| \ j\in\bigcup\limits_{k \in [r]: k < i }\mathcal{C}_{k}\bigg\}$
 \end{enumerate}
 
 \end{definition}
@@ -151,13 +151,13 @@ $$\chi_{p}:\mathbb{N}\to[p-1] : y \mapsto d(y)$$
 
 Since $\Lambda$ is PR, there exists a monochromatic $x = (x_{1},\cdots,x_{n})\in 
 \mathbb{N}^n$ such that $\Lambda x = 0$. Now consider the partition
-$\Pi_{p}:=\{\Gamma_{1},\cdots,\Gamma_{k}\}$ of $[n]$ induced by the equivalence relation:
+$\Pi_{p}:=\{\mathcal{C}_{1},\cdots,\mathcal{C}_{k}\}$ of $[n]$ induced by the equivalence relation:
 
 $$i \sim j \iff \pi(x_{i}) = \pi(x_{j})$$
 
 Order $[k]$ as follows: 
 \begin{center}
-$i\leq j \iff$ for $\Gamma_{i} = [x_{i}]$ and $\Gamma_{j} = [x_{j}]$,
+$i\leq j \iff$ for $\mathcal{C}_{i} = [x_{i}]$ and $\mathcal{C}_{j} = [x_{j}]$,
 $\pi(x_{i}) \leq \pi(x_{j})$
 \end{center}
 This defines a newly indexed partition $\Pi^*_{p}$ of [n].
