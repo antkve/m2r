@@ -1,8 +1,8 @@
 \documentclass[./m2r-report.tex]{subfiles}
 
 In this section we show how a theorem of Rado (\cite{Rado1933}) generalising results
-from arithmetical Ramsey theory is the key to proving an interesting connection
-between combinatorial and geometrical properties of finite subsets of Euclidean 
+from arithmetical Ramsey theory inspires an interesting theorem (\ref{thm:sph}, see \cite{Erdös1973}) 
+connecting combinatorial and geometrical properties of finite subsets of Euclidean 
 space. Now, Rado's theorem and its variants use purely Ramsey 
 theoretical techniques in their proof. This illustrates once more how Ramsey theory is 
 capable of translating combinatorial properties into structural (ie. geometric, 
@@ -147,19 +147,19 @@ increasing fashion by position $\pi(x_{j})$ of the first non-zero coefficient
 $d(x_{j})$ in their $p$-expansion. Partition their indices into sets 
 $\Gamma_{i}:=\{j\in [n] \ | \ \pi(x_{j})=i\}$. Then by means of properties of 
 primes integers and our first Lemma one shows that such a partition satisfies 
-the Columns Property conditions.
+the columns property conditions.
 
 For the sufficient implication, we show that there exist $m,p,c\in\mathbb{N}$ 
 such that for all $x\in\mathbb{N}$, $S_{m,p,c}(x)$ contains a solution to our 
-system of equations. This is done constructively, using the Columns Property 
+system of equations. This is done constructively, using the columns property 
 that we assume. Then, by our second Lemma, one such solution must be monochromatic. 
 $\qed$
 
 \subsection{Euclidean Ramsey theory}
 \label{sec:3.2}
 
-Rado's theorem translates a combinatorial 
-property of the positive integers into an algebraic property of matrices over $\mathbb{Q}$. 
+Rado's theorem translates a combinatorial property of the positive 
+integers into an algebraic property of matrices over $\mathbb{Q}$. 
 That is, it enables us to solve general problems of the Hilbert-Schur-van 
 der Waerden kind, through a unified algebraic approach. It also provides us 
 with an algebraic constraint on Ramsey sets in $\mathbb{Z}$.
@@ -169,30 +169,36 @@ monochromatic solutions to certain systems of homogeneous equations.
 A similar approach enables us to translate a combinatorial property of finite subsets 
 of the Euclidean space into a geometrical property. In particular we are now interested
 in affine linear equations on $\mathbb{R}$ that do not admit monochromatic solutions (Lemma \ref{lem:radreal}).
-These allow us to formulate a necessary condition for a finite set to be Ramsey in $\mathbb{R}^n$.
+These allow us to formulate a geometrical necessary condition for a finite set to be Ramsey in $\mathbb{R}^n$.
 
 We first define a notion of Ramseyness for finite sets $F\in\mathbb{R}^n$. 
 
 \begin{definition}[Configurations]
-A figure is a finite set $F\in \mathbb{R}^m$.
+A \emph{figure} is a finite set $F\in \mathbb{R}^m$.
 % for some $m\in \mathbb{N}$ such that the elements of K are subject to purely 
 %metrical costraints.
 Consider the set of all figures 
-$$\mathfrak{F}:= \{F \ | \ \exists n \in \mathbb{N} : F \  
-\textit{is finite in} \ \mathbb{R}^n\} $$ 
+\begin{center}
+    $\mathfrak{F}:= \{F \ | \ \exists n \in \mathbb{N} : F$  
+is finite in  $\mathbb{R}^n\}$
+\end{center}
+
 This is clearly non-empty as $\{0\}\subset\mathbb{R}$ is in $\mathfrak{F}$.
-Define an equivalence relation as follows: $$F \sim F' 
-\iff \ \textit{there exists an isometry} \ \Psi \ \textit{such that} 
-\ \Psi(F)=F'$$
-Then we define the set of Euclidean configurations 
+Define an equivalence relation as follows:
+\begin{center}
+$F \sim F' \iff $ there exists an isometry  $\Psi$  such that 
+ $\Psi(F)=F'$
+\end{center}
+
+Then we define the set of \emph{Euclidean configurations} 
 $$\mathfrak{K}:=\mathfrak{F}\backslash\sim$$
-An element $K=[F]$ of $\mathfrak{K}$ is called a configuration.
+An element $K=[F]$ of $\mathfrak{K}$ is called a \emph{configuration}.
 If $F$ and $F'$ are figures with $[F]=[F']$, we say that they have the same 
 configuration.
 \end{definition}
 
 \begin{definition}[Ramsey property for configurations]
-A configuration $K$ is Ramsey if: 
+A configuration $K$ is \emph{Ramsey} if: 
 \begin{center}
 $\forall r\in\mathbb{N}$, $\exists n\in\mathbb{N}$ such that, 
 under any $r$-colouring of $\mathbb{R}^n$,  there exists a monochromatic 
@@ -218,7 +224,7 @@ Hence it makes sense to talk about spherical configurations.
 Our aim in this section is to prove an interesting connection between Ramseyness
 and the property of being spherical:
 
-\begin{theorem}[\textcite{Erdös1973}]
+\begin{theorem}[\textcite{Erdös1973}]\label{thm:sph}
 If $K$ is Ramsey, $K$ is spherical.
 \end{theorem}
 
@@ -226,7 +232,7 @@ We will use the following characterisation of a spherical figure:
 
 \begin{lemma}
 A figure $F = \{v_{0},\cdots,v_{k}\}$ is not spherical if and only if there 
-exist scalars $\{0\}\neq\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$ such that:
+exist scalars $\{0\}\neq\{\mu_{1},\cdots, \mu_{k},b\}\subset\mathbb{R}$ such that:
 
 \begin{enumerate}[label=(\roman*)]
 \item $\sum_{i=1}^{k} \mu_{i} (v_{i} - v_{0})= 0$;
@@ -254,19 +260,19 @@ centre $z$. Then:
 $$\sum_{i=1}^{k} \mu_{i} (|v_{i}|^2 - |v_{0}|^2) \stackrel{(i)}{=} \mu_{k} (|v_{k} - z|^2 
 - |v_{0} - z|^2)\neq 0 $$ 
 
-As otherwise $F$ is spherical. So (ii) holds $\qed$
+As otherwise $F$ is spherical. So (ii) holds. $\qed$
 
 Notice that if $F$ is not spherical, then any other figure with the same 
 configuration is not spherical. In particular, if $F$ has the same configuration 
 as $E$, then the elements of $E$ satisfy our last Lemma for the same choice 
-of scalar coefficients $\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$, as 
+of scalars $\{\mu_{1},\cdots, \mu_{k},b\}\subset\mathbb{R}$, as 
 the equations (1) and (2) are invariant under isometry in $\mathbb{R}^n$.
 
 
 Our main tool in the proof is the following Lemma, which builds up on later results from Rado 
-(see \cite{Rado1945}). 
-The proof that follows is taken from Graham (see \cite{Graham1981}). In \cite{}  gives a more general proof 
-involving arbitrary fields.
+about systems of non-homogeneous equations (see \cite{Rado1945}). 
+The proof that follows is taken from Graham (see \cite{Graham1981}). In \cite{Erdös1973} a more general proof
+is given, involving arbitrary fields.
 
 \begin{lemma}[\textcite{Erdös1973}]\label{lem:radreal}
 Let $\mu_{1},\cdots,\mu_{k}$ and $b\neq 0$ be elements of $\mathbb{R}$. Then there 
@@ -320,19 +326,43 @@ which is absurd.
 
 Thus (A) has no monochromatic solution under $\overline{\chi}$. $\qed$
 
-\textit{Proof of Erd\H os}. Let $F$ be a non-spherical figure. Then there exist 
-coefficients $\{\mu_{1},\cdots, \mu_{k}\}\subset\mathbb{R}$ such that equations 
-(i) and (ii) from our second Lemma are satisfied. By our first Lemma there exists 
+\textit{Proof of Theorem \ref{thm:sph}}. Let $F$ be a non-spherical figure. Then there exist 
+scalars $\{\mu_{1},\cdots, \mu_{k},b\}\subset\mathbb{R}$ such that equations 
+(i) and (ii) from our first Lemma are satisfied. By Lemma \ref{lem:radreal} there exists 
 an $r$-colouring $\chi$ of $\mathbb{R}$ such that (ii) has no monochromatic 
 solution. For $n \in \mathbb{N}$ we define the following colouring of 
 $\mathbb{R}^n$: $$\chi_{n}^*: \mathbb{R}^n\to [r] : v \mapsto \chi(|v|^2) $$
 Now, if there exists a monochromatic $E\in [F]$ in $\mathbb{R}^n$, then there 
-exists a monochromatic solution to (ii), since the elements of $E$ satisfy (ii) with the same choice of coefficients by a 
-previous observation. But this contradicts our first Lemma.
+exists a monochromatic solution to (ii), since the elements of $E$ satisfy (ii) with 
+the same choice of scalars by a previous observation. But this contradicts our first Lemma.
 
 Thus there exists an $r\in \mathbb{N}$ such that for all $n \in \mathbb{N}$ 
 there exists an $r$-colouring of $\mathbb{R}^n$ under which no element of $[F]$
 in $\mathbb{R}^n$ is monochromatic. That is, $[F]$ is not Ramsey.\qed
+
+Thus being spherical is a necessary condition for a figure (a configuration)
+to be Ramsey. It is not known whether this is also a sufficient condition (\cite{Graham1994}). 
+Yet there are some classes of configurations that have been proved to be Ramsey.
+As an example, consider the following:
+
+\begin{definition}[Brick]
+    A configuration $\mathfrak{B}$ is a \emph{brick} if $\mathfrak{B} 
+    = [B]$ for some $B\in \mathbb{R}^n$ of the form:
+
+    \begin{center}
+        $B = \{(b,\cdots,b).\delta \ | \ \delta \in \{0,1\}^n \}$
+    \end{center}
+
+    for some $n\in\mathbb{N}$, where $(b,\cdots,b)\in\mathbb{R}^n$ 
+    for some fixed $b\in\mathbb{R}\setminus{\{0\}}$.
+\end{definition}
+
+The following theorem is proved in \cite{Erdös1973}:
+
+\begin{theorem}
+    Eevery brick is Ramsey.
+\end{theorem}
+
 
 % Local Variables:
 % TeX-master: "m2r-report.tex"

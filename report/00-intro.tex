@@ -16,23 +16,39 @@ order: existence of ordered substructure can sometimes be inferred through these
 Ramsey theory aims to find conditions for the existence of substructure when the
 superstructure satisfies very few rules.
 
-A typical example of an object with little constraint on its structural
-properties is a graph.
-Graphs are not much more than sets; yet there are many graph theoretical results
-of the following form: a large enough graph exhibits regularity.
-A notable example is Szemerédi’s regularity lemma, which we state as a theorem:  
+%A typical example of an object with little constraint on its structural
+%properties is a graph.
+%Graphs are not much more than sets; yet there are many graph theoretical results
+%of the following form: a large enough graph exhibits regularity.
+%A notable example is Szemerédi’s regularity lemma, which we state as a theorem:  
 
-\begin{theorem}[Szemerédi]
-  For any $\epsilon >0$, any graph admits an $\epsilon$-regular partition.  
+%\begin{theorem}[Szemerédi]
+ % For any $\epsilon >0$, any graph admits an $\epsilon$-regular partition.  
+%\end{theorem}
+
+%This theorem is powerful when we consider large, dense graphs (\cite{Diestel2000});
+%$\epsilon$-regularity means in this case that the distribution of edges in our
+%graph is in some sense homogeneous, and thus “almost random”. This result shows
+%how a class of seemingly “unstructured” objects can exhibit some strong
+%structural properties.   
+
+The original Ramsey theorem is a theorem about sets and their partitions. 
+We adapt the statement from Ramsey's original paper (see \cite{Ramsey1930}):
+
+\begin{theorem}[\textcite{Ramsey1930}]
+  Let $\Gamma$ be an infinite set. For all $r,k\in\mathbb{Z}^+$, for 
+  any partition of the set of $k$-dimensional subsets of $\Gamma$
+  into $r$ classes $\{\mathcal{C}_{1},\cdots,\mathcal{C}_{r}\}$, there exists an infinite subset 
+  $\Delta\subset\Gamma$ such that: 
+  \begin{center}
+  for some $i\in \{1,\cdots,r\}$, every $k$-dimensional subset of $\Delta$ is in $\mathcal{C}_{i}$
+  \end{center}
 \end{theorem}
 
-This theorem is powerful when we consider large, dense graphs (\cite{Diestel2000});
-$\epsilon$-regularity means in this case that the distribution of edges in our
-graph is in some sense homogeneous, and thus “almost random”. This result shows
+Now, sets are a typical example of mathematical objects with little constraint 
+on their structural properties. In this sense, Ramsey's theorem shows
 how a class of seemingly “unstructured” objects can exhibit some strong
-structural properties.   
-
- 
+structural properties.
 
 Ramsey theory can be seen as a generalisation of this approach to the study of
 unstructured or loosely structured mathematical objects. In Ramsey theoretical
@@ -44,8 +60,7 @@ vast class of objects; hence the scope of the theory is broad.
  
 
 We aim to instill an appreciation of the subject in the reader and to show how
-it may be applied to a wide range of mathematical structures. (can insert the
-recap in the abstract here). We will also focus on the ability of the theory to
+it may be applied to a wide range of mathematical structures. We will also focus on the ability of the theory to
 act as a bridge between combinatorics, algebra and geometry.
 
 % The condition is often a question of quantity, i.e. a substructure will exist
