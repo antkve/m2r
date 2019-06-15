@@ -92,96 +92,167 @@ there exist H roots $\tau_1, ..., \tau_H$ with $\tau_i \in (A \bigcup
 \{x\})^{N_i}$ such that for their concatenation $\tau$ and any two neighbours
 $a, b \in A^H$, the words $\tau(a)$ and $\tau(b)$ are the same colour.
 
-This lemma can be proved by backwards induction on i; in other words, we assume that $\tau_{i+1}, ..., \tau_{H}$ are already defined, and show that there exists $\tau_i$ such that the lemma is satisfied for $\kappa_1, ..., \kappa_{i-1}, \tau_i, ..., \tau_H$ for any roots $\kappa_1, ..., \kappa_{i-1}$ and any neighbours that differ in their $i$th coordinates.
+This lemma can be proved by backwards induction on i; in other words, we assume 
+that $\tau_{i+1}, ..., \tau_{H}$ are already defined, and show that there exists 
+$\tau_i$ such that the lemma is satisfied for $\kappa_1, ..., \kappa_{i-1}, \tau_i, ..., \tau_H$ 
+for any roots $\kappa_1, ..., \kappa_{i-1}$ and any neighbours that differ in their 
+$i$th coordinates.
 We skip this proof due to space constraints.
 
-Given an r-colouring $\chi: A^N \rightarrow \{1, ..., r\}$ of $A^N$, take a $\tau$ as in the lemma, and an arbitrary element $\xi \in A$, and define a colouring $\chi'$ for the set $(A \backslash \{\xi\})^H$ such that 
+Given an r-colouring $\chi: A^N \rightarrow \{1, ..., r\}$ of $A^N$, take a $\tau$ as 
+in the lemma, and an arbitrary element $\xi \in A$, and define a colouring $\chi'$ for 
+the set $(A \backslash \{\xi\})^H$ such that: 
 $
 \chi'(a) = \chi(\tau(a))
 $.
-Since $\left| A \backslash \{\xi\} \right| = n-1$, by the inductive hypothesis there exists a combinatorial line in $(A \backslash \{\xi\})^H$ which is monochromatic under the $\chi'$ colouring, hence there is a root $\nu \in ((A \backslash \{\xi\}) \bigcup \{x\})^H$ such that $\mathcal{L}_{\nu} := \{\nu(a) : a \in A \backslash \{\xi\} \}$ is monochromatic with respect to $\chi'$.
+Since $\left| A \backslash \{\xi\} \right| = n-1$, by the inductive hypothesis 
+there exists a combinatorial line in $(A \backslash \{\xi\})^H$ which is 
+monochromatic under the $\chi'$ colouring, hence there is a root $\nu \in 
+((A \backslash \{\xi\}) \bigcup \{x\})^H$ such that $\mathcal{L}_{\nu} := \{\nu(a) : a 
+\in A \backslash \{\xi\} \}$ is monochromatic with respect to $\chi'$.
 Say $\nu = \nu_1 \nu_2 ...
 \nu_H$, where $\nu_i \in (A \backslash \{\xi\}) \bigcup \{x\}$.
 
-Now consider the set $\mathcal{L}_{\tau(\nu)} := \{\tau(\nu(a)) : a \in A\}$, where $\tau(\nu(a)) = \tau_1(\nu_1(a)) \tau_2(\nu_2(a)) ...
+Now consider the set $\mathcal{L}_{\tau(\nu)} := \{\tau(\nu(a)) : a \in A\}$, 
+where $\tau(\nu(a)) = \tau_1(\nu_1(a)) \tau_2(\nu_2(a)) ...
 \tau_H(\nu_H(a))$.
-This function $\tau \circ \nu $ is a root of $A^N$, and thus $\mathcal{L}_{\tau( \nu)}$ is a combinatorial line.
-Since $\mathcal{L}_{\nu}$ is monochromatic with respect to $\chi'$, we have that $\chi'(\nu(a)) = \chi'(\nu(b))\  \forall a, b \in A \backslash \{\xi\}$.
-Therefore by the definition of $\chi'$, $\chi(\tau(\nu(a))) = \chi(\tau(\nu(b))) \ \forall a, b \in A \backslash \{\xi\}$.
-To prove that $\mathcal{L}_{\tau(\nu)}$ is monochromatic, we need only prove that there exists some $a \in A$ such that $\chi(\tau(\nu(a))) = \chi(\tau(\nu(\xi)))$.
+This function $\tau \circ \nu $ is a root of $A^N$, and thus $\mathcal{L}_{\tau( \nu)}$ 
+is a combinatorial line.
+Since $\mathcal{L}_{\nu}$ is monochromatic with respect to $\chi'$, we have that 
+$\chi'(\nu(a)) = \chi'(\nu(b))\  \forall a, b \in A \backslash \{\xi\}$.
+Therefore by the definition of $\chi'$, 
+$\chi(\tau(\nu(a))) = \chi(\tau(\nu(b))) \ \forall a, b \in A \backslash \{\xi\}$.
+To prove that $\mathcal{L}_{\tau(\nu)}$ is monochromatic, we need only prove 
+that there exists some $a \in A$ such that $\chi(\tau(\nu(a))) = \chi(\tau(\nu(\xi)))$.
 Here we use the lemma.
 
 Take some arbitrary $a \in A$.
 Assume that $\nu$ has exactly one instance of $x$ in it.
-Then $\nu(\xi)$ is a neighbor of $\nu(a)$ in $A$ since it differs only in the coordinate containing the x, and thus by the definition of $\tau$ we have that $\chi(\tau(\nu(\xi))) =  \chi(\tau(\nu(a)))$.
+Then $\nu(\xi)$ is a neighbor of $\nu(a)$ in $A$ since it differs only in 
+the coordinate containing the x, and thus by the definition of $\tau$ we 
+have that $\chi(\tau(\nu(\xi))) =  \chi(\tau(\nu(a)))$.
 Otherwise, say $\nu$ has more than one instance of x in it.
 Enumerate the instances of x, so that $\nu = ...\ x\ ...\ x\ ...\ ...\ x\ ....
 = ...\ x_1\ ...\ x_2\ ...\ ...\ x_k\ ...$.
-Now, $\nu(a)$ may be obtained from $\nu(\xi)$ by passing through a sequence of neighbours, by sequentially changing each instance of $x_i$ to $a$.
-Therefore by the definition of $\tau$ from the lemma, we have that $\chi(\tau(\nu(\xi))) =  \chi(\tau(\nu(a)))$.
+Now, $\nu(a)$ may be obtained from $\nu(\xi)$ by passing through a sequence 
+of neighbours, by sequentially changing each instance of $x_i$ to $a$.
+Therefore by the definition of $\tau$ from the lemma, we have that 
+$\chi(\tau(\nu(\xi))) =  \chi(\tau(\nu(a)))$.
 
-Finally, we have that $\chi(\tau(\nu(a))) = \chi(\tau(\nu(b))) \forall a, b \in A$, and therefore $\mathcal{L}_{\tau(\nu)} = \{\tau(\nu(a)) : a \in A\}$ is a monochromatic combinatorial line in $A^N$, QED $\square$
+Finally, we have that $\chi(\tau(\nu(a))) = \chi(\tau(\nu(b))) 
+\forall a, b \in A$, and therefore $\mathcal{L}_{\tau(\nu)} = 
+\{\tau(\nu(a)) : a \in A\}$ is a monochromatic combinatorial line 
+in $A^N$, QED $\square$
 
 
 \subsection{Van der Waerden's Theorem}
-The theorem of Van der Waerden [1927] was actually stated and proved some time before Hales and Jewett's paper, but can be considered as a direct result of the more general Hales-Jewett theorem.
+The theorem of Van der Waerden [1927] was actually stated and proved 
+some time before Hales and Jewett's paper, but can be considered 
+as a direct result of the more general Hales-Jewett theorem.
 It states the following:
 
-For any $r, n \in \mathbb{Z}_{>	 0}$, there exists an $N \in \mathbb{Z}_{> 0}$ such that for any r-colouring of the set $\{1, ..., N\}$, there exists a monochromatic arithmetic progression of n terms, i.e.
+For any $r, n \in \mathbb{Z}_{>	 0}$, there exists an 
+$N \in \mathbb{Z}_{> 0}$ such that for any r-colouring of the set 
+$\{1, ..., N\}$, there exists a monochromatic arithmetic progression 
+of n terms, i.e.
 a monochromatic set $\{a, a + d, a + 2d, ..., a + (t - 1)d\}$.
 
-This N is called the Van der Waerden number of $r$ and $n$, and is denoted $W(r, n)$
+This N is called the Van der Waerden number of $r$ and $n$, and 
+is denoted $W(r, n)$
 \subsubsection*{Proof of Van der Waerden's Theorem}
 Given $r$ and $n$, we shall provide an upper bound for $W(r, n)$.
 Let $H = HJ(r, n)$, $N = (n - 1)H + 1$ and set $A = \{0, 1, ..., n-1\}$.
 Define $f: A^H \rightarrow \{1, ..., N\}$ as $f(a_1 a_2 ...
 a_H) = a_1 + a_2 + ...
 + a_H + 1$.
-Then given a colouring $\chi$ of $\{1, ..., N\}$, we can define a colouring $\chi'$ of $A^H$ such that $\chi'(x) = \chi(f(x)) \ \forall x \in A^H$.
+Then given a colouring $\chi$ of $\{1, ..., N\}$, we can define a 
+colouring $\chi'$ of $A^H$ such that 
+$\chi'(x) = \chi(f(x)) \ \forall x \in A^H$.
 
-By Hales-Jewett, there must exist some root $\tau$ of $A^H$ such that $\{\tau(0),\
+By Hales-Jewett, there must exist some root $\tau$ of $A^H$ such that 
+$\{\tau(0),\
  \tau(1),\ ..., \tau(n-1)\}$ is monochromatic with respect to $\chi'$.
 Say $\tau$ has $d$ instances of $x$ in it.
-Then $f$ maps $\tau(1)$ to $f(\tau(0)) + d$, $\tau(2)$ to $f(\tau(0)) + 2d$, etcetera.
-Hence the image of the combinatorial line is an arithmetic progression of length $n$, and by the definition of $\chi'$, this image is monochromatic with respect to $\chi$, QED $\square$ 
+Then $f$ maps $\tau(1)$ to $f(\tau(0)) + d$, $\tau(2)$ to $f(\tau(0)) + 2d$, 
+etcetera.
+Hence the image of the combinatorial line is an arithmetic 
+progression of length $n$, and by the definition of $\chi'$, this 
+image is monochromatic with respect to $\chi$, QED $\square$ 
  
  
 \subsection{The Gallai-Witt Theorem}
 Consider a subset V of the set $\mathbb{Z}^m$ of vectors of integers.
-We define a \textbf{homothetic copy} of V to be a set $\{u + \lambda v : v \in V\}$ for some vector $u \in \mathbb{Z}^m$ and scalar $\lambda \in \mathbb{N}$.
-The Gallai-Witt theorem provides a direct result of Hales-Jewett concerning such homothetic copies:
+We define a \textbf{homothetic copy} of V to be a set 
+$\{u + \lambda v : v \in V\}$ for some vector $u \in \mathbb{Z}^m$ 
+and scalar $\lambda \in \mathbb{N}$.
+The Gallai-Witt theorem provides a direct result of Hales-Jewett 
+concerning such homothetic copies:
 
-\textbf{Theorem:} For any r-colouring of $\mathbb{Z}^m$, and any finite subset $U \in \mathbb{Z}^m$, there exists a monochromatic homothetic copy of $U$.
+\textbf{Theorem:} For any r-colouring of $\mathbb{Z}^m$, and any 
+finite subset $U \in \mathbb{Z}^m$, there exists a monochromatic 
+homothetic copy of $U$.
 
-The proof of this theorem is extremely similar to that of Van der Waerden's, and is thus left out.
+The proof of this theorem is extremely similar to that of 
+Van der Waerden's, and is thus left out.
 
 
 \subsection{Szemeredi's theorem and the Density Hales-Jewett theorem}
-More recent results in combinatorial Ramsey theory concern the density of subsets.
-Instead of proving the existence of regular structures contained in at least one class of a colouring, these results prove that such structures exist within any specific subset with a certain \textbf{density} in a set -- the density of a set $A \subset B$ in a set $B$ is $\frac{|A|}{|B|}$.
-The results in question are known as the density Hales-Jewett theorem and Szemeredi's theorem.
-They are density equivalents of Hales-Jewett and Van der Waerden's theorem, respectively, and just as with the original theorems, Szemeredi's theorem can be easily deduced from the density Hales-Jewett theorem.
+More recent results in combinatorial Ramsey theory concern the density 
+of subsets.
+Instead of proving the existence of regular structures contained 
+in at least one class of a colouring, these results prove that such 
+structures exist within any specific subset with a certain 
+\textbf{density} in a set -- the density of a set $A \subset B$ in a 
+set $B$ is $\frac{|A|}{|B|}$.
+The results in question are known as the density Hales-Jewett theorem 
+and Szemeredi's theorem.
+They are density equivalents of Hales-Jewett and Van der Waerden's 
+theorem, respectively, and just as with the original theorems, Szemeredi's theorem can be easily deduced from the density Hales-Jewett theorem.
 The formal statement of the Density Hales-Jewett theorem is as follows.
 
-\textbf{Theorem:} For $k \in \mathbb{Z}_{\geq 2}$ and $\delta \in (0, 1]$, there exists an integer N such that for $n \geq N$ and any set $A$ such that $|A| = k$, and any subset $B$ of $A^n$ with density $\delta$ in $A$, $B$ contains a combinatorial line.
+\textbf{Theorem:} For $k \in \mathbb{Z}_{\geq 2}$ and $\delta \in (0, 1]$, 
+there exists an integer N such that for $n \geq N$ and any set $A$ such 
+that $|A| = k$, and any subset $B$ of $A^n$ with density $\delta$ 
+in $A$, $B$ contains a combinatorial line.
 
-The smallest such N is called the Density Hales-Jewett number, and is denoted $DHJ(\delta, k)$.
-This theorem can be seen to immediately imply the original Hales-Jewett theorem, as follows:
+The smallest such N is called the Density Hales-Jewett number, 
+and is denoted $DHJ(\delta, k)$.
+This theorem can be seen to immediately imply the original 
+Hales-Jewett theorem, as follows:
 
-Given any $k$, by DHJ, setting $\delta := \frac{1}{r}$, there is an $N \in \mathbb{N}$ such that for a set $A$ of size $k$, any subset of $A^N$ with density $\frac{1}{r}$ contains a combinatorial line.
+Given any $k$, by DHJ, setting $\delta := \frac{1}{r}$, there is an 
+$N \in \mathbb{N}$ such that for a set $A$ of size $k$, any subset 
+of $A^N$ with density $\frac{1}{r}$ contains a combinatorial line.
 If $A^N$ is r-coloured, i.e.
-split into r disjoint subsets, then at least one of these subsets must have density at least $\frac{1}{r}$, since the sum of all their densities in the set is 1.
+split into r disjoint subsets, then at least one of these subsets 
+must have density at least $\frac{1}{r}$, since the sum of all their 
+densities in the set is 1.
 Hence, that subset must contain a combinatorial line.
 
 This proof also implies that $HJ(r, n) \leq DHJ(\frac{1}{r}, n)$.
 
 \paragraph*{}
-The Density Hales-Jewett theorem was originally proven by Furstenberg and Katznelson [1991] using ergodic theory, the theory of measure-invariant dynamical systems.
-It used techniques developed in Furstenberg's proof of Szemeredi's theorem, which considered the Bernoulli system, a dynamical system on the set of subsets of the integers under the operation of "shifting" subsets by 1.
-A more recent and elementary proof was produced by the Polymath project, whichproved the theorem by contradiction using the strategy of density increment, which can be used to prove similar facts for general structures.
+The Density Hales-Jewett theorem was originally proven by Furstenberg 
+and Katznelson [1991] using ergodic theory, the theory of 
+measure-invariant dynamical systems.
+It used techniques developed in Furstenberg's proof of Szemeredi's 
+theorem, which considered the Bernoulli system, a dynamical system 
+on the set of subsets of the integers under the operation of "shifting" 
+subsets by 1.
+A more recent and elementary proof was produced by the Polymath 
+project, whichproved the theorem by contradiction using the strategy
+of density increment, which can be used to prove similar facts for 
+general structures.
 The core of this strategy is the following:
 
-Firstly, one proves that for any N, if a subset $A$ has density $\delta$ in some structured set $S$ (e.g.
-$[k]^N$, or $\mathbb{Z}$ for the proof of szemeredi's), and does not contain a substructure of the desired kind, then there must exist a substructure $S'$ of $S$ in which $A$ has density $\delta + c$, where c depends only on $\delta$.
-This process is incremented by showing that $S'$ must then contain a substructure of the same kind where $A$ has density $\delta + 2c$.
-For a large enough structure, this iteration can be continued until $A$ has a density greater than 1 in some substructure, a contradiction.
+Firstly, one proves that for any N, if a subset $A$ has density 
+$\delta$ in some structured set $S$ (e.g.
+$[k]^N$, or $\mathbb{Z}$ for the proof of szemeredi's), and does not 
+contain a substructure of the desired kind, then there must exist a 
+substructure $S'$ of $S$ in which $A$ has density $\delta + c$, 
+where c depends only on $\delta$.
+This process is incremented by showing that $S'$ must then contain 
+a substructure of the same kind where $A$ has density $\delta + 2c$.
+For a large enough structure, this iteration can be continued 
+until $A$ has a density greater than 1 in some substructure, 
+a contradiction.
