@@ -1,6 +1,6 @@
 \documentclass[../m2r-report.tex]{subfile}
 
-\subsection{Ramsey's Theorem}
+\subsection{Finite Graphs}
 \label{sec:1.1}
 
 Whilst Ramsey's original paper \cite{Ramsey1930} concerned with a problem of logic, Erd{\"o}s and 
@@ -14,53 +14,42 @@ In the graph below, we partition the edges into two disjoint classes: dotted lin
 lines. In turns out that no matter how we partition our edges, we will always get
 dotted triangles or dashed triangles. In this particular partition, we get two 
 dashed triangles.
-%The statement in the introduction - ``Given 6 people, either 3 mutually know each
-%other, or 3 do not" - can be rephrased in a graph theoretic sense.
-%We identify a person with a vertex of the graph, and a relation between them as
-%an edge.
-%A relation between two people can have  two states: either the two know each other,
-%or they have never met.
-%We can illustrate this relation status by `colouring' the edge, with a red edge
-%showing that the two know each other, and a blue edge showing that they haven't.
-%Hence, the situation described by the statement is shown by the following graph:
 
 \begin{figure}[h]
 \begin{center}
-\begin{tikzpicture}
-    \draw [dotted] (0,0) -- (1,0);
-    \draw [dotted] (1,0) -- (1.55,1);
-    \draw [dotted] (1.55,1) -- (1,2);
-    \draw [dotted] (1,2) -- (0,2);
-    \draw [dotted] (0,2) -- (-0.55,1);
-    \draw [dotted] (-0.55,1) -- (0,0);
-    \draw [dotted] (0,0) -- (1,2);
-    \draw [dotted] (1.55,1) -- (-0.55,1);
-    \draw [dotted] (1,0) -- (0,2);
-    \draw [dashed] (0,0) -- (0,2);
-    \draw [dashed] (1,0) -- (1,2);
-    \draw [dashed] (1,0) -- (-0.55,1);
-    \draw [dashed] (1.55,1) -- (0,2);
-    \draw [dashed] (1,2) -- (-0.55,1);
-    \draw [dashed] (0,0) -- (1.55,1);
+    \begin{tikzpicture}
+        \draw [dotted] (0,0) -- (1,0);
+        \draw [dotted] (1,0) -- (1.55,1);
+        \draw [dotted] (1.55,1) -- (1,2);
+        \draw [dotted] (1,2) -- (0,2);
+        \draw [dotted] (0,2) -- (-0.55,1);
+        \draw [dotted] (-0.55,1) -- (0,0);
+        \draw [dotted] (0,0) -- (1,2);
+        \draw [dotted] (1.55,1) -- (-0.55,1);
+        \draw [dotted] (1,0) -- (0,2);
+        \draw [dashed] (0,0) -- (0,2);
+        \draw [dashed] (1,0) -- (1,2);
+        \draw [dashed] (1,0) -- (-0.55,1);
+        \draw [dashed] (1.55,1) -- (0,2);
+        \draw [dashed] (1,2) -- (-0.55,1);
+        \draw [dashed] (0,0) -- (1.55,1);
 
-    \filldraw (0,0) circle (2pt);
-    \filldraw (1,0) circle (2pt);
-    \filldraw (-0.55,1) circle (2pt);
-    \filldraw (1.55,1) circle (2pt);
-    \filldraw (0,2) circle (2pt);
-    \filldraw (1,2) circle (2pt);
+        \filldraw (0,0) circle (2pt);
+        \filldraw (1,0) circle (2pt);
+        \filldraw (-0.55,1) circle (2pt);
+        \filldraw (1.55,1) circle (2pt);
+        \filldraw (0,2) circle (2pt);
+        \filldraw (1,2) circle (2pt);
+    \end{tikzpicture}
 
-\end{tikzpicture}
-\caption{2 dashed triangles within a graph of 6 vertices}
 \end{center}
-\end{figure}.
+
+\caption{2 dashed triangles within a graph of 6 vertices}
+\end{figure}
 
 Before continuing, we first need to state some notation and definitions\cite{Graham1990}.
-% I've moved the citation into the sentence to keep it consistent with the rest
-% of the report.
-% QuantumAnon
 
-For $n,k\in \mathbb{N}$, and any non-empty set $X$, let
+For $n,k\in \Z^+$, and any non-empty set $X$, let
 
 \begin{align*}%\label{eq:bracketDef}
 [n] &= \{1, 2,\ldots, n\},\\
@@ -77,7 +66,7 @@ X^{(k)} &= \{Y:Y\subseteq X, |Y|=k\}.
 
 \begin{definition}[Graph]
 
-    A \textit{graph G} is an ordered pair of disjoint sets $(V,E)$ such that $E$ 
+    A \textit{graph G} is an ordered pair of disjoint countable sets $(V,E)$ such that $E$ 
     is a subset of $V^{(2)}$, the set of unordered pairs of $V$. We call $V$ the 
     set of vertices, and $E$ the set of edges. The \textit{order}
     of $G$ is the number of vertices, i.e $|V|$.
@@ -105,78 +94,65 @@ of these classes as being `colourings' of the edges. In an \textit{r-colouring},
 we partition our edges into $r$ disjoint classes, called \textit{colours}. The 
 following definition helps explain this:
 
-\begin{definition}[Colouring]
-    
-    An \textit{r-colouring} of the edges of a graph $G=(V,E)$ is a map \cite{Graham1990}:
+\begin{definition}[Colouring of a set]
 
-    $$\chi : E \rightarrow [r]$$
+    Let $X$ be a non-empty set. For $r\in\Z^+$, a $r-colouring$ of $X$ is a 
+    partition of $X$ into $r$ equivalence classes.
+    
+    Equivalently, a $r$-colouring of $X$ is the partition of $X$ induced by an 
+    arbitrary map: $$\chi: X \to [r]$$ through the equivalence relation: 
+    $$\mathcal{R}_{\chi}:= \{(x_{1},x_{2})\in X | \chi(x_{1})=\chi(x_{2}) \}$$
+    and $\chi$ is called the colouring function. Somewhat improperly, 
+    we will identify a $r$-colouring of $X$ with its colouring function.
+
+    In the context of graphs, an $r$-colouring of the edges of a graph $G=(V,E)$ is a map \cite{Graham1990}:
+
+    $$\chi : E \to [r]$$
 
     We say a subgraph $G' = (V',E')$ of $G$ is \textit{monochromatic} if the restriction
     $\chi|_{E'}$ is the constant map.
 
 \end{definition}
 
-\begin{definition}[Colouring of a set]
-    Let $X$ be a non-empty set. For $k\in\mathbb{N}$, a $k$-colouring of $X$ is a 
-    partition of $X$ into $k$ equivalence classes. 
-    \end{definition}
-    
-    Equivalently, a $k$-colouring of $X$ is the partition of $X$ induced by an 
-    arbitrary map: $$\chi: X \to [k]$$ through the equivalence relation: 
-    $$\mathcal{R}_{\chi}:= \{(x_{1},x_{2})\in X | \chi(x_{1})=\chi(x_{2}) \}$$
-    and $\chi$ is called the colouring function. Somewhat improperly, 
-    we will identify a $k$-colouring of $X$ with its colouring function.
-
 We can now state the fundamental question that lies at the heart of Ramsey 
-theory in graph theoretic sense.
+theory in a finite graph theoretic sense.
 
-\begin{theorem}[Ramsey's theorem for graphs]
+\begin{prop}[Ramsey's theorem for finite graphs]
 
-    Given positive integers $s,t$, there exist a least positive integer $R(s,t)$ such that any 2-colouring
-    of $K_n$ with $n\geq R(s,t)$, contains as a clique either a monochromatic $K_s$ or a monochromatic
-    $K_t$.
+    Given positive integers $s,t$, there exist a least positive integer $R(s,t)$ 
+    such that any 2-colouring of $K_n$ with $n\geq R(s,t)$ contains as a clique 
+    either a monochromatic $K_s$ or a monochromatic $K_t$.
 
-\end{theorem}
+\end{prop}
+
+\textbf{Remark:} If $\chi$ is a 2-colouring of the edges of $K_n$, I will refer 
+to the edges $\chi^{-1}(\{1\})$ as being `red',
+and the edges $\chi^{-1}(\{2\})$ as being `blue'.
 
 \begin{proof}
 
-    We proceed by double induction on $s$ and $t$. Note that $R(s,2) = R(2,s)=s$, since a 2-colouring (say, red and blue)
-    of $K_2$ either has a blue edge, or every other edge is red. This is illustrated in the graph below. \cite{Graham1990}\\
+    We proceed by double induction on $s$ and $t$. Note that $R(s,2) = R(2,s)=s$, 
+    since a 2-colouring of $K_s$ either has a blue edge, or 
+    every other edge is red. \cite{Bollobas1998}\\
 
-    Hence $R(s,2),R(2,s),R(t,2),R(2,t)$ all exist. We now assume, by induction, that $R(s,t-1)$ and $R(s-1,t)$ both exist.
-
-    \textbf{Remark}: If $\chi$ is a 2-colouring of the edges of $K_n$, I will refer to the edges $\{ S \subseteq[n]^{(2)} : \chi(S)=\{1\}\}$ as being `red',
-        and the edges $\{ T \subseteq[n]^{(2)} : \chi(T)=\{2\}\}$ as being `blue'.
-
-    \begin{lemma}[$R(s,t)\leq R(s-1,t)+ R(s,t-1)$]\cite{Bollobas1998} 
-    % I don't think this lemma is well set out, I'd probably change things to
-    %\begin{lemma}[From \textcite[<page_number>]{Bollobas1998}] 
-    %  $R(s,t)\leq R(s-1,t)+ R(s,t-1)$
-    % QuantumAnon
-    % Don't understand the brackets and referencing
-    % guglitar
-    \end{lemma}
-        
-    \begin{proof}
-
-        Let $n_1=R(s-1,t), n_2=R(s,t-1), n = n_1+n_2$, and consider a
-        2-colouring of the edges of $K_n$. We need to show that we have
-        either a red $K_s$ or a blue $K_t$. So let $x$ be any vertex of
-        $K_n$. Since $x$ is joined by edges to $n-1=n_1+n_2-1$ other vertices,
-        either there is at least $n_1$ red edges incident with $x$, or there
-        are at least $n_2$ blue edges incident with $x$. We will assume that
-        the first case holds, since the opposite result follows by symmetry.\\
-
-        Consider a clique $K_{n_1}$ joined to $x$ by red edges. If $K_{n_1}$ has a blue $K_t$, then we 
-        are done. Otherwise, by the definition of $R(s-1,t)$, the graph
-        $K_{n_1}$ contains a red $K_{s-1}$, which forms a red $K_s$ with $x$.
-
-    \end{proof}
+    Hence $R(s,2),R(2,s),R(t,2),R(2,t)$ all exist. We now assume for an induction 
+    that $R(s,t-1)$ and $R(s-1,t)$ both exist. Let $n_1:=R(s-1,t), n_2:=R(s,t-1), n := n_1+n_2$, and consider a
+    2-colouring of the edges of $K_n$. We need to show that we have
+    either a red $K_s$ or a blue $K_t$. So let $x$ be any vertex of
+    $K_n$. Since $x$ is joined by edges to $n-1=n_1+n_2-1$ other vertices,
+    either there is at least $n_1$ red edges incident with $x$, or there
+    are at least $n_2$ blue edges incident with $x$. We will assume that
+    the first case holds, since the opposite result follows by symmetry.\\
+    
+    Consider a clique $K_{n_1}$ joined to $x$ by red edges. If $K_{n_1}$ has a blue $K_t$, then we 
+    are done. Otherwise, by the definition of $R(s-1,t)$, the graph
+    $K_{n_1}$ contains a red $K_{s-1}$, which forms a red $K_s$ with $x$.
 
     Hence the result, by induction.
 
 \end{proof}
 
+\textbf{Remark}: 
 This result is easily generalised to any finite $r$-colouring of $K_n$:
 
 \begin{theorem}[Ramsey's Theorem for $r$-colours]\label{thr:genRamsey}
@@ -204,71 +180,8 @@ This result is easily generalised to any finite $r$-colouring of $K_n$:
 
 \end{proof}
 
-Interestingly enough, Ramsey's theorem also holds for graphs of infinite order, 
-so long as the number of colours used is finite. We can biject the set of infinitely 
-many vertices with the natural numbers, denoted $\mathbb{N}$, and the set of infinitely 
-many edges between those vertices with the set of all unordered pairs of natural 
-numbers, which we denote $[\mathbb{N}]^2$.
-
-\begin{definition}[Infinite graph]
-
-    We define the infinite complete graph, $K_\infty$, as the ordered pair
-    $K_\infty:=(\mathbb{N},[\mathbb{N}]^2)$.
-
-\end{definition}
-
-\begin{theorem}[Ramsey's theorem for Infinite Graphs]%\cite{lecturenotes}
-
-    For any r-colouring of the edges of $K_\infty$, i.e. 
-    $\chi :[\mathbb{N}]^2\rightarrow \{c_1,\ldots, c_r\}$ there exists 
-    within it an infinite monochromatic clique. I.e. $\exists
-    X \subseteq K_\infty$ such that $X$ is infinite, and $\chi|_{[X]^2}$ is the
-    constant function.
-
-\end{theorem}
-
-\begin{proof}
-
-    Fix an arbitrary $a_1 \in \mathbb{N}$. Then by the pigeonhole principal, 
-    there must exist an infinite set $\mathcal{B}_1\subseteq\mathbb{N}\setminus
-    \{a_1\}$ such that all of the $a_1-\mathcal{B}_1$ edges (i.e. edges of the
-    form $(a_1,b_1)$ with $b_1\in\mathcal{B}_1$ are of the same colour, say $c_1$.\\
-
-    Now again fix an arbitrary $a_2\in\mathcal{B}_1$. Again, we find some infinite
-    $\mathcal{B}_2\subseteq\mathcal{B}_1$ such that all of the $a_2-\mathcal{B}_2$
-    are of the same colour, say $c_2$.\\
-
-    If we repeat this inductively, we obtain a sequence $a_1,a_2,\ldots$ 
-    and a sequence of colours $c_1,c_2,\ldots$ such that $\chi(\{a_i,a_j\})=
-    c_i$, for $i<j$.\\
-
-    Now again by the pigeonhole principal, since there are finitely many colours,
-    there exists an infinite subsequence $c_{i_1}, c_{i_2}, \ldots$ that is 
-    constant, i.e. each term is equal to $c_i$. Then $\{a_{i_1},a_{i_2}\}$ is a
-    monochromatic set, coloured by $c_i$.
-
-\end{proof}
-
-This result has the following result from analysis as an interesting corollary:
-
-\textbf{Corollary}: [Bolzano-Weierstrass Theorem]
-
-Let $(x_i)_{i\in\mathbb{N}}$ be a bounded sequence of real numbers. Then it has
-a convergent subsequence.
-
-\begin{proof}
-
-    We define a 2-colouring of $\mathbb{N}^{(2)}$ by calling $\{i,j\}$ \textit{red} 
-    if $x_i <x_j$, and \textit{blue} if $x_i\geq x_j$.
-
-    Then Ramsey's theorem for infinite graphs gives us an infinite monochromatic 
-    set, which in this case is a monotone subsequence of $(x_i)$. And since it 
-    is bounded, by the monotone convergence theorem it must converge.
-
-\end{proof}
-
 Whilst we have been discussing Ramsey's theorem in a strictly graph-theoretic sense,
-the original statement extends beyond that. If we are given a set $V$ (which we 
+the theory extends beyond that. If we are given a set $V$ (which we 
 have been referring to as the set of vertices of a given graph), so far we have been 
 looking at partitioning (colouring) the set $V^{(2)}$ (the edges) into $r$ classes. 
 However, the theorem still holds when we partition $V^{(k)}$ into $r$ classes, 
@@ -283,12 +196,90 @@ for any integer $k$.
 
 \end{theorem}
 
+\begin{proof}
 
+We omit the proof of this theorem.
 
-\subsection{Graph Ramsey theory \cite{Bollobas1998}}
+\end{proof}
+
+\subsection{Infinite Graphs}
 \label{sec:1.2}
 
+The statement of Ramsey's theorem in the introduction, \autoref{thr:Ramsey}
+concerns partitioning a countably infinite set $\Gamma$ into $r\in\Z^+$ classes.
+
+\begin{definition}[Infinite graph]
+
+    We define the infinite complete graph, $K_\infty$, as the ordered pair
+    $K_\infty:=(\Gamma,\Gamma^{(2)})$.
+
+\end{definition}
+
+\begin{theorem}[Ramsey's theorem for Infinite Graphs\label{thm:ram}]%\cite{lecturenotes}
+
+    For any r-colouring of the edges of $K_\infty$, i.e. 
+    $\chi :\Gamma^{(2)}\to\{c_1,\ldots, c_r\}$ there exists 
+    within it a countably infinite monochromatic clique. I.e. $\exists
+    X \subset K_\infty$ such that $X$ is countably infinite, and $\chi|_{X^{(2)}}$ is the
+    constant function.
+
+\end{theorem}
+
+\textbf{Remark}: It should be noted that whilst \autocite{thm:ram} is referring to 
+the edges of the infinite graph, $\Gamma^{(2)}$, Ramsey's original theorem states 
+that the same result holds for any $r$-colouring of $\Gamma^{(k)}$, for 
+any $k,r \in \Z^+$. That is, we can always find a countably infinite monochromatic 
+subset $\Delta \subset \Gamma$.
+
+\begin{proof}
+
+    Fix an arbitrary $a_1 \in \Z^+$. Then by the pigeonhole principal, 
+    there must exist a countably infinite set $\mathcal{B}_1\subseteq\Z_+\setminus
+    \{a_1\}$ such that all of the $a_1-\mathcal{B}_1$ edges (i.e. edges of the
+    form $(a_1,b_1)$ with $b_1\in\mathcal{B}_1$ are of the same colour, say $c_1$.\\
+
+    Now again fix an arbitrary $a_2\in\mathcal{B}_1$. Again, we find some countable
+    $\mathcal{B}_2\subseteq\mathcal{B}_1$ such that all of the $a_2-\mathcal{B}_2$
+    are of the same colour, say $c_2$.\\
+
+    If we repeat this inductively, we obtain a sequence $a_1,a_2,\ldots$ 
+    and a sequence of colours $c_1,c_2,\ldots$ such that $\chi(\{a_i,a_j\})=
+    c_i$, for $i<j$.\\
+
+    Now again by the pigeonhole principal, since there are finitely many colours,
+    there exists an countable subsequence $c_{i_1}, c_{i_2}, \ldots$ that is 
+    constant, i.e. each term is equal to $c_i$. Then $\{a_{i_1},a_{i_2}, \ldots\}$ is a
+    monochromatic set, coloured by $c_i$.
+
+\end{proof}
+
+This result has the following result from analysis as an interesting corollary:
+
+\textbf{Corollary}: [Bolzano-Weierstrass Theorem]
+
+Let $(x_i)_{i\in \Z_+}$ be a bounded sequence of real numbers. Then it has
+a convergent subsequence.
+
+\begin{proof}
+
+    We define a 2-colouring of ${\Z^+}^{(2)}$ by calling $\{i,j\}$ \textit{red} 
+    if $x_i <x_j$, and \textit{blue} if $x_i\geq x_j$.
+
+    Then Ramsey's theorem for infinite graphs gives us a countably infinite monochromatic 
+    set, which in this case is a monotone subsequence of $(x_i)$. And since it 
+    is bounded, by the monotone convergence theorem it must converge.
+
+\end{proof}
+
+
+\subsection{Graph Ramsey Theory \cite{Bollobas1998}}
+\label{sec:1.3}
+
 \begin{definition}[Isomorphism of Graphs]
+
+\end{definition}
+
+\begin{definition}[Generalised Ramsey Number]
 
 \end{definition}
 
